@@ -4,8 +4,9 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import "../globals.css";
-import { Navbar } from "@/components/shared/navbar/navbar";
-import { MobileFooter } from "@/components/shared/footer/mobile-footer";
+import { Navbar } from "@/features/navigation/navbar";
+import { MobileFooter } from "@/features/navigation/mobile-footer";
+import { JsonLd } from "@/features/seo/components/json-ld";
 
 // تعریف فونت بدنه
 const shabnam = localFont({
@@ -42,13 +43,29 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({
+  children,
+  params,
+}: RootLayoutProps & { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const messages = await getMessages();
   const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
+  const direction = locale === "fa" || locale === "ar" ? "rtl" : "ltr";
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Zeteb",
+    "url": process.env.BETTER_AUTH_URL,
+    "logo": `${process.env.BETTER_AUTH_URL}/favicon.ico`,
+  };
+
   return (
-    <html lang="fa" dir="rtl" suppressHydrationWarning>
+    <html lang={locale} dir={direction} suppressHydrationWarning>
       {gaId && <GoogleAnalytics gaId={gaId} />}
       <head>
+        <JsonLd data={organizationSchema} />
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#eee" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />

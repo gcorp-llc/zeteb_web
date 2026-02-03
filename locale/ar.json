@@ -1,10 +1,35 @@
 {
   "HomePage": {
-    "title": "السلام"
+    "title": "مرحبا بالعالم",
+    "activeLanguage": "اللغة النشطة"
   },
-    "Languages": {
-    "fa": "فارسی",
-    "en": "English",
+  "Languages": {
+    "fa": "الفارسية",
+    "en": "الإنجليزية",
     "ar": "العربية"
+  },
+  "Navbar": {
+    "home": "الرئيسية",
+    "appointments": "المواعيد",
+    "notifications": "الإشعارات",
+    "messages": "الرسائل",
+    "profile": "الملف الشخصي",
+    "videos": "فيديوهات",
+    "logout": "تسجيل الخروج",
+    "menu": "القائمة الرئيسية",
+    "searchPlaceholder": "ابحث في زتب..."
+  },
+  "UserProfileCard": {
+    "trending": "الأكثر شهرة",
+    "premium": "بريميوم",
+    "perMonth": "دولار/شهر",
+    "featuresAndAccess": "الميزات والوصول",
+    "selectPlan": "اختر الخطة وابدأ",
+    "features": {
+      "batch": "قدرات المعالجة الدفعية",
+      "ai": "تحسين الصور بالذكاء الاصطناعی",
+      "cloud": "تكامل سحابي سلس",
+      "realtime": "أدوات التعاون در لحظة"
+    }
   }
 }

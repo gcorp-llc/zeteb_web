@@ -1,10 +1,35 @@
 {
   "HomePage": {
-    "title": "سلام دنیا"
+    "title": "سلام دنیا",
+    "activeLanguage": "زبان فعال"
   },
-    "Languages": {
+  "Languages": {
     "fa": "فارسی",
     "en": "English",
     "ar": "العربية"
+  },
+  "Navbar": {
+    "home": "خانه",
+    "appointments": "نوبت‌ها",
+    "notifications": "اعلان‌ها",
+    "messages": "پیام‌ها",
+    "profile": "پروفایل",
+    "videos": "ویدیوها",
+    "logout": "خروج",
+    "menu": "منوی اصلی",
+    "searchPlaceholder": "جستجو در زتب..."
+  },
+  "UserProfileCard": {
+    "trending": "پرطرفدارترین",
+    "premium": "پریمیوم",
+    "perMonth": "دلار/ماه",
+    "featuresAndAccess": "ویژگی‌ها و دسترسی‌ها",
+    "selectPlan": "انتخاب طرح و شروع",
+    "features": {
+      "batch": "قابلیت‌های پردازش دسته‌ای (Batch)",
+      "ai": "بهینه‌سازی تصاویر مبتنی بر هوش مصنوعی",
+      "cloud": "ادغام یکپارچه با سرویس‌های ابری",
+      "realtime": "ابزارهای همکاری در لحظه (Real-time)"
+    }
   }
 }

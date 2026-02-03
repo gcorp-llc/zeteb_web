@@ -5,10 +5,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { NavUserProfileCard } from "./nav-user-profile-card";
+import { NavUserProfileCard } from "@/features/user/components/nav-user-profile-card";
+import Image from "next/image";
 
 export const NavActions = () => {
   return (
@@ -35,9 +35,15 @@ export const NavActions = () => {
 
       {/* آواتار موبایل (فقط دایره عکس) */}
       <div className="block lg:hidden">
-         <div className="w-10 h-10 rounded-full ring-2 ring-purple-500 overflow-hidden p-0.5">
-            <img src="/favicon.png" alt="Profile" className="w-full h-full object-cover rounded-full" />
-         </div>
+        <div className="w-10 h-10 rounded-full ring-2 ring-purple-500 overflow-hidden p-0.5">
+          <Image
+            src="/favicon.png"
+            alt="Profile"
+            width={40}
+            height={40}
+            className="w-full h-full object-cover rounded-full"
+          />
+        </div>
       </div>
 
     </div>

@@ -1,10 +1,35 @@
 {
   "HomePage": {
-    "title": "Hello world!"
+    "title": "Hello World",
+    "activeLanguage": "Active Language"
   },
-    "Languages": {
-    "fa": "فارسی",
+  "Languages": {
+    "fa": "Persian",
     "en": "English",
-    "ar": "العربية"
+    "ar": "Arabic"
+  },
+  "Navbar": {
+    "home": "Home",
+    "appointments": "Appointments",
+    "notifications": "Notifications",
+    "messages": "Messages",
+    "profile": "Profile",
+    "videos": "Videos",
+    "logout": "Logout",
+    "menu": "Main Menu",
+    "searchPlaceholder": "Search in Zeteb..."
+  },
+  "UserProfileCard": {
+    "trending": "Trending",
+    "premium": "Premium",
+    "perMonth": "$/month",
+    "featuresAndAccess": "Features & Access",
+    "selectPlan": "Select Plan & Start",
+    "features": {
+      "batch": "Batch Processing Capabilities",
+      "ai": "AI-powered Image Optimization",
+      "cloud": "Seamless Cloud Integration",
+      "realtime": "Real-time Collaboration Tools"
+    }
   }
 }
