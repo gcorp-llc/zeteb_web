@@ -6,18 +6,39 @@ import { NavSearch } from "./components/nav-search";
 import { NavLogo } from "./components/nav-logo";
 import { NavItem } from "./components/nav-item";
 import { usePathname } from "@/i18n/navigation";
-
-
-const navItems = [
-  { icon: "icon-[solar--home-smile-angle-broken]", label: "خانه", href: "/" },
-  { icon: "icon-[solar--calendar-broken]", label: "نوبت‌ها", href: "/appointments" },
-  { icon: "icon-[solar--bell-broken]", label: "اعلان‌ها", href: "/notifications" },
-  { icon: "icon-[hugeicons--notification-square]", label: "پیام‌ها", href: "/messages" },
-  { icon: "icon-[solar--user-circle-broken]", label: "پروفایل", href: "/profile" },
-];
+import { useTranslations } from "next-intl";
 
 export const Navbar = () => {
-    const pathname = usePathname();
+  const t = useTranslations("Navbar");
+  const pathname = usePathname();
+
+  const navItems = [
+    {
+      icon: "icon-[solar--home-smile-angle-broken]",
+      label: t("home"),
+      href: "/",
+    },
+    {
+      icon: "icon-[solar--calendar-broken]",
+      label: t("appointments"),
+      href: "/appointments",
+    },
+    {
+      icon: "icon-[solar--bell-broken]",
+      label: t("notifications"),
+      href: "/notifications",
+    },
+    {
+      icon: "icon-[hugeicons--notification-square]",
+      label: t("messages"),
+      href: "/messages",
+    },
+    {
+      icon: "icon-[solar--user-circle-broken]",
+      label: t("profile"),
+      href: "/profile",
+    },
+  ];
   return (
     <nav className="sticky top-0 z-50 m-2 rounded-2xl bg-zeteb-gradient shadow-md backdrop-blur-md border border-white/20">
       <div className="container mx-auto flex items-center justify-between p-2 gap-4">

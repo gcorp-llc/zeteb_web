@@ -3,33 +3,38 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 export const NavUserProfileCard = () => {
-  // ویژگی‌های فعال و غیرفعال دقیقاً مطابق فایل بلید
+  const t = useTranslations("UserProfileCard");
+
   const features = [
-    { name: "قابلیت‌های پردازش دسته‌ای (Batch)", active: true },
-    { name: "بهینه‌سازی تصاویر مبتنی بر هوش مصنوعی", active: true },
-    { name: "ادغام یکپارچه با سرویس‌های ابری", active: false },
-    { name: "ابزارهای همکاری در لحظه (Real-time)", active: false },
+    { name: t("features.batch"), active: true },
+    { name: t("features.ai"), active: true },
+    { name: t("features.cloud"), active: false },
+    { name: t("features.realtime"), active: false },
   ];
 
   return (
     <div className="relative p-6 w-full max-w-md mx-auto overflow-hidden transition-all duration-300 shadow-xl card bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 hover:shadow-2xl group">
       <div className="p-6 md:p-8 card-body">
-        
         {/* برچسب محبوبیت (Badge) با همان چرخش و استایل بلید */}
         <div className="absolute top-0 left-0 -mt-3 -ml-3 z-10">
           <Badge className="p-3 text-sm font-extrabold shadow-md bg-warning text-warning-foreground rounded-xl transform -rotate-3 border-none">
-            پرطرفدارترین
+            {t("trending")}
           </Badge>
         </div>
 
         {/* بخش قیمت و عنوان */}
-        <div className="flex flex-col gap-2 pt-4 rtl">
-          <h2 className="text-4xl font-extrabold text-primary drop-shadow-sm">پریمیوم</h2>
+        <div className="flex flex-col gap-2 pt-4">
+          <h2 className="text-4xl font-extrabold text-primary drop-shadow-sm">
+            {t("premium")}
+          </h2>
           <div className="flex items-end text-slate-800 dark:text-white gap-1">
             <span className="text-5xl font-black">۲۹</span>
-            <span className="text-xl font-medium opacity-70 pb-1">دلار/ماه</span>
+            <span className="text-xl font-medium opacity-70 pb-1">
+              {t("perMonth")}
+            </span>
           </div>
         </div>
 
@@ -39,12 +44,14 @@ export const NavUserProfileCard = () => {
             <span className="w-full border-t border-white/20"></span>
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-transparent px-2 text-slate-500 font-bold">ویژگی‌ها و دسترسی‌ها</span>
+            <span className="bg-transparent px-2 text-slate-500 font-bold">
+              {t("featuresAndAccess")}
+            </span>
           </div>
         </div>
 
         {/* لیست ویژگی‌ها */}
-        <ul className="flex flex-col gap-4 text-base font-medium rtl">
+        <ul className="flex flex-col gap-4 text-base font-medium">
           {features.map((feature, index) => (
             <li 
               key={index} 
@@ -67,10 +74,8 @@ export const NavUserProfileCard = () => {
 
         {/* دکمه فراخوان (CTA) با همان استایل گرادینت نوبار */}
         <div className="mt-8">
-          <Button 
-            className="w-full h-14 text-lg font-black rounded-2xl bg-zeteb-gradient hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 border-t border-white/30 shadow-lg text-white"
-          >
-            انتخاب طرح و شروع
+          <Button className="w-full h-14 text-lg font-black rounded-2xl bg-zeteb-gradient hover:opacity-90 transition-all transform hover:scale-[1.02] active:scale-95 border-t border-white/30 shadow-lg text-white">
+            {t("selectPlan")}
           </Button>
         </div>
 
