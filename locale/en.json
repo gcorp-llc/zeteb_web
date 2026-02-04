@@ -31,5 +31,19 @@
       "cloud": "Seamless Cloud Integration",
       "realtime": "Real-time Collaboration Tools"
     }
+  },
+  "Auth": {
+    "title": "Login to Zeteb",
+    "welcome": "Welcome back",
+    "enterPhone": "Enter your phone number to start",
+    "enterOtp": "Enter the verification code sent to you",
+    "phonePlaceholder": "+1 234 567 890",
+    "otpPlaceholder": "------",
+    "sendCode": "Send Verification Code",
+    "sending": "Sending...",
+    "verifyCode": "Verify and Login",
+    "verifying": "Verifying...",
+    "changePhone": "Change Phone Number",
+    "orContinueWith": "or continue with"
   }
 }

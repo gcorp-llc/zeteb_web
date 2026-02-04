@@ -9,6 +9,7 @@ import "../globals.css";
 import { Navbar } from "@/features/navigation/navbar";
 import { MobileFooter } from "@/features/navigation/mobile-footer";
 import { JsonLd } from "@/features/seo/components/json-ld";
+import { Toaster } from "sonner";
 
 // ────────────────────────────────────────────────
 // فونت‌ها – بهترین روش: ترکیب وزن‌ها در یک variable font یا حداقل تعریف دقیق
@@ -115,6 +116,7 @@ export default async function RootLayout({
 
       <body className="antialiased min-h-screen flex flex-col">
         <NextIntlClientProvider messages={messages}>
+          <Toaster richColors position="top-center" />
           <Navbar />
           <main className="flex-1">{children}</main>
           <MobileFooter />

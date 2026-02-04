@@ -175,6 +175,14 @@
     animation: var(--animate-navbar-in);
   }
 
+  .bg-zeteb-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, oklch(0.65 0.2 330) 100%);
+  }
+
+  .bg-zeteb-gradient-glass {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, transparent) 0%, color-mix(in srgb, oklch(0.65 0.2 330) 15%, transparent) 100%);
+  }
+
   /* نسخه سبک‌تر برای موبایل */
   @media (max-width: 1023px) {
     .glass-nav {

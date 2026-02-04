@@ -31,5 +31,19 @@
       "cloud": "تكامل سحابي سلس",
       "realtime": "أدوات التعاون در لحظة"
     }
+  },
+  "Auth": {
+    "title": "تسجيل الدخول إلى زتب",
+    "welcome": "أهلاً بك",
+    "enterPhone": "أدخل رقم هاتفك للبدء",
+    "enterOtp": "أدخل رمز التحقق المرسل إليك",
+    "phonePlaceholder": "٠٥xxxxxxxx",
+    "otpPlaceholder": "------",
+    "sendCode": "إرسال رمز التحقق",
+    "sending": "جاري الإرسال...",
+    "verifyCode": "التحقق والدخول",
+    "verifying": "جاري التحقق...",
+    "changePhone": "تغيير رقم الهاتف",
+    "orContinueWith": "أو الاستمرار باستخدام"
   }
 }
