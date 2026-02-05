@@ -19,6 +19,11 @@ export const Navbar = () => {
       href: "/",
     },
     {
+      icon: "icon-[solar--medical-kit-broken]",
+      label: t("doctors"),
+      href: "/doctors",
+    },
+    {
       icon: "icon-[solar--calendar-broken]",
       label: t("appointments"),
       href: "/appointments",

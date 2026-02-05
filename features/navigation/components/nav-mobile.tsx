@@ -21,14 +21,29 @@ export const NavMobile = () => {
       icon: "icon-[solar--home-smile-bold-duotone]",
     },
     {
-      name: t("videos"),
-      href: "/videos",
-      icon: "icon-[solar--videocamera-record-bold-duotone]",
+      name: t("doctors"),
+      href: "/doctors",
+      icon: "icon-[solar--medical-kit-bold-duotone]",
     },
     {
       name: t("appointments"),
       href: "/appointments",
       icon: "icon-[solar--calendar-bold-duotone]",
+    },
+    {
+      name: t("notifications"),
+      href: "/notifications",
+      icon: "icon-[solar--bell-bold-duotone]",
+    },
+    {
+      name: t("messages"),
+      href: "/messages",
+      icon: "icon-[hugeicons--notification-square]",
+    },
+    {
+      name: t("profile"),
+      href: "/profile",
+      icon: "icon-[solar--user-circle-bold-duotone]",
     },
   ];
 

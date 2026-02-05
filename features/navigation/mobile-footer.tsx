@@ -15,6 +15,11 @@ export const MobileFooter = () => {
       href: "/",
     },
     {
+      icon: "icon-[solar--medical-kit-broken]",
+      label: t("doctors"),
+      href: "/doctors",
+    },
+    {
       icon: "icon-[solar--calendar-broken]",
       label: t("appointments"),
       href: "/appointments",
@@ -29,11 +34,6 @@ export const MobileFooter = () => {
       label: t("messages"),
       href: "/messages",
     },
-    {
-      icon: "icon-[solar--user-circle-broken]",
-      label: t("profile"),
-      href: "/profile",
-    },
   ];
 
   return (
@@ -43,7 +43,7 @@ export const MobileFooter = () => {
           glass
           animate-ios-in
           mx-auto max-w-sm flex items-center justify-around
-          rounded-[2.5rem] py-3 px-4
+          rounded-[2.5rem] py-2 px-4
           shadow-2xl
         `}
       >
