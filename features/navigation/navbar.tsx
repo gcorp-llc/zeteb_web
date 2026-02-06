@@ -32,11 +32,13 @@ export const Navbar = () => {
       icon: "icon-[solar--bell-broken]",
       label: t("notifications"),
       href: "/notifications",
+      badge: 3,
     },
     {
       icon: "icon-[hugeicons--notification-square]",
       label: t("messages"),
       href: "/messages",
+      badge: 2,
     },
     {
       icon: "icon-[solar--user-circle-broken]",
@@ -76,6 +78,7 @@ export const Navbar = () => {
                   label={item.label}
                   href={item.href}
                   isActive={pathname === item.href}
+                  badge={item.badge}
                 />
               ))}
             </div>

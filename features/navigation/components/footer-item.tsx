@@ -8,6 +8,7 @@ interface FooterItemProps {
   label: string;
   href: string;
   isActive: boolean;
+  badge?: number;
   className?: string; // برای اضافه کردن کلاس‌های خارجی مثل glass-item
 }
 
@@ -16,6 +17,7 @@ export const FooterItem = ({
   label,
   href,
   isActive,
+  badge,
   className,
 }: FooterItemProps) => {
   return (
@@ -40,16 +42,23 @@ export const FooterItem = ({
       />
 
       {/* آیکون */}
-      <span
-        className={cn(
-          icon,
-          "relative h-6 w-6 shrink-0 transition-all duration-400", // اندازه کوچکتر برای موبایل
-          "group-hover:scale-110 group-hover:drop-shadow-sm",
-          isActive
-            ? "scale-110 drop-shadow-[0_0_8px_rgba(var(--primary),0.4)] text-primary"
-            : "text-muted-foreground group-hover:text-foreground"
-        )}
-      />
+      <div className="relative h-6 w-6 shrink-0 transition-all duration-400">
+        <span
+          className={cn(
+            icon,
+            "h-6 w-6 block",
+            "group-hover:scale-110 group-hover:drop-shadow-sm",
+            isActive
+              ? "scale-110 drop-shadow-[0_0_8px_rgba(var(--primary),0.4)] text-primary"
+              : "text-muted-foreground group-hover:text-foreground"
+          )}
+        />
+        {badge ? (
+          <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[8px] font-black h-3.5 w-3.5 rounded-full flex items-center justify-center border border-background animate-pulse">
+            {badge > 9 ? "+9" : badge}
+          </span>
+        ) : null}
+      </div>
 
       {/* متن زیر آیکون */}
       <span

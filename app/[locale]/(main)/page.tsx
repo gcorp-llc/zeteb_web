@@ -2,6 +2,9 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { PostList } from "@/features/feed/components/post-list";
+import { CreatePost } from "@/features/social/components/create-post";
+import { FollowButton } from "@/features/social/components/follow-button";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -93,106 +96,30 @@ export default function HomePage() {
 
         {/* Middle Content - Feed */}
         <main className="lg:col-span-6 space-y-6">
-          {/* Start a Post */}
-          <div className="glass-card !p-4">
-            <div className="flex gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-ios-gradient flex items-center justify-center text-white font-black shrink-0">
-                U
-              </div>
-              <button className="flex-1 text-right px-4 rounded-full border border-border/50 hover:bg-white/5 transition-colors text-muted-foreground text-sm font-medium">
-                {t("startPost")}
-              </button>
+          <CreatePost />
+
+          {/* People You May Know */}
+          <div className="glass-card space-y-4">
+            <div className="flex items-center justify-between">
+              <h4 className="font-bold text-sm">{t("peopleYouMayKnow")}</h4>
+              <Button variant="ghost" size="sm" className="text-primary text-xs font-bold">مشاهده همه</Button>
             </div>
-            <div className="flex justify-around pt-2 border-t border-border/30">
-               <button className="flex items-center gap-2 text-sm font-bold text-muted-foreground hover:bg-white/5 p-2 rounded-xl transition-colors">
-                  <span className="icon-[solar--gallery-bold-duotone] text-green-500 w-6 h-6" />
-                  <span>تصویر</span>
-               </button>
-               <button className="flex items-center gap-2 text-sm font-bold text-muted-foreground hover:bg-white/5 p-2 rounded-xl transition-colors">
-                  <span className="icon-[solar--videocamera-record-bold-duotone] text-primary w-6 h-6" />
-                  <span>ویدیو</span>
-               </button>
-               <button className="flex items-center gap-2 text-sm font-bold text-muted-foreground hover:bg-white/5 p-2 rounded-xl transition-colors">
-                  <span className="icon-[solar--document-text-bold-duotone] text-orange-500 w-6 h-6" />
-                  <span>{t("writeArticle")}</span>
-               </button>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              {doctors.map((doc, i) => (
+                <div key={i} className="flex flex-col items-center text-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
+                    <div className="w-14 h-14 rounded-full bg-ios-gradient flex items-center justify-center text-white text-lg font-black mb-2 shadow-md group-hover:scale-110 transition-transform">
+                      {doc.image}
+                    </div>
+                    <h5 className="text-xs font-bold truncate w-full">{doc.name}</h5>
+                    <p className="text-[10px] text-muted-foreground truncate w-full mb-3">{doc.specialty}</p>
+                    <FollowButton targetId={doc.name} small={true} />
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Articles Feed */}
-          {articles.map((article, index) => (
-            <div key={article.id} className="space-y-6">
-              <div className="glass-card !p-0 overflow-hidden animate-ios-in" style={{ animationDelay: `${index * 150}ms` }}>
-                <div className="p-4 flex items-start gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-ios-gradient flex items-center justify-center text-white font-black shrink-0 shadow-lg">
-                    {article.author.image}
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-bold text-sm leading-none mb-1">{article.author.name}</h4>
-                    <p className="text-xs text-muted-foreground">{article.author.role}</p>
-                    <p className="text-[10px] text-muted-foreground/60">{article.time}</p>
-                  </div>
-                  <Button variant="ghost" size="icon" className="rounded-full">
-                    <span className="icon-[solar--menu-dots-bold] w-5 h-5" />
-                  </Button>
-                </div>
-                <div className="px-4 pb-4">
-                  <p className="text-sm leading-relaxed mb-4 text-foreground/90">{article.content}</p>
-                  {article.image && (
-                    <div className="rounded-2xl overflow-hidden border border-border/30 shadow-sm">
-                      <img src={article.image} alt="article" className="w-full h-auto object-cover" />
-                    </div>
-                  )}
-                </div>
-                <div className="px-4 py-2 flex items-center justify-between text-xs text-muted-foreground border-b border-border/30">
-                   <div className="flex items-center gap-1">
-                      <span className="icon-[solar--heart-bold] text-red-500 w-4 h-4" />
-                      <span>{article.likes}</span>
-                   </div>
-                   <div className="flex gap-3">
-                      <span>{article.comments} نظر</span>
-                      <span>۷ اشتراک</span>
-                   </div>
-                </div>
-                <div className="flex justify-around p-1">
-                   <Button variant="ghost" className="flex-1 flex items-center gap-2 font-bold text-muted-foreground h-10 hover:text-primary">
-                      <span className="icon-[solar--heart-broken] w-5 h-5" />
-                      <span>{t("like")}</span>
-                   </Button>
-                   <Button variant="ghost" className="flex-1 flex items-center gap-2 font-bold text-muted-foreground h-10 hover:text-primary">
-                      <span className="icon-[solar--chat-round-line-broken] w-5 h-5" />
-                      <span>{t("comment")}</span>
-                   </Button>
-                   <Button variant="ghost" className="flex-1 flex items-center gap-2 font-bold text-muted-foreground h-10 hover:text-primary">
-                      <span className="icon-[solar--share-broken] w-5 h-5" />
-                      <span>{t("share")}</span>
-                   </Button>
-                </div>
-              </div>
-
-              {/* People You May Know - Inserted between articles */}
-              {index === 0 && (
-                <div className="glass-card space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-bold text-sm">{t("peopleYouMayKnow")}</h4>
-                    <Button variant="ghost" size="sm" className="text-primary text-xs font-bold">مشاهده همه</Button>
-                  </div>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {doctors.map((doc, i) => (
-                      <div key={i} className="flex flex-col items-center text-center p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/30 transition-all group">
-                         <div className="w-14 h-14 rounded-full bg-ios-gradient flex items-center justify-center text-white text-lg font-black mb-2 shadow-md group-hover:scale-110 transition-transform">
-                            {doc.image}
-                         </div>
-                         <h5 className="text-xs font-bold truncate w-full">{doc.name}</h5>
-                         <p className="text-[10px] text-muted-foreground truncate w-full mb-3">{doc.specialty}</p>
-                         <Button variant="outline" size="sm" className="h-7 w-full !rounded-lg text-[10px] font-bold border-primary/30 text-primary hover:bg-primary hover:text-white">دنبال کردن</Button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
+          <PostList initialArticles={articles} />
         </main>
 
         {/* Right Sidebar - Widgets */}

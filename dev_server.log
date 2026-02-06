@@ -1,0 +1,127 @@
+
+> zeteb@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+✓ Ready in 1566ms
+○ Compiling /[locale] ...
+Cannot find "solar--save-bold-duotone". Bad icon name?
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at PostList (features/feed/components/post-list.tsx:42:23)
+  40 |     hasNextPage,
+  41 |     isFetchingNextPage,
+> 42 |   } = useInfiniteQuery({
+     |                       ^
+  43 |     queryKey: ["posts"],
+  44 |     queryFn: fetchPosts,
+  45 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '2159615869'
+}
+ GET /fa 500 in 12.7s (compile: 11.1s, proxy.ts: 178ms, render: 1456ms)
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at PostList (features/feed/components/post-list.tsx:42:23)
+  40 |     hasNextPage,
+  41 |     isFetchingNextPage,
+> 42 |   } = useInfiniteQuery({
+     |                       ^
+  43 |     queryKey: ["posts"],
+  44 |     queryFn: fetchPosts,
+  45 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '2159615869'
+}
+ GET /favicon.ico 500 in 1304ms (compile: 165ms, render: 1139ms)
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at DoctorList (features/doctors/components/doctor-list.tsx:44:23)
+  42 |     hasNextPage,
+  43 |     isFetchingNextPage,
+> 44 |   } = useInfiniteQuery({
+     |                       ^
+  45 |     queryKey: ["doctors"],
+  46 |     queryFn: fetchDoctors,
+  47 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '392006110'
+}
+ GET /fa/doctors 500 in 2.4s (compile: 2.0s, proxy.ts: 10ms, render: 436ms)
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at PostList (features/feed/components/post-list.tsx:42:23)
+  40 |     hasNextPage,
+  41 |     isFetchingNextPage,
+> 42 |   } = useInfiniteQuery({
+     |                       ^
+  43 |     queryKey: ["posts"],
+  44 |     queryFn: fetchPosts,
+  45 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '2159615869'
+}
+ GET /favicon.ico 500 in 179ms (compile: 31ms, render: 148ms)
+ GET /fa/profile 200 in 2.7s (compile: 2.2s, proxy.ts: 7ms, render: 467ms)
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at PostList (features/feed/components/post-list.tsx:42:23)
+  40 |     hasNextPage,
+  41 |     isFetchingNextPage,
+> 42 |   } = useInfiniteQuery({
+     |                       ^
+  43 |     queryKey: ["posts"],
+  44 |     queryFn: fetchPosts,
+  45 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '2159615869'
+}
+ GET /favicon.ico 500 in 173ms (compile: 39ms, render: 134ms)
+ GET /fa/messages 200 in 1856ms (compile: 1714ms, proxy.ts: 6ms, render: 137ms)
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at PostList (features/feed/components/post-list.tsx:42:23)
+  40 |     hasNextPage,
+  41 |     isFetchingNextPage,
+> 42 |   } = useInfiniteQuery({
+     |                       ^
+  43 |     queryKey: ["posts"],
+  44 |     queryFn: fetchPosts,
+  45 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '2159615869'
+}
+ GET /favicon.ico 500 in 192ms (compile: 43ms, render: 148ms)
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at AppointmentsPage (app/[locale]/(main)/appointments/page.tsx:34:23)
+  32 |     hasNextPage,
+  33 |     isFetchingNextPage,
+> 34 |   } = useInfiniteQuery({
+     |                       ^
+  35 |     queryKey: ["appointments", view],
+  36 |     queryFn: fetchAppointments,
+  37 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '3557077817'
+}
+ GET /fa/appointments 500 in 2.0s (compile: 1848ms, proxy.ts: 6ms, render: 153ms)
+⨯ Error: No QueryClient set, use QueryClientProvider to set one
+    at PostList (features/feed/components/post-list.tsx:42:23)
+  40 |     hasNextPage,
+  41 |     isFetchingNextPage,
+> 42 |   } = useInfiniteQuery({
+     |                       ^
+  43 |     queryKey: ["posts"],
+  44 |     queryFn: fetchPosts,
+  45 |     getNextPageParam: (lastPage) => lastPage.nextPage, {
+  digest: '2159615869'
+}
+ GET /favicon.ico 500 in 233ms (compile: 74ms, render: 159ms)
+✓ Compiled in 372ms
+ GET /fa 200 in 956ms (compile: 411ms, proxy.ts: 9ms, render: 536ms)
+ GET /favicon.ico 200 in 183ms (compile: 52ms, render: 131ms)
+ GET /fa/doctors 200 in 1124ms (compile: 327ms, proxy.ts: 6ms, render: 791ms)
+ GET /favicon.ico 200 in 168ms (compile: 51ms, render: 117ms)
+ GET /fa/profile 200 in 866ms (compile: 284ms, proxy.ts: 5ms, render: 576ms)
+ GET /favicon.ico 200 in 176ms (compile: 52ms, render: 125ms)
+ GET /fa/messages 200 in 961ms (compile: 484ms, proxy.ts: 13ms, render: 463ms)
+ GET /favicon.ico 200 in 428ms (compile: 99ms, render: 328ms)
+ GET /fa/appointments 200 in 652ms (compile: 287ms, proxy.ts: 6ms, render: 359ms)
+ GET /favicon.ico 200 in 168ms (compile: 53ms, render: 115ms)

@@ -47,7 +47,15 @@
     "userInfo": "اطلاعات کاربری",
     "firstName": "نام",
     "lastName": "نام خانوادگی",
-    "phone": "شماره تماس"
+    "phone": "شماره تماس",
+    "bio": "درباره من",
+    "location": "موقعیت مکانی",
+    "role": "عنوان تخصص",
+    "analytics": "تحلیل و بررسی",
+    "activity": "فعالیت‌ها",
+    "education": "تحصیلات",
+    "contact": "اطلاعات تماس",
+    "skills": "مهارت‌ها"
   },
   "Languages": {
     "fa": "فارسی",
@@ -71,6 +79,8 @@
     "premium": "پریمیوم",
     "perMonth": "دلار/ماه",
     "featuresAndAccess": "ویژگی‌ها و دسترسی‌ها",
+    "edit": "ویرایش",
+    "save": "ذخیره",
     "selectPlan": "انتخاب طرح و شروع",
     "features": {
       "batch": "قابلیت‌های پردازش دسته‌ای (Batch)",

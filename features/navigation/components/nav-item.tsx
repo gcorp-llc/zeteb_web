@@ -8,6 +8,7 @@ interface NavItemProps {
   label: string;
   href: string;
   isActive: boolean;
+  badge?: number;
   className?: string; // برای اضافه کردن کلاس‌های خارجی مثل glass-item
 }
 
@@ -16,6 +17,7 @@ export const NavItem = ({
   label,
   href,
   isActive,
+  badge,
   className,
 }: NavItemProps) => {
   return (
@@ -46,16 +48,23 @@ export const NavItem = ({
       />
 
       {/* آیکون */}
-      <span
-        className={cn(
-          icon,
-          "relative h-7 w-7 shrink-0 transition-all duration-400",
-          "group-hover:scale-110 group-hover:drop-shadow-md",
-          isActive
-            ? "scale-110 drop-shadow-[0_0_10px_rgba(var(--primary),0.45)] text-primary"
-            : "text-muted-foreground group-hover:text-foreground"
-        )}
-      />
+      <div className="relative h-7 w-7 shrink-0 transition-all duration-400">
+        <span
+          className={cn(
+            icon,
+            "h-7 w-7 block",
+            "group-hover:scale-110 group-hover:drop-shadow-md",
+            isActive
+              ? "scale-110 drop-shadow-[0_0_10px_rgba(var(--primary),0.45)] text-primary"
+              : "text-muted-foreground group-hover:text-foreground"
+          )}
+        />
+        {badge ? (
+          <span className="absolute -top-1.5 -right-1.5 bg-red-500 text-white text-[9px] font-black h-4 w-4 rounded-full flex items-center justify-center border-2 border-background animate-pulse">
+            {badge > 9 ? "+9" : badge}
+          </span>
+        ) : null}
+      </div>
 
       {/* متن زیر آیکون */}
       <span

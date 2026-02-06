@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { DoctorList } from "@/features/doctors/components/doctor-list";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -152,67 +153,7 @@ export default function DoctorsPage() {
               <span className="text-sm text-muted-foreground">{t("found", { count: doctors.length })}</span>
             </div>
 
-            <div className="grid grid-cols-1 gap-6">
-              {doctors.map((doc) => (
-                <div key={doc.id} className="glass-card !p-0 overflow-hidden group hover:border-primary/30 transition-all duration-500">
-                  <div className="flex flex-col sm:flex-row">
-                    <div className="p-6 flex flex-1 gap-6">
-                      <div className="relative">
-                        <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-3xl bg-ios-gradient flex items-center justify-center text-white text-3xl font-black shadow-lg">
-                          {doc.image}
-                        </div>
-                        <div className="absolute -bottom-2 -right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-background flex items-center justify-center" title="آنلاین">
-                           <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                        </div>
-                      </div>
-
-                      <div className="flex-1 space-y-3">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{doc.name}</h3>
-                          <div className="flex items-center gap-1 bg-yellow-500/10 text-yellow-600 dark:text-yellow-500 px-2 py-1 rounded-lg">
-                            <span className="icon-[solar--star-bold] w-4 h-4" />
-                            <span className="font-bold text-sm">{doc.rating}</span>
-                          </div>
-                        </div>
-                        <p className="text-muted-foreground font-medium">{doc.specialty}</p>
-
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                          <div className="flex items-center gap-1.5">
-                            <span className="icon-[solar--map-point-broken] w-4 h-4 text-primary" />
-                            {doc.location}
-                          </div>
-                          <div className="flex items-center gap-1.5">
-                            <span className="icon-[solar--chat-round-line-broken] w-4 h-4 text-primary" />
-                            {doc.reviews} نظر
-                          </div>
-                        </div>
-
-                        <div className="flex gap-2 pt-2">
-                           <Badge variant="secondary" className="bg-primary/5 text-primary border-none">نوبت‌دهی آنلاین</Badge>
-                           <Badge variant="secondary" className="bg-green-500/5 text-green-600 border-none">مشاوره متنی</Badge>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="sm:w-64 bg-white/5 dark:bg-white/5 p-6 border-t sm:border-t-0 sm:border-r border-border/50 flex flex-col justify-between gap-4">
-                      <div className="space-y-1 text-center sm:text-right">
-                         <p className="text-xs text-muted-foreground">{t("nextEmpty")}</p>
-                         <p className="font-bold text-primary">{doc.nextAvailable}</p>
-                      </div>
-                      <Button className="w-full !rounded-xl bg-ios-gradient shadow-lg shadow-primary/20 h-11">
-                        {t("bookNow")}
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex justify-center pt-8">
-               <Button variant="outline" className="!rounded-2xl px-12 py-6 border-2 hover:bg-primary/5 font-bold">
-                  {t("viewMore")}
-               </Button>
-            </div>
+            <DoctorList initialDoctors={doctors} />
           </div>
         </div>
       </section>
