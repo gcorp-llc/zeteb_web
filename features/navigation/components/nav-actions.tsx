@@ -30,7 +30,7 @@ export const NavActions = () => {
                     </Avatar>
                 </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-64 mt-2 glass !rounded-2xl p-0 overflow-hidden" align="end">
+            <DropdownMenuContent className="w-auto mt-2 bg-transparent border-none shadow-none p-0 overflow-visible" align="end">
               <ProfileMenu />
             </DropdownMenuContent>
         </DropdownMenu>

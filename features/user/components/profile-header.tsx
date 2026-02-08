@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { useUserStore } from "../lib/store";
 
 interface ProfileHeaderProps {
   user: any;
@@ -7,6 +8,8 @@ interface ProfileHeaderProps {
 }
 
 export function ProfileHeader({ user, isOwner }: ProfileHeaderProps) {
+  const { openModal } = useUserStore();
+
   return (
     <div className="glass-card !p-0 overflow-hidden relative border-none shadow-xl">
       <div
@@ -30,7 +33,12 @@ export function ProfileHeader({ user, isOwner }: ProfileHeaderProps) {
               </AvatarFallback>
             </Avatar>
             {isOwner && (
-              <Button variant="secondary" size="icon" className="absolute bottom-2 right-2 rounded-full bg-primary text-white shadow-lg border-2 border-background">
+              <Button
+                variant="secondary"
+                size="icon"
+                className="absolute bottom-2 right-2 rounded-full bg-primary text-white shadow-lg border-2 border-background"
+                onClick={() => openModal("header")}
+              >
                 <span className="icon-[solar--pen-bold] w-4 h-4" />
               </Button>
             )}

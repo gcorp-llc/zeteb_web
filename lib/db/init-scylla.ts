@@ -73,10 +73,13 @@ export async function initScyllaDB() {
     // User Profile Details
     `CREATE TABLE IF NOT EXISTS user_profile (
         user_id text PRIMARY KEY,
+        name text,
         bio text,
         cover_image text,
         specialty text,
         location text,
+        timezone text,
+        language text,
         analytics_views int,
         analytics_appointments int,
         education list<text>,

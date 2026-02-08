@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useUserStore } from "../lib/store";
 
 interface Education {
   degree: string;
@@ -12,16 +13,18 @@ interface ProfileEducationProps {
 }
 
 export function ProfileEducation({ education, isOwner }: ProfileEducationProps) {
+  const { openModal } = useUserStore();
+
   return (
     <div className="glass-card space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="font-bold text-xl">تحصیلات</h3>
         {isOwner && (
           <div className="flex gap-2">
-            <Button variant="ghost" size="icon" className="rounded-full">
+            <Button variant="ghost" size="icon" className="rounded-full" onClick={() => openModal("education")}>
               <span className="icon-[solar--add-circle-bold] w-6 h-6" />
             </Button>
-            <Button variant="ghost" size="icon" className="rounded-full">
+            <Button variant="ghost" size="icon" className="rounded-full" onClick={() => openModal("education")}>
               <span className="icon-[solar--pen-bold] w-5 h-5" />
             </Button>
           </div>

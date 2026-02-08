@@ -47,7 +47,15 @@
     "userInfo": "User Information",
     "firstName": "First Name",
     "lastName": "Last Name",
-    "phone": "Phone Number"
+    "phone": "Phone Number",
+    "bio": "About",
+    "location": "Location",
+    "role": "Specialty Title",
+    "analytics": "Analytics",
+    "activity": "Activity",
+    "education": "Education",
+    "contact": "Contact Info",
+    "skills": "Skills"
   },
   "Languages": {
     "fa": "Persian",
@@ -84,7 +92,21 @@
     "appointments": "My Appointments",
     "medicalHistory": "Medical History",
     "settings": "Settings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "account": "Account",
+    "manage": "Manage",
+    "viewProfile": "View Profile",
+    "settingsAndPrivacy": "Settings & Privacy",
+    "help": "Help",
+    "language": "Language",
+    "postsAndActivity": "Posts & Activity"
+  },
+  "Settings": {
+    "title": "Account Settings",
+    "subtitle": "Manage your language, time and location",
+    "language": "Site Display Language",
+    "timezone": "Timezone and Location",
+    "save": "Save Changes"
   },
   "Auth": {
     "title": "Login to Zeteb",

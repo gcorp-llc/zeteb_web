@@ -94,7 +94,21 @@
     "appointments": "نوبت‌های من",
     "medicalHistory": "تاریخچه پزشکی",
     "settings": "تنظیمات",
-    "logout": "خروج از حساب"
+    "logout": "خروج از حساب",
+    "account": "حساب کاربری",
+    "manage": "مدیریت",
+    "viewProfile": "مشاهده پروفایل",
+    "settingsAndPrivacy": "تنظیمات و حریم خصوصی",
+    "help": "راهنما",
+    "language": "تغییر زبان",
+    "postsAndActivity": "پست‌ها و فعالیت‌ها"
+  },
+  "Settings": {
+    "title": "تنظیمات حساب کاربری",
+    "subtitle": "مدیریت زبان، زمان و مکان شما",
+    "language": "زبان نمایش سایت",
+    "timezone": "منطقه زمانی و مکان",
+    "save": "ذخیره تغییرات"
   },
   "Auth": {
     "title": "ورود به زتب",

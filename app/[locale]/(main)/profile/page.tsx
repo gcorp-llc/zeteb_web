@@ -1,3 +1,5 @@
+"use client";
+
 import { PageContainer } from "@/components/page-container";
 import { useTranslations } from "next-intl";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -10,33 +12,56 @@ import { ProfileActivity } from "@/features/user/components/profile-activity";
 import { ProfileEducation } from "@/features/user/components/profile-education";
 import { ProfileContact } from "@/features/user/components/profile-contact";
 import { Link } from "@/i18n/navigation";
+import { EditHeaderModal } from "@/features/user/components/edit-modals/edit-header-modal";
+import { EditAboutModal } from "@/features/user/components/edit-modals/edit-about-modal";
+import { EditEducationModal } from "@/features/user/components/edit-modals/edit-education-modal";
+import { EditSkillsModal } from "@/features/user/components/edit-modals/edit-skills-modal";
+import { EditContactModal } from "@/features/user/components/edit-modals/edit-contact-modal";
+import { useUserStore } from "@/features/user/lib/store";
+import { useQuery } from "@tanstack/react-query";
 
 export default function ProfilePage() {
+  const { openModal } = useUserStore();
   const t = useTranslations("Navbar");
   const tp = useTranslations("ProfilePage");
 
-  // Mock data - in real app this would come from ScyllaDB
+  const { data: profile, isLoading } = useQuery({
+    queryKey: ["user-profile"],
+    queryFn: async () => {
+      const res = await fetch("/api/user/profile");
+      if (!res.ok) throw new Error("Failed to fetch profile");
+      return res.json();
+    }
+  });
+
+  // Fallback to mock data if not loaded or error
   const isOwner = true;
   const userData = {
-    name: "حسین افتخارراد",
-    role: "متخصص داخلی و جراح",
-    location: "تهران، ایران",
-    bio: "بیش از ۱۰ سال سابقه در درمان بیماری‌های داخلی و مدیریت سلامت بیماران. مشاور ارشد در بیمارستان‌های تراز اول.",
-    coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200",
+    name: profile?.name || "حسین افتخارراد",
+    role: profile?.specialty || "متخصص داخلی و جراح",
+    location: profile?.location || "تهران، ایران",
+    bio: profile?.bio || "بیش از ۱۰ سال سابقه در درمان بیماری‌های داخلی و مدیریت سلامت بیماران. مشاور ارشد در بیمارستان‌های تراز اول.",
+    coverImage: profile?.cover_image || "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1200",
     avatarImage: "/favicon.ico",
-    connections: 1250,
+    connections: profile?.connections || 1250,
     analytics: {
-      profileViews: 425,
+      profileViews: profile?.analytics_views || 425,
       postImpressions: 1200,
       searchAppearances: 85,
-      appointments: 12
+      appointments: profile?.analytics_appointments || 12
     },
-    education: [
+    education: profile?.education?.length > 0 ? profile.education.map((e: string) => {
+      const [school, rest] = e.split(" - ");
+      const [degree, year] = (rest || "").replace(/[()]/g, "").split(" ");
+      return { school, degree, year };
+    }) : [
       { degree: "دکترای حرفه‌ای پزشکی", school: "دانشگاه علوم پزشکی تهران", year: "۱۳۹۰" },
       { degree: "تخصص داخلی", school: "دانشگاه علوم پزشکی شهید بهشتی", year: "۱۳۹۵" }
     ],
-    skills: ["جراحی داخلی", "تشخیص دقیق", "مدیریت بحران", "مشاوره خانواده"],
-    addresses: [
+    skills: profile?.skills || ["جراحی داخلی", "تشخیص دقیق", "مدیریت بحران", "مشاوره خانواده"],
+    addresses: profile?.addresses?.length > 0 ? profile.addresses.map((a: string) => ({
+      title: "آدرس", address: a, phone: "۰۲۱-۸۸۸۸۸۸۸۸"
+    })) : [
       { title: "مطب جردن", address: "تهران، خیابان جردن، کوچه تندیس، پلاک ۱", phone: "۰۲۱-۸۸۸۸۸۸۸۸" }
     ]
   };
@@ -44,7 +69,7 @@ export default function ProfilePage() {
   return (
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       <div className="flex justify-end">
-        <Link href="/profile/settings">
+        <Link href="/settings">
           <Button variant="ghost" className="!rounded-xl gap-2 font-bold hover:bg-white/5">
             <span className="icon-[solar--settings-bold-duotone] w-5 h-5 text-primary" />
             تنظیمات حساب
@@ -74,10 +99,25 @@ export default function ProfilePage() {
                 </Badge>
               ))}
             </div>
-            {isOwner && <Button variant="ghost" className="w-full text-xs text-primary">ویرایش مهارت‌ها</Button>}
+            {isOwner && (
+              <Button
+                variant="ghost"
+                className="w-full text-xs text-primary"
+                onClick={() => openModal("skills")}
+              >
+                ویرایش مهارت‌ها
+              </Button>
+            )}
           </div>
         </div>
       </div>
+
+      {/* Modals */}
+      <EditHeaderModal initialData={{ name: userData.name, specialty: userData.role, location: userData.location }} />
+      <EditAboutModal initialData={{ bio: userData.bio }} />
+      <EditEducationModal initialData={userData.education[0]} />
+      <EditSkillsModal initialData={userData.skills} />
+      <EditContactModal initialData={{ address: userData.addresses[0].address, phone: userData.addresses[0].phone }} />
     </div>
   );
 }
