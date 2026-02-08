@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/sheet";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { NavSearch } from "./nav-search";
 
 export const NavMobile = () => {
   const t = useTranslations("Navbar");
@@ -34,11 +35,13 @@ export const NavMobile = () => {
       name: t("notifications"),
       href: "/notifications",
       icon: "icon-[solar--bell-bold-duotone]",
+      badge: 3,
     },
     {
       name: t("messages"),
       href: "/messages",
       icon: "icon-[hugeicons--notification-square]",
+      badge: 2,
     },
     {
       name: t("profile"),
@@ -65,8 +68,12 @@ export const NavMobile = () => {
         <SheetTitle className="sr-only">{t("menu")}</SheetTitle>
 
         <div className="flex h-full flex-col p-6">
-          <div className="mb-8 px-2 text-3xl font-black tracking-tighter text-primary">
+          <div className="mb-6 px-2 text-3xl font-black tracking-tighter text-primary">
             ZETEB
+          </div>
+          
+          <div className="mb-6">
+            <NavSearch />
           </div>
 
           <ul className="space-y-3">
@@ -74,10 +81,15 @@ export const NavMobile = () => {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all group"
+                  className="relative flex items-center gap-4 p-4 rounded-2xl bg-white/5 hover:bg-white/10 transition-all group"
                 >
                   <span className={`${item.icon} w-7 h-7 text-primary/80 group-hover:text-primary transition-colors`}></span>
                   <span className="font-bold text-lg text-foreground/80 group-hover:text-foreground">{item.name}</span>
+                  {item.badge ? (
+                    <span className="absolute top-3 right-3 bg-red-500 text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center shadow-sm">
+                      {item.badge}
+                    </span>
+                  ) : null}
                 </Link>
               </li>
             ))}
