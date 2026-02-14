@@ -9,15 +9,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ProfileMenu } from "@/features/user/components/profile-menu";
 import Image from "next/image";
+import { useState } from "react";
+import { SearchModal } from "./search-modal";
 
 export const NavActions = () => {
+  const [searchOpen, setSearchOpen] = useState(false);
+
   return (
     <div className="flex items-center gap-2 rtl:space-x-reverse">
       
       {/* Search Toggle (Optional for mobile) */}
-      <button className="md:hidden p-2 rounded-full hover:bg-white/10 transition-colors">
+      <button
+        onClick={() => setSearchOpen(true)}
+        className="md:hidden p-2 rounded-full hover:bg-white/10 transition-colors"
+      >
         <span className="icon-[solar--magnifer-bold-duotone] w-6 h-6 text-foreground/70" />
       </button>
+
+      <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
   
       {/* Desktop & Mobile Profile */}
       <div>

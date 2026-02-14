@@ -161,5 +161,20 @@
     "phoneInvalid": "Invalid phone number",
     "otpLength": "OTP must be 6 digits",
     "otpInvalid": "OTP must contain only numbers"
+  },
+  "Footer": {
+    "description": "Zeteb, the smart health platform for fast connection with best doctors and medical appointment management.",
+    "quickLinks": "Quick Links",
+    "findDoctor": "Find a Doctor",
+    "registerClinic": "Register Clinic",
+    "analytics": "Analytics",
+    "support": "Support",
+    "helpCenter": "Help Center",
+    "contactUs": "Contact Us",
+    "faq": "FAQ",
+    "legal": "Legal",
+    "terms": "Terms of Use",
+    "privacy": "Privacy Policy",
+    "copyright": "All rights reserved for Zeteb."
   }
 }

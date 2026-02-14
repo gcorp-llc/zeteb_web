@@ -75,7 +75,7 @@
   --ring: oklch(0.55 0.18 250);
 
   /* iOS 18 Glass Variables */
-  --glass-bg: oklch(1 0 0 / 0.7);
+  --glass-bg: oklch(1 0 0 / 0.85);
   --glass-border: oklch(1 0 0 / 0.2);
   --glass-shadow: 0 4px 24px -1px oklch(0 0 0 / 0.06), 0 2px 8px -1px oklch(0 0 0 / 0.04);
 }
@@ -111,7 +111,7 @@
   --ring: oklch(0.7 0.15 300);
 
   /* iOS 18 Dark Glass Variables */
-  --glass-bg: oklch(0.25 0.02 260 / 0.8);
+  --glass-bg: oklch(0.25 0.02 260 / 0.9);
   --glass-border: oklch(1 0 0 / 0.15);
   --glass-shadow: 0 8px 32px oklch(0 0 0 / 0.5);
 }
@@ -122,16 +122,16 @@
 @layer utilities {
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(64px) saturate(200%);
+    -webkit-backdrop-filter: blur(64px) saturate(200%);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
   }
 
   .glass-nav {
     background: var(--glass-bg);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(64px) saturate(200%);
+    -webkit-backdrop-filter: blur(64px) saturate(200%);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -139,8 +139,8 @@
 
   .glass-card {
     background: var(--glass-bg);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    backdrop-filter: blur(64px) saturate(200%);
+    -webkit-backdrop-filter: blur(64px) saturate(200%);
     border: 1px solid var(--glass-border);
     box-shadow: var(--glass-shadow);
     @apply rounded-3xl p-6 transition-all duration-300;

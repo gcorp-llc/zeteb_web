@@ -12,6 +12,7 @@ import { ProfileActivity } from "@/features/user/components/profile-activity";
 import { ProfileEducation } from "@/features/user/components/profile-education";
 import { ProfileContact } from "@/features/user/components/profile-contact";
 import { ProfileClinics } from "@/features/clinics/components/profile-clinics";
+import { ProfileWallet } from "@/features/user/components/profile-wallet";
 import { Link } from "@/i18n/navigation";
 import { EditHeaderModal } from "@/features/user/components/edit-modals/edit-header-modal";
 import { EditAboutModal } from "@/features/user/components/edit-modals/edit-about-modal";
@@ -48,7 +49,7 @@ export default function ProfilePage() {
       searchAppearances: 85,
       appointments: profile?.analytics_appointments || 12
     },
-    education: profile?.education?.length > 0 ? profile.education.map((e: string) => {
+    education: (profile?.education && profile.education.length > 0) ? profile.education.map((e: string) => {
       const [school, rest] = e.split(" - ");
       const [degree, year] = (rest || "").replace(/[()]/g, "").split(" ");
       return { school, degree, year };
@@ -57,7 +58,7 @@ export default function ProfilePage() {
       { degree: "تخصص داخلی", school: "دانشگاه علوم پزشکی شهید بهشتی", year: "۱۳۹۵" }
     ],
     skills: profile?.skills || ["جراحی داخلی", "تشخیص دقیق", "مدیریت بحران", "مشاوره خانواده"],
-    addresses: profile?.addresses?.length > 0 ? profile.addresses.map((a: string) => ({
+    addresses: (profile?.addresses && profile.addresses.length > 0) ? profile.addresses.map((a: string) => ({
       title: "آدرس", address: a, phone: "۰۲۱-۸۸۸۸۸۸۸۸"
     })) : [
       { title: "مطب جردن", address: "تهران، خیابان جردن، کوچه تندیس، پلاک ۱", phone: "۰۲۱-۸۸۸۸۸۸۸۸" }
@@ -87,6 +88,7 @@ export default function ProfilePage() {
         </div>
 
         <div className="space-y-6">
+          {isOwner && <ProfileWallet />}
           <ProfileClinics />
           <ProfileContact addresses={userData.addresses} isOwner={isOwner} />
           <div className="glass-card space-y-4">

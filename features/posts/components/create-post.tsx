@@ -43,7 +43,7 @@ export function CreatePost() {
         toast.info("در حال آپلود فایل‌ها...");
         const uploadPromises = attachments.map(file => uploadFile(file));
         const results = await Promise.all(uploadPromises);
-        uploadedUrls = results.filter(r => r.success).map(r => r.url as string);
+        uploadedUrls = results.filter((r): r is string => r !== null);
     }
 
     // API call via postsApi

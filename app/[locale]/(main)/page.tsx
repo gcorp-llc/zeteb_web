@@ -80,7 +80,7 @@ export default function HomePage() {
              <h4 className="font-bold text-sm">{t("quickAccess")}</h4>
              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li className="flex items-center gap-2 hover:text-primary cursor-pointer transition-colors">
-                   <span className="icon-[solar--save-bold-duotone] w-5 h-5" />
+                   <span className="icon-[solar--bookmark-bold-duotone] w-5 h-5" />
                    <span>{t("saved")}</span>
                 </li>
                 <li className="flex items-center gap-2 hover:text-primary cursor-pointer transition-colors">

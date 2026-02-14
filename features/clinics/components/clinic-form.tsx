@@ -40,9 +40,9 @@ export function ClinicForm({ onSuccess }: { onSuccess?: () => void }) {
   const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const result = await uploadFile(file);
-      if (result.success) {
-        setLogoUrl(result.url);
+      const url = await uploadFile(file);
+      if (url) {
+        setLogoUrl(url);
         toast.success("لوگو با موفقیت آپلود شد");
       }
     }

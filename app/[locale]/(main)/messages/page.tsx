@@ -6,14 +6,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { ResponsiveModal } from "@/components/ui/responsive-modal";
 
 export default function MessagesPage() {
   const t = useTranslations("Navbar");
-  const [selectedChat, setSelectedChat] = useState<number | null>(1);
+  const [selectedChat, setSelectedChat] = useState<number | null>(null);
   const [message, setMessage] = useState("");
+  const [isNewMessageModalOpen, setIsNewMessageModalOpen] = useState(false);
 
   const chats = [
-    { id: 1, name: "دکتر مریم علوی", lastMessage: "سلام، نوبت شما تایید شد.", time: "۱۰:۳۰", unread: 2, image: "MA" },
+    { id: 1, name: "دکتر مریم علوی", lastMessage: "سلام، نوبت شما تایید شد.", time: "۱۰:۳۰", unread: 2, image: "https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=100" },
     { id: 2, name: "دکتر رضا محمدی", lastMessage: "نسخه جدید در سامانه ثبت شد.", time: "دیروز", unread: 0, image: "RM" },
     { id: 3, name: "حسین افتخارراد", lastMessage: "ممنون از راهنمایی شما.", time: "شنبه", unread: 0, image: "HE" },
   ];
@@ -37,7 +39,7 @@ export default function MessagesPage() {
                <Input placeholder="جستجو در پیام‌ها..." className="pr-10 !rounded-xl bg-white/5 text-right" dir="rtl" />
             </div>
           </div>
-          <div className="flex-1 overflow-y-auto">
+          <div className="flex-1 overflow-y-auto relative">
             {chats.map(chat => (
               <div
                 key={chat.id}
@@ -61,6 +63,14 @@ export default function MessagesPage() {
                 )}
               </div>
             ))}
+
+            {/* New Message FAB - Mobile Only */}
+            <Button
+                onClick={() => setIsNewMessageModalOpen(true)}
+                className="md:hidden fixed bottom-24 right-6 w-14 h-14 rounded-full bg-primary shadow-2xl flex items-center justify-center z-50 animate-bounce"
+            >
+                <span className="icon-[solar--pen-new-square-bold] w-6 h-6 text-white" />
+            </Button>
           </div>
         </div>
 
@@ -147,6 +157,41 @@ export default function MessagesPage() {
           )}
         </div>
       </div>
+
+      {/* New Message Modal (Followers List) */}
+      <ResponsiveModal open={isNewMessageModalOpen} onOpenChange={setIsNewMessageModalOpen} title="گفتگوی جدید">
+          <div className="space-y-4">
+             <div className="relative">
+                <span className="icon-[solar--magnifer-bold-duotone] absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <Input placeholder="جستجو در دنبال‌کنندگان..." className="pr-10 !rounded-xl bg-white/5" dir="rtl" />
+             </div>
+             <div className="space-y-1 max-h-[400px] overflow-y-auto">
+                {[
+                    { id: 10, name: "علی احمدی", specialty: "بیمار", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100" },
+                    { id: 11, name: "سارا حسینی", specialty: "متخصص تغذیه", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" },
+                    { id: 12, name: "محمد رضایی", specialty: "پزشک عمومی", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" },
+                ].map((user) => (
+                    <div
+                        key={user.id}
+                        onClick={() => {
+                            setSelectedChat(user.id);
+                            setIsNewMessageModalOpen(false);
+                        }}
+                        className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white/5 cursor-pointer transition-colors"
+                    >
+                        <Avatar className="w-10 h-10 rounded-lg">
+                            <AvatarImage src={user.image} />
+                            <AvatarFallback>{user.name[0]}</AvatarFallback>
+                        </Avatar>
+                        <div className="text-right">
+                            <p className="text-sm font-bold">{user.name}</p>
+                            <p className="text-[10px] text-muted-foreground">{user.specialty}</p>
+                        </div>
+                    </div>
+                ))}
+             </div>
+          </div>
+      </ResponsiveModal>
     </PageContainer>
   );
 }

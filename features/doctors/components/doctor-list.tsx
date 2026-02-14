@@ -5,6 +5,7 @@ import { InfiniteScroll } from "@/components/infinite-scroll";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 interface Doctor {
   id: number;
@@ -103,9 +104,11 @@ export function DoctorList({ initialDoctors }: { initialDoctors: Doctor[] }) {
                   <p className="text-xs text-muted-foreground">{t("nextEmpty")}</p>
                   <p className="font-bold text-primary">{doc.nextAvailable}</p>
                 </div>
-                <Button className="w-full !rounded-xl bg-ios-gradient shadow-lg shadow-primary/20 h-11">
-                  {t("bookNow")}
-                </Button>
+                <Link href={`/appointments/book/${doc.id}`}>
+                  <Button className="w-full !rounded-xl bg-ios-gradient shadow-lg shadow-primary/20 h-11">
+                    {t("bookNow")}
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

@@ -133,6 +133,10 @@ export const ProfileMenu = () => {
            <span className="icon-[solar--chart-bold-duotone] w-5 h-5 text-primary/70 group-hover:text-primary" />
            <span className="text-sm font-bold text-foreground/80">آمار و تحلیل‌ها</span>
         </Link>
+        <Link href="/wallet" className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors group">
+           <span className="icon-[solar--wallet-money-bold-duotone] w-5 h-5 text-primary/70 group-hover:text-primary" />
+           <span className="text-sm font-bold text-foreground/80">امور مالی و کیف پول</span>
+        </Link>
       </div>
 
       {/* Footer */}

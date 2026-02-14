@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { DoctorList } from "@/features/doctors/components/doctor-list";
+import { Link } from "@/i18n/navigation";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -93,9 +94,11 @@ export default function DoctorsPage() {
                     <span className="font-bold text-sm">{doc.rating}</span>
                     <span className="text-muted-foreground text-xs">({t("reviews", { count: doc.reviews })})</span>
                   </div>
-                  <Button variant="secondary" className="w-full !rounded-xl text-xs font-bold h-9">
-                    {t("bookNow")}
-                  </Button>
+                  <Link href={`/appointments/book/${doc.id}`}>
+                    <Button variant="secondary" className="w-full !rounded-xl text-xs font-bold h-9">
+                      {t("bookNow")}
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}

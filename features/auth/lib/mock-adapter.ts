@@ -47,7 +47,7 @@ export const mockAdapter = () => ({
                 const val = row[w.field];
                 const operator = w.operator || "eq";
                 if (operator === "eq") return val === w.value;
-                if (operator === "in") return Array.isArray(w.value) && w.value.includes(val);
+                if (operator === "in") return Array.isArray(w.value) && (w.value as any[]).includes(val);
                 return false;
             });
         });
@@ -62,7 +62,7 @@ export const mockAdapter = () => ({
                     const val = row[w.field];
                     const operator = w.operator || "eq";
                     if (operator === "eq") return val === w.value;
-                    if (operator === "in") return Array.isArray(w.value) && w.value.includes(val);
+                    if (operator === "in") return Array.isArray(w.value) && (w.value as any[]).includes(val);
                     return false;
                 });
             });

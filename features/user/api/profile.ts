@@ -2,6 +2,10 @@ import { api } from "@/lib/api-client";
 
 export interface UserProfile {
   user_id: string;
+  name?: string;
+  specialty?: string;
+  cover_image?: string;
+  connections?: number;
   bio?: string;
   location?: string;
   education?: any[];

@@ -12,6 +12,7 @@ import { JsonLd } from "@/features/seo/components/json-ld";
 import { Toaster } from "sonner";
 import QueryProvider from "@/components/providers/query-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { OfflineDetector } from "@/components/offline-detector";
 
 // ────────────────────────────────────────────────
 // فونت‌ها – بهترین روش: ترکیب وزن‌ها در یک variable font یا حداقل تعریف دقیق
@@ -126,6 +127,7 @@ export default async function RootLayout({
           <QueryProvider>
             <NextIntlClientProvider messages={messages}>
               <Toaster richColors position="top-center" />
+              <OfflineDetector />
               {children}
             </NextIntlClientProvider>
           </QueryProvider>
