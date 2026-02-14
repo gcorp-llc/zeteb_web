@@ -1,10 +1,10 @@
 import { betterAuth } from "better-auth";
 import { phoneNumber } from "better-auth/plugins/phone-number";
-import { scyllaAdapter } from "./scylla-adapter";
+import { mockAdapter } from "./mock-adapter";
 import { sms } from "@/lib/sms";
 
 export const auth = betterAuth({
-    database: scyllaAdapter,
+    database: mockAdapter,
 
     emailAndPassword: {
         enabled: true

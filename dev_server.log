@@ -13,141 +13,20 @@ You can learn more, including how to opt-out if you'd not like to participate in
 https://nextjs.org/telemetry
 
 ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-✓ Ready in 1566ms
+✓ Ready in 2.5s
 ○ Compiling /[locale] ...
 Cannot find "solar--save-bold-duotone". Bad icon name?
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /fa 200 in 14.2s (compile: 12.4s, proxy.ts: 175ms, render: 1613ms)
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /favicon.png 200 in 559ms (compile: 112ms, render: 447ms)
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /favicon.png 200 in 253ms (compile: 81ms, render: 172ms)
-⨯ Error: Tiptap Error: SSR has been detected, please set `immediatelyRender` explicitly to `false` to avoid hydration mismatches.
-    at ArticleEditor (features/posts/components/article-editor.tsx:22:27)
-  20 |   const router = useRouter();
-  21 |
-> 22 |   const editor = useEditor({
-     |                           ^
-  23 |     extensions: [
-  24 |       StarterKit,
-  25 |       Placeholder.configure({ {
-  digest: '93857507'
-}
- GET /fa/posts/new/article 500 in 4.0s (compile: 3.1s, proxy.ts: 13ms, render: 913ms)
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /favicon.png 200 in 257ms (compile: 42ms, render: 215ms)
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /fa 200 in 362ms (compile: 53ms, proxy.ts: 8ms, render: 302ms)
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /favicon.png 200 in 226ms (compile: 57ms, render: 169ms)
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /favicon.png 200 in 217ms (compile: 46ms, render: 171ms)
- GET /fa/posts/new/article 200 in 553ms (compile: 121ms, proxy.ts: 5ms, render: 426ms)
-Error: MISSING_MESSAGE: Could not resolve `PostEditor.event` in messages for locale `fa`.
-    at EventModal (features/posts/components/modals/event-modal.tsx:32:14)
-  30 |   return (
-  31 |     <ResponsiveModal
-> 32 |       title={t("event")}
-     |              ^
-  33 |       open={open}
-  34 |       onOpenChange={onOpenChange}
-  35 |     > {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `PostEditor.event` in messages for locale `fa`.'
-}
- GET /favicon.png 200 in 304ms (compile: 44ms, render: 260ms)
-✓ Compiled in 82ms
-✓ Compiled in 76ms
-✓ Compiled in 63ms
- GET /fa 200 in 647ms (compile: 166ms, proxy.ts: 6ms, render: 476ms)
- GET /favicon.png 200 in 274ms (compile: 44ms, render: 229ms)
+ GET /fa 200 in 19.5s (compile: 17.0s, proxy.ts: 281ms, render: 2.2s)
 ○ Compiling /api/auth/[...auth] ...
-[Error [BetterAuthError]: Failed to initialize database adapter]
-⨯ unhandledRejection: [Error [BetterAuthError]: Failed to initialize database adapter]
-⨯ unhandledRejection:  [Error [BetterAuthError]: Failed to initialize database adapter]
-⨯ [Error [BetterAuthError]: Failed to initialize database adapter]
- GET /api/auth/get-session 500 in 5.4s (compile: 5.4s, render: 44ms)
-Unhandled Rejection: [Error [BetterAuthError]: Failed to initialize database adapter]
- GET /favicon.png 200 in 533ms (compile: 114ms, render: 419ms)
- GET /fa/posts/new/article 200 in 522ms (compile: 228ms, proxy.ts: 6ms, render: 288ms)
-⨯ [Error [BetterAuthError]: Failed to initialize database adapter]
- GET /api/auth/get-session 500 in 71ms (compile: 63ms, render: 8ms)
- GET /favicon.png 200 in 357ms (compile: 74ms, render: 283ms)
-Unhandled Rejection: [Error [BetterAuthError]: Failed to initialize database adapter]
+[2m2026-02-14T17:24:17.210Z[0m [33mWARN[0m [1m[Better Auth]:[0m Adapter does not correctly implement transaction function, patching it automatically. Please update your adapter implementation.
+[2m2026-02-14T17:24:17.225Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider google is missing clientId or clientSecret
+[2m2026-02-14T17:24:17.225Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider github is missing clientId or clientSecret
+[2m2026-02-14T17:24:19.238Z[0m [33mWARN[0m [1m[Better Auth]:[0m Adapter does not correctly implement transaction function, patching it automatically. Please update your adapter implementation.
+[2m2026-02-14T17:24:19.266Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider google is missing clientId or clientSecret
+[2m2026-02-14T17:24:19.267Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider github is missing clientId or clientSecret
+ GET /api/auth/get-session 200 in 6.9s (compile: 6.8s, render: 52ms)
+ GET /fa 200 in 910ms (compile: 121ms, proxy.ts: 21ms, render: 768ms)
+ GET /api/auth/get-session 200 in 164ms (compile: 130ms, render: 34ms)
+[2m2026-02-14T17:25:03.503Z[0m [33mWARN[0m [1m[Better Auth]:[0m Adapter does not correctly implement transaction function, patching it automatically. Please update your adapter implementation.
+[2m2026-02-14T17:25:03.525Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider google is missing clientId or clientSecret
+[2m2026-02-14T17:25:03.526Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider github is missing clientId or clientSecret
