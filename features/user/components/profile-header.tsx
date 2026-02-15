@@ -17,8 +17,13 @@ export function ProfileHeader({ user, isOwner }: ProfileHeaderProps) {
         style={{ backgroundImage: `url(${user.coverImage})` }}
       >
         {isOwner && (
-          <Button variant="secondary" size="icon" className="absolute top-4 right-4 rounded-full bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/40">
-            <span className="icon-[solar--camera-bold] w-5 h-5" />
+          <Button
+            variant="secondary"
+            size="icon"
+            className="absolute top-4 right-4 rounded-full bg-white/20 backdrop-blur-md border-white/30 text-white hover:bg-white/40"
+            onClick={() => openModal("cover")}
+          >
+            <span className="icon-[solar--camera-broken] w-5 h-5" />
           </Button>
         )}
       </div>
@@ -37,9 +42,9 @@ export function ProfileHeader({ user, isOwner }: ProfileHeaderProps) {
                 variant="secondary"
                 size="icon"
                 className="absolute bottom-2 right-2 rounded-full bg-primary text-white shadow-lg border-2 border-background"
-                onClick={() => openModal("header")}
+                onClick={() => openModal("avatar")}
               >
-                <span className="icon-[solar--pen-bold] w-4 h-4" />
+                <span className="icon-[solar--camera-broken] w-4 h-4" />
               </Button>
             )}
           </div>
@@ -70,16 +75,16 @@ export function ProfileHeader({ user, isOwner }: ProfileHeaderProps) {
         <div className="mt-6 space-y-1">
           <div className="flex items-center gap-2">
             <h1 className="text-3xl font-black">{user.name}</h1>
-            <span className="icon-[solar--verified-check-bold] w-6 h-6 text-primary" />
+            <span className="icon-[solar--verified-check-broken] w-6 h-6 text-primary" />
           </div>
           <p className="text-lg text-foreground/80 font-medium">{user.role}</p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground pt-2">
             <div className="flex items-center gap-1.5">
-              <span className="icon-[solar--map-point-bold-duotone] w-4 h-4 text-primary" />
+              <span className="icon-[solar--map-point-broken] w-4 h-4 text-primary" />
               {user.location}
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="icon-[solar--users-group-rounded-bold-duotone] w-4 h-4 text-primary" />
+              <span className="icon-[solar--users-group-rounded-broken] w-4 h-4 text-primary" />
               <span className="text-primary font-bold">{user.connections}</span> دنبال‌کننده
             </div>
           </div>

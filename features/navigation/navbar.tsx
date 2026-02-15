@@ -12,11 +12,11 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { icon: "icon-[solar--home-2-bold]", label: t("home"), href: "/" },
-    { icon: "icon-[solar--stethoscope-bold]", label: t("doctors"), href: "/doctors" },
-    { icon: "icon-[solar--calendar-bold]", label: t("appointments"), href: "/appointments" },
-    { icon: "icon-[solar--bell-bold]", label: t("notifications"), href: "/notifications", badge: 3 },
-    { icon: "icon-[solar--chat-round-dots-bold]", label: t("messages"), href: "/messages", badge: 2 },
+    { icon: "icon-[solar--home-smile-angle-broken]", label: t("home"), href: "/" },
+    { icon: "icon-[solar--medical-kit-broken]", label: t("doctors"), href: "/doctors" },
+    { icon: "icon-[solar--calendar-broken]", label: t("appointments"), href: "/appointments" },
+    { icon: "icon-[solar--bell-broken]", label: t("notifications"), href: "/notifications", badge: 3 },
+    { icon: "icon-[solar--chat-round-dots-broken]", label: t("messages"), href: "/messages", badge: 2 },
     { icon: "", label: t("profile"), href: "/profile", avatar: true },
   ];
 
