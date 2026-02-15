@@ -14,6 +14,8 @@ import QueryProvider from "@/components/providers/query-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { OfflineDetector } from "@/components/offline-detector";
 
+import { GoogleTagManager } from '@next/third-parties/google'
+
 // ────────────────────────────────────────────────
 // فونت‌ها – بهترین روش: ترکیب وزن‌ها در یک variable font یا حداقل تعریف دقیق
 // ────────────────────────────────────────────────
@@ -115,6 +117,7 @@ export default async function RootLayout({
         <link rel="icon" href="/favicon.png" type="image/x-icon" />
         {/* پیشنهاد: اضافه کردن preconnect برای فونت اگر از CDN بود */}
         {/* <link rel="preconnect" href="https://fonts..." /> */}
+         <GoogleTagManager gtmId="GTM-WJFVZVNC" />
       </head>
 
       <body className="antialiased min-h-screen flex flex-col">

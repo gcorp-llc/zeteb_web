@@ -13,16 +13,23 @@ export default function AppointmentsPage() {
   const [view, setView] = useState<"patient" | "doctor">("patient");
 
   const fetchAppointments = async ({ pageParam = 1 }) => {
-    // Simulated API call
+    // شبیه‌سازی فراخوانی API
     await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const baseData = [
+      { id: 1, name: "دکتر مریم علوی", date: "۱۴۰۳/۰۲/۱۵", time: "۱۰:۳۰", status: "confirmed", specialty: "متخصص پوست" },
+      { id: 2, name: "دکتر رضا محمدی", date: "۱۴۰۳/۰۲/۲۰", time: "۱۶:۰۰", status: "pending", specialty: "متخصص قلب" },
+      { id: 3, name: "دکتر سارا احمدی", date: "۱۴۰۳/۰۱/۱۰", time: "۱۸:۱۵", status: "done", specialty: "متخصص کودکان" },
+      { id: 4, name: "دکتر علی حسینی", date: "۱۴۰۳/۰۱/۰۵", time: "۰۹:۰۰", status: "canceled", specialty: "متخصص داخلی" },
+    ];
+
     return {
-      appointments: [
-        { id: 1, name: "دکتر مریم علوی", date: "۱۴۰۳/۰۲/۱۵", time: "۱۰:۳۰", status: "confirmed", specialty: "متخصص پوست" },
-        { id: 2, name: "دکتر رضا محمدی", date: "۱۴۰۳/۰۲/۲۰", time: "۱۶:۰۰", status: "pending", specialty: "متخصص قلب" },
-        { id: 3, name: "دکتر سارا احمدی", date: "۱۴۰۳/۰۱/۱۰", time: "۱۸:۱۵", status: "done", specialty: "متخصص کودکان" },
-        { id: 4, name: "دکتر علی حسینی", date: "۱۴۰۳/۰۱/۰۵", time: "۰۹:۰۰", status: "canceled", specialty: "متخصص داخلی" },
-      ],
-      nextPage: pageParam < 2 ? pageParam + 1 : undefined
+      // ترکیب شماره صفحه با ID برای جلوگیری از کلید تکراری در اسکرول نامحدود
+      appointments: baseData.map(apt => ({
+        ...apt,
+        id: `${pageParam}-${apt.id}` 
+      })),
+      nextPage: pageParam < 3 ? pageParam + 1 : undefined
     };
   };
 
@@ -87,7 +94,7 @@ export default function AppointmentsPage() {
                 <div className="flex justify-between items-start">
                   <div className="flex gap-3">
                     <div className="w-12 h-12 rounded-xl bg-ios-gradient flex items-center justify-center text-white font-black shrink-0">
-                      {apt.name.split(" ").map((n: any) => n[0]).join("")}
+                      {apt.name.split(" ").map((n: string) => n[0]).join("")}
                     </div>
                     <div>
                        <h4 className="font-bold">{apt.name}</h4>
