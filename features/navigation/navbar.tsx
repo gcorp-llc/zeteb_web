@@ -12,12 +12,38 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   const navItems = [
-    { icon: "icon-[solar--home-smile-angle-broken]", label: t("home"), href: "/" },
-    { icon: "icon-[solar--medical-kit-broken]", label: t("doctors"), href: "/doctors" },
-    { icon: "icon-[solar--calendar-broken]", label: t("appointments"), href: "/appointments" },
-    { icon: "icon-[solar--bell-broken]", label: t("notifications"), href: "/notifications", badge: 3 },
-    { icon: "icon-[hugeicons--notification-square]", label: t("messages"), href: "/messages", badge: 2 },
-    { icon: "icon-[solar--user-circle-broken]", label: t("profile"), href: "/profile" },
+    {
+      icon: "icon-[solar--home-smile-angle-bold-duotone]",
+      label: t("home"),
+      href: "/",
+    },
+    {
+      icon: "icon-[solar--medical-kit-bold-duotone]",
+      label: t("doctors"),
+      href: "/doctors",
+    },
+    {
+      icon: "icon-[solar--calendar-bold-duotone]",
+      label: t("appointments"),
+      href: "/appointments",
+    },
+    {
+      icon: "icon-[solar--bell-bold-duotone]",
+      label: t("notifications"),
+      href: "/notifications",
+      badge: 3,
+    },
+    {
+      icon: "icon-[solar--chat-round-dots-bold-duotone]",
+      label: t("messages"),
+      href: "/messages",
+      badge: 2,
+    },
+    {
+      icon: "icon-[solar--user-circle-bold-duotone]",
+      label: t("profile"),
+      href: "/profile",
+    },
   ];
 
   return (

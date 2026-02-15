@@ -11,18 +11,23 @@ export default function NotificationsPage() {
   const t = useTranslations("Navbar");
 
   const fetchNotifications = async ({ pageParam = 1 }) => {
-    // Simulated API call
     await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const baseNotifications = [
+      { id: 1, type: "like", sender: "دکتر مریم علوی", content: "پست شما را پسندید: «روش‌های نوین جراحی داخلی»", time: "۲ ساعت پیش", image: "https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=100", isRead: false },
+      { id: 2, type: "follow_request", sender: "علی حسینی", content: "درخواست دنبال کردن شما را دارد", time: "۵ ساعت پیش", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100", isRead: false },
+      { id: 3, type: "comment", sender: "سارا احمدی", content: "در پست شما نظر داد: «بسیار عالی و کاربردی بود دکتر عزیز، خسته نباشید.»", time: "۱ روز پیش", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100", isRead: true },
+      { id: 4, type: "mention", sender: "بیمارستان آتیه", content: "شما را در یک پست یاد کرد", time: "۲ روز پیش", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=100", isRead: true },
+      { id: 5, type: "system", sender: "تیم پشتیبانی", content: "پروفایل شما با موفقیت تایید شد. اکنون می‌توانید نوبت‌دهی آنلاین را فعال کنید.", time: "۳ روز پیش", image: "/favicon.png", isRead: true },
+      { id: 6, type: "follow_accept", sender: "رضا محمدی", content: "درخواست شما را پذیرفت", time: "۴ روز پیش", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100", isRead: true },
+      { id: 7, type: "unfollow", sender: "ناشناس", content: "شما را آنفالو کرد", time: "۵ روز پیش", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100", isRead: true },
+    ];
+
     return {
-      notifications: [
-        { id: 1, type: "like", sender: "دکتر مریم علوی", content: "پست شما را پسندید: «روش‌های نوین جراحی داخلی»", time: "۲ ساعت پیش", image: "https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=100", isRead: false },
-        { id: 2, type: "follow_request", sender: "علی حسینی", content: "درخواست دنبال کردن شما را دارد", time: "۵ ساعت پیش", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=100", isRead: false },
-        { id: 3, type: "comment", sender: "سارا احمدی", content: "در پست شما نظر داد: «بسیار عالی و کاربردی بود دکتر عزیز، خسته نباشید.»", time: "۱ روز پیش", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100", isRead: true },
-        { id: 4, type: "mention", sender: "بیمارستان آتیه", content: "شما را در یک پست یاد کرد", time: "۲ روز پیش", image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=100", isRead: true },
-        { id: 5, type: "system", sender: "تیم پشتیبانی", content: "پروفایل شما با موفقیت تایید شد. اکنون می‌توانید نوبت‌دهی آنلاین را فعال کنید.", time: "۳ روز پیش", image: "/favicon.png", isRead: true },
-        { id: 6, type: "follow_accept", sender: "رضا محمدی", content: "درخواست شما را پذیرفت", time: "۴ روز پیش", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100", isRead: true },
-        { id: 7, type: "unfollow", sender: "ناشناس", content: "شما را آنفالو کرد", time: "۵ روز پیش", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100", isRead: true },
-      ],
+      notifications: baseNotifications.map(n => ({
+        ...n,
+        id: `${pageParam}-${n.id}`
+      })),
       nextPage: pageParam < 3 ? pageParam + 1 : undefined
     };
   };
@@ -45,7 +50,7 @@ export default function NotificationsPage() {
     <PageContainer title={t("notifications")}>
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6 pb-20">
 
-        {/* Left Sidebar - LinkedIn Style */}
+        {/* Sidebar */}
         <div className="hidden lg:block space-y-4">
            <div className="glass-card !p-4 space-y-4">
               <h3 className="font-black text-sm">مدیریت اعلان‌ها</h3>
@@ -64,7 +69,7 @@ export default function NotificationsPage() {
              <Button variant="secondary" size="sm" className="bg-primary/10 text-primary !rounded-full text-[10px] font-black h-7 shrink-0">همه</Button>
              <Button variant="ghost" size="sm" className="!rounded-full text-[10px] font-bold h-7 shrink-0">خوانده نشده</Button>
              <Button variant="ghost" size="sm" className="!rounded-full text-[10px] font-bold h-7 shrink-0">پست‌های من</Button>
-             <Button variant="ghost" size="sm" className="!rounded-full text-[10px] font-bold h-7 shrink-0">اشاره‌ها (Mentions)</Button>
+             <Button variant="ghost" size="sm" className="!rounded-full text-[10px] font-bold h-7 shrink-0">اشاره‌ها</Button>
           </div>
 
           <InfiniteScroll
@@ -92,7 +97,6 @@ export default function NotificationsPage() {
                        </div>
                     </div>
 
-                    {/* Action Buttons for Follow Requests */}
                     {n.type === "follow_request" && (
                        <div className="flex gap-2">
                           <Button variant="outline" size="sm" className="h-8 !rounded-full border-primary text-primary hover:bg-primary/10 text-[10px] font-black px-4">پذیرفتن</Button>
@@ -107,7 +111,7 @@ export default function NotificationsPage() {
           </InfiniteScroll>
         </div>
 
-        {/* Right Sidebar - Ad or Suggestions */}
+        {/* Right Sidebar */}
         <div className="hidden lg:block space-y-4">
            <div className="glass-card !p-4">
               <p className="text-[10px] text-muted-foreground text-center">تبلیغات</p>
