@@ -30,12 +30,17 @@ export function CreatePost() {
   const [pollData, setPollData] = useState<{ question: string; options: string[]; duration: string } | null>(null);
   const [eventData, setEventData] = useState<{ title: string; date: string; time: string; location: string } | null>(null);
 
+  const openMedia = (type: "image" | "video") => {
+    setMediaType(type);
+    setMediaOpen(true);
+  };
+
   const composerActions = [
-    { label: t("media"), icon: "icon-[solar--gallery-bold-duotone]", className: "text-green-500", onClick: () => openMedia("image") },
-    { label: t("video"), icon: "icon-[solar--videocamera-record-bold-duotone]", className: "text-primary", onClick: () => openMedia("video") },
-    { label: "رویداد", icon: "icon-[solar--calendar-bold-duotone]", className: "text-violet-500", onClick: () => setEventOpen(true) },
-    { label: "نظرسنجی", icon: "icon-[solar--chart-bold-duotone]", className: "text-amber-500", onClick: () => setPollOpen(true) },
-    { label: t("writeArticle"), icon: "icon-[solar--document-text-bold-duotone]", className: "text-orange-500", onClick: () => router.push("/posts/new/article") },
+    { label: t("media"), icon: "icon-[solar--gallery-bold]", className: "text-green-500", onClick: () => openMedia("image") },
+    { label: t("video"), icon: "icon-[solar--videocamera-record-bold]", className: "text-primary", onClick: () => openMedia("video") },
+    { label: "رویداد", icon: "icon-[solar--calendar-bold]", className: "text-violet-500", onClick: () => setEventOpen(true) },
+    { label: "نظرسنجی", icon: "icon-[solar--chart-bold]", className: "text-amber-500", onClick: () => setPollOpen(true) },
+    { label: t("writeArticle"), icon: "icon-[solar--document-text-bold]", className: "text-orange-500", onClick: () => router.push("/posts/new/article") },
   ];
 
   const handlePost = async () => {
@@ -57,20 +62,20 @@ export function CreatePost() {
   };
 
   return (
-    <div className="glass-card !p-4 mb-4">
-      <div className="flex gap-3 items-center mb-4">
+    <div className="rounded-2xl border border-border/50 bg-card p-4">
+      <div className="flex gap-3 items-center mb-3">
         <Avatar className="w-12 h-12 rounded-full">
           <AvatarImage src={session?.user?.image || "/favicon.png"} />
           <AvatarFallback>{session?.user?.name?.[0] || "U"}</AvatarFallback>
         </Avatar>
-        <button onClick={() => setIsOpen(true)} className="flex-1 text-right px-5 h-12 rounded-full border border-border/50 hover:bg-white/5 transition-colors text-muted-foreground text-sm font-semibold">
+        <button onClick={() => setIsOpen(true)} className="flex-1 text-right px-5 h-12 rounded-full border border-border/60 bg-background hover:bg-muted/30 transition-colors text-muted-foreground text-sm font-medium">
           {t("startPost")}
         </button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-3 border-t border-border/30">
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-3 border-t border-border/50">
         {composerActions.map((item) => (
-          <button key={item.label} onClick={item.onClick} className="flex items-center justify-center gap-2 text-xs font-bold text-muted-foreground hover:bg-white/5 p-2.5 rounded-xl transition-colors">
+          <button key={item.label} onClick={item.onClick} className="flex items-center justify-center gap-2 text-xs font-medium text-muted-foreground hover:bg-muted/30 p-2.5 rounded-lg transition-colors">
             <span className={`${item.icon} ${item.className} w-5 h-5`} />
             <span>{item.label}</span>
           </button>
@@ -79,7 +84,7 @@ export function CreatePost() {
 
       <ResponsiveModal title={t("createPost")} open={isOpen} onOpenChange={setIsOpen}>
         <div className="space-y-4 pt-4">
-          <div className="flex items-center gap-3 pb-2 border-b border-border/30">
+          <div className="flex items-center gap-3 pb-2 border-b border-border/40">
             <Avatar className="w-11 h-11 rounded-full">
               <AvatarImage src={session?.user?.image || "/favicon.png"} />
               <AvatarFallback>{session?.user?.name?.[0] || "U"}</AvatarFallback>
@@ -103,11 +108,11 @@ export function CreatePost() {
               </div>
             )}
 
-            {pollData && <div className="p-4 rounded-2xl bg-white/5 border border-border/50 text-sm font-semibold">📊 {pollData.question}</div>}
-            {eventData && <div className="p-4 rounded-2xl bg-white/5 border border-border/50 text-sm font-semibold">📅 {eventData.title}</div>}
+            {pollData && <div className="p-4 rounded-2xl bg-muted/20 border border-border/50 text-sm font-semibold">📊 {pollData.question}</div>}
+            {eventData && <div className="p-4 rounded-2xl bg-muted/20 border border-border/50 text-sm font-semibold">📅 {eventData.title}</div>}
           </div>
 
-          <div className="space-y-3 pt-4 border-t border-border/30">
+          <div className="space-y-3 pt-4 border-t border-border/40">
             <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
               {composerActions.map((item) => (
                 <Button key={`modal-${item.label}`} variant="ghost" onClick={item.onClick} className="rounded-xl h-10 gap-1.5 text-xs">
@@ -117,7 +122,7 @@ export function CreatePost() {
               ))}
             </div>
             <div className="flex justify-end">
-              <Button onClick={handlePost} disabled={isUploading || (!content.trim() && !attachments.length && !pollData && !eventData)} className="!rounded-full px-7 bg-ios-gradient shadow-lg shadow-primary/20 font-bold">
+              <Button onClick={handlePost} disabled={isUploading || (!content.trim() && !attachments.length && !pollData && !eventData)} className="rounded-full px-7 font-bold">
                 {isUploading ? "..." : t("publish")}
               </Button>
             </div>

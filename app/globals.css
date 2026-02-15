@@ -46,72 +46,72 @@
    Root & Dark Mode – OKLCH colors
    ──────────────────────────────────────────────── */
 :root {
-  --background: oklch(0.98 0.01 240);
-  --foreground: oklch(0.12 0.02 240);
+  --background: oklch(0.97 0.01 250);
+  --foreground: oklch(0.32 0.03 255);
 
-  --card: oklch(1 0 0 / 0.8);
-  --card-foreground: oklch(0.12 0.02 240);
+  --card: oklch(0.99 0.005 250 / 0.92);
+  --card-foreground: oklch(0.32 0.03 255);
 
-  --popover: oklch(1 0 0 / 0.9);
-  --popover-foreground: oklch(0.12 0.02 240);
+  --popover: oklch(0.99 0.005 250 / 0.97);
+  --popover-foreground: oklch(0.32 0.03 255);
 
-  --primary: oklch(0.55 0.18 250); /* iOS Blue */
+  --primary: oklch(0.62 0.11 240);
   --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.92 0.02 240);
-  --secondary-foreground: oklch(0.2 0.02 240);
+  --secondary: oklch(0.93 0.015 250);
+  --secondary-foreground: oklch(0.34 0.03 255);
 
-  --muted: oklch(0.95 0.01 240);
-  --muted-foreground: oklch(0.45 0.02 240);
+  --muted: oklch(0.94 0.01 250);
+  --muted-foreground: oklch(0.52 0.03 250);
 
-  --accent: oklch(0.55 0.18 250 / 0.1);
-  --accent-foreground: oklch(0.55 0.18 250);
+  --accent: oklch(0.62 0.11 240 / 0.12);
+  --accent-foreground: oklch(0.56 0.1 240);
 
   --destructive: oklch(0.55 0.2 25); /* iOS Red */
   --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.12 0.02 240 / 0.08);
-  --input: oklch(0.12 0.02 240 / 0.05);
-  --ring: oklch(0.55 0.18 250);
+  --border: oklch(0.55 0.02 250 / 0.25);
+  --input: oklch(0.55 0.02 250 / 0.15);
+  --ring: oklch(0.62 0.11 240);
 
   /* iOS 18 Glass Variables */
-  --glass-bg: oklch(1 0 0 / 0.85);
-  --glass-border: oklch(1 0 0 / 0.2);
+  --glass-bg: oklch(0.99 0.004 250 / 0.86);
+  --glass-border: oklch(0.72 0.015 250 / 0.35);
   --glass-shadow: 0 4px 24px -1px oklch(0 0 0 / 0.06), 0 2px 8px -1px oklch(0 0 0 / 0.04);
 }
 
 .dark {
   /* Atomic Dark theme */
-  --background: oklch(0.16 0.015 255);
-  --foreground: oklch(0.95 0.01 255);
+  --background: oklch(0.31 0.03 255);
+  --foreground: oklch(0.9 0.015 250);
 
-  --card: oklch(0.2 0.02 255 / 0.82);
+  --card: oklch(0.34 0.03 255 / 0.9);
   --card-foreground: oklch(0.95 0.01 255);
 
-  --popover: oklch(0.19 0.02 255 / 0.95);
+  --popover: oklch(0.33 0.03 255 / 0.95);
   --popover-foreground: oklch(0.95 0.01 255);
 
-  --primary: oklch(0.72 0.14 220);
-  --primary-foreground: oklch(0.16 0.015 255);
+  --primary: oklch(0.76 0.08 235);
+  --primary-foreground: oklch(0.31 0.03 255);
 
-  --secondary: oklch(0.25 0.02 255);
-  --secondary-foreground: oklch(0.9 0.01 255);
+  --secondary: oklch(0.4 0.025 255);
+  --secondary-foreground: oklch(0.88 0.015 250);
 
-  --muted: oklch(0.28 0.02 255 / 0.65);
-  --muted-foreground: oklch(0.72 0.02 255);
+  --muted: oklch(0.4 0.02 255 / 0.7);
+  --muted-foreground: oklch(0.76 0.02 250);
 
-  --accent: oklch(0.72 0.14 220 / 0.22);
-  --accent-foreground: oklch(0.84 0.1 220);
+  --accent: oklch(0.76 0.08 235 / 0.25);
+  --accent-foreground: oklch(0.84 0.06 235);
 
   --destructive: oklch(0.62 0.2 25);
-  --destructive-foreground: oklch(0.95 0.01 255);
+  --destructive-foreground: oklch(0.9 0.015 250);
 
-  --border: oklch(1 0 0 / 0.1);
-  --input: oklch(1 0 0 / 0.07);
-  --ring: oklch(0.72 0.14 220);
+  --border: oklch(0.9 0.01 255 / 0.18);
+  --input: oklch(0.9 0.01 255 / 0.12);
+  --ring: oklch(0.76 0.08 235);
 
-  --glass-bg: oklch(0.18 0.02 255 / 0.9);
-  --glass-border: oklch(1 0 0 / 0.1);
+  --glass-bg: oklch(0.34 0.03 255 / 0.9);
+  --glass-border: oklch(0.9 0.01 255 / 0.16);
   --glass-shadow: 0 10px 30px oklch(0 0 0 / 0.6);
 }
 
