@@ -26,7 +26,7 @@ export const NavActions = () => {
       <DropdownMenu dir="rtl" open={profileOpen} onOpenChange={setProfileOpen}>
         <DropdownMenuTrigger asChild>
           <button className="flex h-10 w-10 items-center justify-center cursor-pointer rounded-full border border-border/50 bg-muted/20 text-muted-foreground hover:text-primary transition-colors">
-            <span className="icon-[solar--user-circle-bold] h-7 w-7" />
+            <span className="icon-[solar--user-circle-broken] h-8 w-8" />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-auto mt-2 bg-transparent border-none shadow-none p-0 overflow-visible" align="end">

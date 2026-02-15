@@ -16,8 +16,7 @@ export const Navbar = () => {
     { icon: "icon-[solar--medical-kit-broken]", label: t("doctors"), href: "/doctors" },
     { icon: "icon-[solar--calendar-broken]", label: t("appointments"), href: "/appointments" },
     { icon: "icon-[solar--bell-broken]", label: t("notifications"), href: "/notifications", badge: 3 },
-    { icon: "icon-[solar--chat-round-dots-broken]", label: t("messages"), href: "/messages", badge: 2 },
-    { icon: "", label: t("profile"), href: "/profile", avatar: true },
+    { icon: "icon-[hugeicons--notification-square]", label: t("messages"), href: "/messages", badge: 2 },
   ];
 
   return (
