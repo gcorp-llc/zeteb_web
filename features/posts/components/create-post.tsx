@@ -36,11 +36,11 @@ export function CreatePost() {
   };
 
   const composerActions = [
-    { label: t("media"), icon: "icon-[solar--gallery-bold]", className: "text-green-500", onClick: () => openMedia("image") },
-    { label: t("video"), icon: "icon-[solar--videocamera-record-bold]", className: "text-primary", onClick: () => openMedia("video") },
-    { label: "رویداد", icon: "icon-[solar--calendar-bold]", className: "text-violet-500", onClick: () => setEventOpen(true) },
-    { label: "نظرسنجی", icon: "icon-[solar--chart-bold]", className: "text-amber-500", onClick: () => setPollOpen(true) },
-    { label: t("writeArticle"), icon: "icon-[solar--document-text-bold]", className: "text-orange-500", onClick: () => router.push("/posts/new/article") },
+    { label: t("media"), icon: "icon-[solar--gallery-broken]", className: "text-green-500", onClick: () => openMedia("image") },
+    { label: t("video"), icon: "icon-[solar--videocamera-record-broken]", className: "text-primary", onClick: () => openMedia("video") },
+    { label: "رویداد", icon: "icon-[solar--calendar-broken]", className: "text-violet-500", onClick: () => setEventOpen(true) },
+    { label: "نظرسنجی", icon: "icon-[solar--chart-broken]", className: "text-amber-500", onClick: () => setPollOpen(true) },
+    { label: t("writeArticle"), icon: "icon-[solar--document-text-broken]", className: "text-orange-500", onClick: () => router.push("/posts/new/article") },
   ];
 
   const handlePost = async () => {
@@ -83,47 +83,69 @@ export function CreatePost() {
       </div>
 
       <ResponsiveModal title={t("createPost")} open={isOpen} onOpenChange={setIsOpen}>
-        <div className="space-y-4 pt-4">
-          <div className="flex items-center gap-3 pb-2 border-b border-border/40">
-            <Avatar className="w-11 h-11 rounded-full">
+        <div className="flex flex-col h-[500px]">
+          <div className="flex items-center gap-3 p-4">
+            <Avatar className="w-14 h-14 rounded-full">
               <AvatarImage src={session?.user?.image || "/favicon.png"} />
               <AvatarFallback>{session?.user?.name?.[0] || "U"}</AvatarFallback>
             </Avatar>
-            <p className="text-sm font-bold">{session?.user?.name || "کاربر"}</p>
+            <div>
+              <p className="text-lg font-semibold">{session?.user?.name || "کاربر"}</p>
+              <button className="flex items-center gap-1 text-muted-foreground text-xs border border-muted-foreground/30 rounded-full px-2 py-0.5 mt-0.5">
+                <span className="icon-[solar--global-broken] w-3 h-3" />
+                <span>همه</span>
+                <span className="icon-[solar--alt-arrow-down-broken] w-3 h-3" />
+              </button>
+            </div>
           </div>
 
-          <div className="max-h-[420px] overflow-y-auto space-y-4">
-            <Textarea placeholder={t("postPlaceholder")} className="min-h-[140px] border-none bg-transparent text-lg focus-visible:ring-0 p-0 resize-none" value={content} onChange={(e) => setContent(e.target.value)} />
+          <div className="flex-1 overflow-y-auto px-4">
+            <Textarea
+              placeholder="در مورد چه چیزی می‌خواهید صحبت کنید؟"
+              className="min-h-[200px] border-none bg-transparent text-xl focus-visible:ring-0 p-0 resize-none placeholder:text-muted-foreground/60"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
 
             {attachments.length > 0 && (
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 gap-4 pb-4">
                 {attachments.map((file, i) => (
-                  <div key={i} className="relative aspect-video rounded-xl overflow-hidden border border-border/30 bg-black/20">
-                    {file.type.startsWith("image") ? <img src={URL.createObjectURL(file)} alt="Attachment" className="w-full h-full object-cover" /> : <video src={URL.createObjectURL(file)} className="w-full h-full object-cover" />}
-                    <Button variant="destructive" size="icon" className="absolute top-1 right-1 w-6 h-6 rounded-full" onClick={() => setAttachments(attachments.filter((_, idx) => idx !== i))}>
-                      <span className="icon-[solar--close-circle-bold] w-4 h-4" />
+                  <div key={i} className="relative rounded-lg overflow-hidden border border-border/30 bg-black/5">
+                    {file.type.startsWith("image") ? <img src={URL.createObjectURL(file)} alt="Attachment" className="w-full h-auto" /> : <video src={URL.createObjectURL(file)} controls className="w-full h-auto" />}
+                    <Button variant="secondary" size="icon" className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/80 backdrop-blur" onClick={() => setAttachments(attachments.filter((_, idx) => idx !== i))}>
+                      <span className="icon-[solar--close-circle-broken] w-5 h-5" />
                     </Button>
                   </div>
                 ))}
               </div>
             )}
 
-            {pollData && <div className="p-4 rounded-2xl bg-muted/20 border border-border/50 text-sm font-semibold">📊 {pollData.question}</div>}
-            {eventData && <div className="p-4 rounded-2xl bg-muted/20 border border-border/50 text-sm font-semibold">📅 {eventData.title}</div>}
+            {pollData && <div className="p-4 rounded-xl bg-muted/20 border border-border/50 text-sm font-semibold mb-4">📊 {pollData.question}</div>}
+            {eventData && <div className="p-4 rounded-xl bg-muted/20 border border-border/50 text-sm font-semibold mb-4">📅 {eventData.title}</div>}
           </div>
 
-          <div className="space-y-3 pt-4 border-t border-border/40">
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-              {composerActions.map((item) => (
-                <Button key={`modal-${item.label}`} variant="ghost" onClick={item.onClick} className="rounded-xl h-10 gap-1.5 text-xs">
-                  <span className={`${item.icon} ${item.className} w-5 h-5`} />
-                  <span className="hidden sm:inline">{item.label}</span>
-                </Button>
-              ))}
+          <div className="p-4 space-y-4">
+            <div className="flex items-center gap-2">
+              <button onClick={() => openMedia("image")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--gallery-broken] w-6 h-6 text-muted-foreground" />
+              </button>
+              <button onClick={() => openMedia("video")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--videocamera-record-broken] w-6 h-6 text-muted-foreground" />
+              </button>
+              <button onClick={() => setEventOpen(true)} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--calendar-broken] w-6 h-6 text-muted-foreground" />
+              </button>
+              <button onClick={() => setPollOpen(true)} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--chart-broken] w-6 h-6 text-muted-foreground" />
+              </button>
+              <button className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--menu-dots-broken] w-6 h-6 text-muted-foreground" />
+              </button>
             </div>
-            <div className="flex justify-end">
-              <Button onClick={handlePost} disabled={isUploading || (!content.trim() && !attachments.length && !pollData && !eventData)} className="rounded-full px-7 font-bold">
-                {isUploading ? "..." : t("publish")}
+
+            <div className="flex justify-end pt-2 border-t border-border/40">
+              <Button onClick={handlePost} disabled={isUploading || (!content.trim() && !attachments.length && !pollData && !eventData)} className="rounded-full px-6 font-bold bg-[#0a66c2] hover:bg-[#004182] text-white transition-colors">
+                {isUploading ? "..." : "انتشار"}
               </Button>
             </div>
           </div>

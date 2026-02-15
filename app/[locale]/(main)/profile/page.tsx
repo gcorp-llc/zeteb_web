@@ -19,6 +19,8 @@ import { EditAboutModal } from "@/features/user/components/edit-modals/edit-abou
 import { EditEducationModal } from "@/features/user/components/edit-modals/edit-education-modal";
 import { EditSkillsModal } from "@/features/user/components/edit-modals/edit-skills-modal";
 import { EditContactModal } from "@/features/user/components/edit-modals/edit-contact-modal";
+import { EditAvatarModal } from "@/features/user/components/edit-modals/edit-avatar-modal";
+import { EditCoverModal } from "@/features/user/components/edit-modals/edit-cover-modal";
 import { useUserStore } from "@/features/user/lib/store";
 import { useQuery } from "@tanstack/react-query";
 import { profileApi } from "@/features/user/api/profile";
@@ -119,6 +121,8 @@ export default function ProfilePage() {
       <EditEducationModal initialData={userData.education[0]} />
       <EditSkillsModal initialData={userData.skills} />
       <EditContactModal initialData={{ address: userData.addresses[0].address, phone: userData.addresses[0].phone }} />
+      <EditAvatarModal />
+      <EditCoverModal />
     </div>
   );
 }

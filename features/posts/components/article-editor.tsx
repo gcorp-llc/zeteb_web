@@ -91,7 +91,7 @@ export function ArticleEditor() {
                 onClick={() => editor.chain().focus().toggleBold().run()}
                 className={editor.isActive('bold') ? 'bg-primary/10 text-primary' : ''}
             >
-                <span className="icon-[solar--text-bold-bold] w-5 h-5" />
+                <span className="icon-[solar--text-bold-broken] w-5 h-5" />
             </Button>
             <Button
                 variant="ghost"
@@ -99,7 +99,7 @@ export function ArticleEditor() {
                 onClick={() => editor.chain().focus().toggleItalic().run()}
                 className={editor.isActive('italic') ? 'bg-primary/10 text-primary' : ''}
             >
-                <span className="icon-[solar--text-italic-bold] w-5 h-5" />
+                <span className="icon-[solar--text-italic-broken] w-5 h-5" />
             </Button>
             <Button
                 variant="ghost"
@@ -115,7 +115,7 @@ export function ArticleEditor() {
                 onClick={() => editor.chain().focus().toggleBulletList().run()}
                 className={editor.isActive('bulletList') ? 'bg-primary/10 text-primary' : ''}
             >
-                <span className="icon-[solar--list-bold] w-5 h-5" />
+                <span className="icon-[solar--list-broken] w-5 h-5" />
             </Button>
             <div className="w-px h-6 bg-border/30 mx-1 self-center" />
             <Button
@@ -126,7 +126,7 @@ export function ArticleEditor() {
                     if (url) editor.chain().focus().setLink({ href: url }).run();
                 }}
             >
-                <span className="icon-[solar--link-bold] w-5 h-5" />
+                <span className="icon-[solar--link-broken] w-5 h-5" />
             </Button>
         </div>
 

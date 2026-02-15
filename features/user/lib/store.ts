@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type ModalType = "header" | "about" | "education" | "skills" | "contact" | null;
+type ModalType = "header" | "about" | "education" | "skills" | "contact" | "avatar" | "cover" | null;
 
 interface UserStore {
   activeModal: ModalType;

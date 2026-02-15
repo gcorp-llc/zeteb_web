@@ -46,38 +46,39 @@
    Root & Dark Mode – OKLCH colors
    ──────────────────────────────────────────────── */
 :root {
-  --background: oklch(0.97 0.01 250);
-  --foreground: oklch(0.32 0.03 255);
+  /* Nord Theme Palette for Light Mode */
+  --background: oklch(0.95 0.01 250); /* Nord 6 */
+  --foreground: oklch(0.28 0.02 260); /* Nord 0 */
 
-  --card: oklch(0.99 0.005 250 / 0.92);
-  --card-foreground: oklch(0.32 0.03 255);
+  --card: oklch(0.97 0.01 250 / 0.9); /* Nord 5 inspired */
+  --card-foreground: oklch(0.28 0.02 260);
 
-  --popover: oklch(0.99 0.005 250 / 0.97);
-  --popover-foreground: oklch(0.32 0.03 255);
+  --popover: oklch(0.97 0.01 250 / 0.95);
+  --popover-foreground: oklch(0.28 0.02 260);
 
-  --primary: oklch(0.62 0.11 240);
-  --primary-foreground: oklch(1 0 0);
+  --primary: oklch(0.77 0.08 230); /* Nord 8 (Frost) */
+  --primary-foreground: oklch(0.28 0.02 260);
 
-  --secondary: oklch(0.93 0.015 250);
-  --secondary-foreground: oklch(0.34 0.03 255);
+  --secondary: oklch(0.88 0.01 250); /* Nord 4 */
+  --secondary-foreground: oklch(0.32 0.02 260);
 
-  --muted: oklch(0.94 0.01 250);
-  --muted-foreground: oklch(0.52 0.03 250);
+  --muted: oklch(0.88 0.01 250); /* Nord 4 */
+  --muted-foreground: oklch(0.45 0.02 260); /* Nord 3 inspired */
 
-  --accent: oklch(0.62 0.11 240 / 0.12);
-  --accent-foreground: oklch(0.56 0.1 240);
+  --accent: oklch(0.77 0.08 230 / 0.15); /* Nord 8 with opacity */
+  --accent-foreground: oklch(0.7 0.08 230);
 
-  --destructive: oklch(0.55 0.2 25); /* iOS Red */
-  --destructive-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.15 25); /* Aurora Red */
+  --destructive-foreground: oklch(0.98 0.01 250);
 
-  --border: oklch(0.55 0.02 250 / 0.25);
-  --input: oklch(0.55 0.02 250 / 0.15);
-  --ring: oklch(0.62 0.11 240);
+  --border: oklch(0.28 0.02 260 / 0.1);
+  --input: oklch(0.28 0.02 260 / 0.05);
+  --ring: oklch(0.77 0.08 230);
 
-  /* iOS 18 Glass Variables */
-  --glass-bg: oklch(0.99 0.004 250 / 0.86);
-  --glass-border: oklch(0.72 0.015 250 / 0.35);
-  --glass-shadow: 0 4px 24px -1px oklch(0 0 0 / 0.06), 0 2px 8px -1px oklch(0 0 0 / 0.04);
+  /* iOS 18 Glass Variables - Nord variant */
+  --glass-bg: oklch(0.95 0.01 250 / 0.8);
+  --glass-border: oklch(0.28 0.02 260 / 0.1);
+  --glass-shadow: 0 4px 24px -1px oklch(0 0 0 / 0.06);
 }
 
 .dark {
@@ -205,7 +206,7 @@
   }
 
   .bg-ios-gradient {
-    background: linear-gradient(135deg, var(--primary) 0%, oklch(0.6 0.18 300) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, oklch(0.68 0.07 235) 100%);
   }
 }
 
