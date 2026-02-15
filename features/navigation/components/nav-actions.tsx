@@ -5,6 +5,7 @@ import { ProfileMenu } from "@/features/user/components/profile-menu";
 import { usePathname } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { SearchModal } from "./search-modal";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const NavActions = () => {
   const [searchOpen, setSearchOpen] = useState(false);
