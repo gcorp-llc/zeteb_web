@@ -12,14 +12,7 @@ interface NavItemProps {
   className?: string;
 }
 
-export const NavItem = ({
-  icon,
-  label,
-  href,
-  isActive,
-  badge,
-  className,
-}: NavItemProps) => {
+export const NavItem = ({ icon, label, href, isActive, badge, className }: NavItemProps) => {
   return (
     <Link
       href={href}

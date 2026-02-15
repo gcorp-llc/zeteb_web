@@ -40,15 +40,7 @@ export function MobileFooter() {
 
   return (
     <div className="fixed bottom-6 left-6 right-6 z-50 md:hidden">
-      <div
-        className={`
-          glass
-          animate-ios-in
-          mx-auto max-w-sm flex items-center justify-around
-          rounded-[2.5rem] py-2 px-4
-          shadow-2xl
-        `}
-      >
+      <div className="glass animate-ios-in mx-auto max-w-sm flex items-center justify-around rounded-[2.5rem] py-2 px-4 shadow-2xl">
         {navItems.map((item) => (
           <FooterItem
             key={item.href}

@@ -55,6 +55,7 @@ export function PostItem({ post }: PostItemProps) {
               </div>
             </div>
           </div>
+
           <div className="flex items-center gap-1">
             <Button variant="ghost" size="sm" className="text-primary font-black text-xs h-8 gap-1.5 hover:bg-primary/10 rounded-full">
               <span className="icon-[solar--add-circle-bold] w-4 h-4" />
@@ -94,7 +95,7 @@ export function PostItem({ post }: PostItemProps) {
         <div className="flex items-center gap-2 text-[11px] text-muted-foreground font-medium">
           <span className="hover:text-primary cursor-pointer hover:underline">{post.comments || 14} نظر</span>
           <span>•</span>
-          <span className="hover:text-primary cursor-pointer hover:underline">۲ بازنشر</span>
+          <span>۲ بازنشر</span>
         </div>
       </div>
 

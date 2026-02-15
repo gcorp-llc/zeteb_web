@@ -12,14 +12,7 @@ interface FooterItemProps {
   className?: string;
 }
 
-export const FooterItem = ({
-  icon,
-  label,
-  href,
-  isActive,
-  badge,
-  className,
-}: FooterItemProps) => {
+export const FooterItem = ({ icon, label, href, isActive, badge, className }: FooterItemProps) => {
   return (
     <Link
       href={href}

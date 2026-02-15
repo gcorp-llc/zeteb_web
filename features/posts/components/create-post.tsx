@@ -7,7 +7,6 @@ import { useTranslations } from "next-intl";
 import { ResponsiveModal } from "@/components/ui/responsive-modal";
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
-import { VisibilitySelector } from "./modals/visibility-selector";
 import { MediaModal } from "./modals/media-modal";
 import { PollModal } from "./modals/poll-modal";
 import { EventModal } from "./modals/event-modal";
@@ -22,7 +21,6 @@ export function CreatePost() {
   const { data: session } = authClient.useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState("");
-  const [visibility, setVisibility] = useState("everyone");
   const router = useRouter();
   const [mediaOpen, setMediaOpen] = useState(false);
   const [mediaType, setMediaType] = useState<"image" | "video">("image");
@@ -58,11 +56,6 @@ export function CreatePost() {
     setIsOpen(false);
   };
 
-  const openMedia = (type: "image" | "video") => {
-    setMediaType(type);
-    setMediaOpen(true);
-  };
-
   return (
     <div className="glass-card !p-4 mb-4">
       <div className="flex gap-3 items-center mb-4">
@@ -91,10 +84,7 @@ export function CreatePost() {
               <AvatarImage src={session?.user?.image || "/favicon.png"} />
               <AvatarFallback>{session?.user?.name?.[0] || "U"}</AvatarFallback>
             </Avatar>
-            <div className="flex flex-col gap-1">
-              <p className="text-sm font-bold">{session?.user?.name || t("guestUser")}</p>
-              <VisibilitySelector value={visibility} onChange={setVisibility} />
-            </div>
+            <p className="text-sm font-bold">{session?.user?.name || "کاربر"}</p>
           </div>
 
           <div className="max-h-[420px] overflow-y-auto space-y-4">

@@ -81,39 +81,38 @@
 }
 
 .dark {
-  /* Dracula Theme Inspired OKLCH */
-  --background: oklch(0.25 0.02 260); /* #282a36 equivalent */
-  --foreground: oklch(0.98 0.01 260); /* #f8f8f2 equivalent */
+  /* Atomic Dark theme */
+  --background: oklch(0.16 0.015 255);
+  --foreground: oklch(0.95 0.01 255);
 
-  --card: oklch(0.3 0.03 260 / 0.7); /* #44475aish */
-  --card-foreground: oklch(0.98 0.01 260);
+  --card: oklch(0.2 0.02 255 / 0.82);
+  --card-foreground: oklch(0.95 0.01 255);
 
-  --popover: oklch(0.28 0.03 260 / 0.95);
-  --popover-foreground: oklch(0.98 0.01 260);
+  --popover: oklch(0.19 0.02 255 / 0.95);
+  --popover-foreground: oklch(0.95 0.01 255);
 
-  --primary: oklch(0.7 0.15 300); /* Purpleish #bd93f9 */
-  --primary-foreground: oklch(0.2 0.02 260);
+  --primary: oklch(0.72 0.14 220);
+  --primary-foreground: oklch(0.16 0.015 255);
 
-  --secondary: oklch(0.35 0.03 260);
-  --secondary-foreground: oklch(0.98 0.01 260);
+  --secondary: oklch(0.25 0.02 255);
+  --secondary-foreground: oklch(0.9 0.01 255);
 
-  --muted: oklch(0.4 0.05 260 / 0.5); /* Comment color #6272a4 */
-  --muted-foreground: oklch(0.7 0.05 260);
+  --muted: oklch(0.28 0.02 255 / 0.65);
+  --muted-foreground: oklch(0.72 0.02 255);
 
-  --accent: oklch(0.8 0.12 300 / 0.2);
-  --accent-foreground: oklch(0.85 0.15 300);
+  --accent: oklch(0.72 0.14 220 / 0.22);
+  --accent-foreground: oklch(0.84 0.1 220);
 
-  --destructive: oklch(0.65 0.2 25); /* #ff5555 equivalent */
-  --destructive-foreground: oklch(0.98 0.01 260);
+  --destructive: oklch(0.62 0.2 25);
+  --destructive-foreground: oklch(0.95 0.01 255);
 
-  --border: oklch(1 0 0 / 0.15);
-  --input: oklch(1 0 0 / 0.1);
-  --ring: oklch(0.7 0.15 300);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.07);
+  --ring: oklch(0.72 0.14 220);
 
-  /* iOS 18 Dark Glass Variables */
-  --glass-bg: oklch(0.25 0.02 260 / 0.9);
-  --glass-border: oklch(1 0 0 / 0.15);
-  --glass-shadow: 0 8px 32px oklch(0 0 0 / 0.5);
+  --glass-bg: oklch(0.18 0.02 255 / 0.9);
+  --glass-border: oklch(1 0 0 / 0.1);
+  --glass-shadow: 0 10px 30px oklch(0 0 0 / 0.6);
 }
 
 /* ────────────────────────────────────────────────

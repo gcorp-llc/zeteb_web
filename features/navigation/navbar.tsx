@@ -47,44 +47,23 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav
-      className={`
-        glass-nav
-        animate-ios-in
-        sticky top-4 z-50 mx-4
-        rounded-[2rem]
-      `}
-    >
+    <nav className="glass-nav animate-ios-in sticky top-4 z-50 mx-4 rounded-[2rem]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 sm:h-16 items-center justify-between gap-4">
-
-          {/* Left side – Mobile menu + Logo + Desktop links */}
           <div className="flex items-center gap-3 sm:gap-5 flex-1 lg:flex-none">
             <NavLogo />
-
             <div className="hidden lg:block w-px h-8 bg-white/15 dark:bg-white/10 mx-3" />
-
-            <div className="hidden lg:flex lg:items-center lg:gap-1.5">
+            <div className="hidden lg:flex lg:items-center lg:gap-1">
               {navItems.map((item) => (
-                <NavItem
-                  key={item.href}
-                  className="glass-item"
-                  icon={item.icon}
-                  label={item.label}
-                  href={item.href}
-                  isActive={pathname === item.href}
-                  badge={item.badge}
-                />
+                <NavItem key={item.href} className="glass-item" icon={item.icon} label={item.label} href={item.href} isActive={pathname === item.href} badge={item.badge} />
               ))}
             </div>
           </div>
 
-          {/* Center – Search bar (appears from md onwards) */}
           <div className="hidden md:block flex-1 max-w-xl lg:max-w-2xl mx-2 lg:mx-6">
             <NavSearch />
           </div>
 
-          {/* Right side – Actions (profile, notifications, etc.) */}
           <div className="flex items-center gap-2 sm:gap-3">
             <NavActions />
           </div>
