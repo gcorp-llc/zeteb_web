@@ -1,6 +1,5 @@
 "use client";
 
-import { NavMobile } from "./components/nav-mobile";
 import { NavActions } from "./components/nav-actions";
 import { NavSearch } from "./components/nav-search";
 import { NavLogo } from "./components/nav-logo";
@@ -14,34 +13,34 @@ export const Navbar = () => {
 
   const navItems = [
     {
-      icon: "icon-[solar--home-smile-angle-broken]",
+      icon: "icon-[solar--home-smile-angle-bold-duotone]",
       label: t("home"),
       href: "/",
     },
     {
-      icon: "icon-[solar--medical-kit-broken]",
+      icon: "icon-[solar--medical-kit-bold-duotone]",
       label: t("doctors"),
       href: "/doctors",
     },
     {
-      icon: "icon-[solar--calendar-broken]",
+      icon: "icon-[solar--calendar-bold-duotone]",
       label: t("appointments"),
       href: "/appointments",
     },
     {
-      icon: "icon-[solar--bell-broken]",
+      icon: "icon-[solar--bell-bold-duotone]",
       label: t("notifications"),
       href: "/notifications",
       badge: 3,
     },
     {
-      icon: "icon-[hugeicons--notification-square]",
+      icon: "icon-[solar--chat-round-dots-bold-duotone]",
       label: t("messages"),
       href: "/messages",
       badge: 2,
     },
     {
-      icon: "icon-[solar--user-circle-broken]",
+      icon: "icon-[solar--user-circle-bold-duotone]",
       label: t("profile"),
       href: "/profile",
     },
@@ -61,10 +60,6 @@ export const Navbar = () => {
 
           {/* Left side – Mobile menu + Logo + Desktop links */}
           <div className="flex items-center gap-3 sm:gap-5 flex-1 lg:flex-none">
-            <div className="lg:hidden -ml-1">
-              <NavMobile />
-            </div>
-
             <NavLogo />
 
             <div className="hidden lg:block w-px h-8 bg-white/15 dark:bg-white/10 mx-3" />
