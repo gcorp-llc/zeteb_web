@@ -9,33 +9,11 @@ export function MobileFooter() {
   const pathname = usePathname();
 
   const navItems = [
-    {
-      icon: "icon-[solar--home-smile-angle-bold-duotone]",
-      label: t("home"),
-      href: "/",
-    },
-    {
-      icon: "icon-[solar--medical-kit-bold-duotone]",
-      label: t("doctors"),
-      href: "/doctors",
-    },
-    {
-      icon: "icon-[solar--calendar-bold-duotone]",
-      label: t("appointments"),
-      href: "/appointments",
-    },
-    {
-      icon: "icon-[solar--bell-bold-duotone]",
-      label: t("notifications"),
-      href: "/notifications",
-      badge: 3,
-    },
-    {
-      icon: "icon-[solar--chat-round-dots-bold-duotone]",
-      label: t("messages"),
-      href: "/messages",
-      badge: 2,
-    },
+    { icon: "icon-[solar--home-2-bold]", label: t("home"), href: "/" },
+    { icon: "icon-[solar--stethoscope-bold]", label: t("doctors"), href: "/doctors" },
+    { icon: "icon-[solar--calendar-bold]", label: t("appointments"), href: "/appointments" },
+    { icon: "icon-[solar--bell-bold]", label: t("notifications"), href: "/notifications", badge: 3 },
+    { icon: "icon-[solar--chat-round-dots-bold]", label: t("messages"), href: "/messages", badge: 2 },
   ];
 
   return (

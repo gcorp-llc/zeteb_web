@@ -18,7 +18,7 @@ export function ArticleEditor() {
   const t = useTranslations("PostEditor");
   const { data: session } = authClient.useSession();
   const [title, setTitle] = useState("");
-  const [visibility, setVisibility] = useState("everyone");
+  const [visibility, setVisibility] = useState("connections");
   const router = useRouter();
 
   const editor = useEditor({
