@@ -1,37 +1,37 @@
 "use client";
 
 import { usePathname } from "@/i18n/navigation";
-import { FooterItem } from "./components/footer-item";
 import { useTranslations } from "next-intl";
+import { FooterItem } from "./components/footer-item";
 
-export const MobileFooter = () => {
+export function MobileFooter() {
   const t = useTranslations("Navbar");
   const pathname = usePathname();
 
   const navItems = [
     {
-      icon: "icon-[solar--home-smile-angle-broken]",
+      icon: "icon-[solar--home-smile-angle-bold-duotone]",
       label: t("home"),
       href: "/",
     },
     {
-      icon: "icon-[solar--medical-kit-broken]",
+      icon: "icon-[solar--medical-kit-bold-duotone]",
       label: t("doctors"),
       href: "/doctors",
     },
     {
-      icon: "icon-[solar--calendar-broken]",
+      icon: "icon-[solar--calendar-bold-duotone]",
       label: t("appointments"),
       href: "/appointments",
     },
     {
-      icon: "icon-[solar--bell-broken]",
+      icon: "icon-[solar--bell-bold-duotone]",
       label: t("notifications"),
       href: "/notifications",
       badge: 3,
     },
     {
-      icon: "icon-[hugeicons--notification-square]",
+      icon: "icon-[solar--chat-round-dots-bold-duotone]",
       label: t("messages"),
       href: "/messages",
       badge: 2,
@@ -57,10 +57,10 @@ export const MobileFooter = () => {
             href={item.href}
             isActive={pathname === item.href}
             badge={item.badge}
-            className="glass-item"  // هماهنگی با تم شیشه‌ای برای هر آیتم
+            className="glass-item"
           />
         ))}
       </div>
     </div>
   );
-};
+}
