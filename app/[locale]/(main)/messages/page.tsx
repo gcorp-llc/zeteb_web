@@ -29,38 +29,44 @@ export default function MessagesPage() {
 
   return (
     <PageContainer title={t("messages")}>
-      <div className="max-w-6xl mx-auto h-[calc(100vh-250px)] min-h-[500px] flex gap-6">
+      <div className="max-w-7xl mx-auto h-[calc(100vh-140px)] flex gap-4">
         {/* Chat List */}
-        <div className={`w-full md:w-80 glass-card !p-0 flex flex-col overflow-hidden ${selectedChat ? "hidden md:flex" : "flex"}`}>
-          <div className="p-4 border-b border-border/50">
-            <h3 className="font-bold text-lg mb-4 text-right">گفتگوها</h3>
-            <div className="relative">
-               <span className="icon-[solar--magnifer-bold-duotone] absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-               <Input placeholder="جستجو در پیام‌ها..." className="pr-10 !rounded-xl bg-white/5 text-right" dir="rtl" />
+        <div className={`w-full md:w-[380px] bg-card border border-border/50 rounded-3xl flex flex-col overflow-hidden ${selectedChat ? "hidden md:flex" : "flex"}`}>
+          <div className="p-4 border-b border-border/30">
+            <div className="flex items-center justify-between mb-4 px-2">
+                <Button variant="ghost" size="icon" className="rounded-full">
+                    <span className="icon-[solar--hamburger-menu-broken] w-6 h-6" />
+                </Button>
+                <div className="relative flex-1 mx-2">
+                    <span className="icon-[solar--magnifer-broken] absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                    <Input placeholder="جستجو..." className="pr-10 h-10 bg-muted/30 border-none !rounded-full text-right" dir="rtl" />
+                </div>
             </div>
           </div>
-          <div className="flex-1 overflow-y-auto relative">
+          <div className="flex-1 overflow-y-auto">
             {chats.map(chat => (
               <div
                 key={chat.id}
                 onClick={() => setSelectedChat(chat.id)}
-                className={`p-4 flex gap-3 cursor-pointer hover:bg-white/5 transition-colors border-b border-border/30 last:border-0 ${selectedChat === chat.id ? "bg-primary/5 border-l-4 border-l-primary" : ""}`}
+                className={`p-3 mx-2 my-1 flex gap-3 cursor-pointer rounded-2xl transition-all ${selectedChat === chat.id ? "bg-primary text-primary-foreground" : "hover:bg-muted/50"}`}
               >
-                <Avatar className="w-12 h-12 rounded-xl">
-                  <AvatarFallback className="bg-ios-gradient text-white font-bold">{chat.image}</AvatarFallback>
+                <Avatar className="w-14 h-14 rounded-full border border-border/10">
+                  <AvatarFallback className={selectedChat === chat.id ? "bg-white/20 text-white" : "bg-ios-gradient text-white"}>{chat.image}</AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0 text-right">
-                  <div className="flex justify-between items-start mb-1">
-                    <span className="text-[10px] text-muted-foreground">{chat.time}</span>
-                    <h4 className="font-bold text-sm truncate">{chat.name}</h4>
+                  <div className="flex justify-between items-center mb-1">
+                    <span className={`text-[11px] ${selectedChat === chat.id ? "text-primary-foreground/70" : "text-muted-foreground"}`}>{chat.time}</span>
+                    <h4 className="font-bold text-[15px] truncate">{chat.name}</h4>
                   </div>
-                  <p className="text-xs text-muted-foreground truncate">{chat.lastMessage}</p>
+                  <div className="flex justify-between items-center">
+                    <p className={`text-[13px] truncate ${selectedChat === chat.id ? "text-primary-foreground/80" : "text-muted-foreground"}`}>{chat.lastMessage}</p>
+                    {chat.unread > 0 && (
+                      <div className={`text-[11px] font-bold min-w-5 h-5 px-1.5 rounded-full flex items-center justify-center shrink-0 ${selectedChat === chat.id ? "bg-white text-primary" : "bg-primary text-white"}`}>
+                        {chat.unread}
+                      </div>
+                    )}
+                  </div>
                 </div>
-                {chat.unread > 0 && (
-                  <div className="bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0">
-                    {chat.unread}
-                  </div>
-                )}
               </div>
             ))}
 
@@ -75,76 +81,90 @@ export default function MessagesPage() {
         </div>
 
         {/* Active Chat */}
-        <div className={`flex-1 glass-card !p-0 flex-col overflow-hidden ${selectedChat ? "flex" : "hidden md:flex"}`}>
+        <div className={`flex-1 bg-card border border-border/50 rounded-3xl flex flex-col overflow-hidden relative ${selectedChat ? "flex" : "hidden md:flex"}`}>
           {selectedChat ? (
             <>
-              <div className="p-4 border-b border-border/50 flex items-center justify-between">
+              {/* Chat Header */}
+              <div className="p-3 border-b border-border/30 flex items-center justify-between bg-card/80 backdrop-blur-md z-10">
                 <div className="flex items-center gap-3">
                   <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setSelectedChat(null)}>
-                    <span className="icon-[solar--alt-arrow-right-bold] w-6 h-6" />
+                    <span className="icon-[solar--alt-arrow-right-broken] w-6 h-6" />
                   </Button>
-                  <Avatar className="w-10 h-10 rounded-lg">
+                  <Avatar className="w-10 h-10 rounded-full border border-border/10">
                     <AvatarFallback className="bg-ios-gradient text-white font-bold">
                       {chats.find(c => c.id === selectedChat)?.image}
                     </AvatarFallback>
                   </Avatar>
                   <div className="text-right">
-                    <h4 className="font-bold text-sm">{chats.find(c => c.id === selectedChat)?.name}</h4>
-                    <p className="text-[10px] text-green-500 font-bold">آنلاین</p>
+                    <h4 className="font-bold text-[15px]">{chats.find(c => c.id === selectedChat)?.name}</h4>
+                    <p className="text-[11px] text-primary font-medium">آخرین بازدید ۲ دقیقه پیش</p>
                   </div>
                 </div>
                 <div className="flex gap-1">
                   <Button variant="ghost" size="icon" className="rounded-full">
-                    <span className="icon-[solar--phone-bold-duotone] w-5 h-5 text-primary" />
+                    <span className="icon-[solar--magnifer-broken] w-5 h-5 text-muted-foreground" />
                   </Button>
                   <Button variant="ghost" size="icon" className="rounded-full">
-                    <span className="icon-[solar--videocamera-bold-duotone] w-5 h-5 text-primary" />
+                    <span className="icon-[solar--phone-broken] w-5 h-5 text-muted-foreground" />
+                  </Button>
+                  <Button variant="ghost" size="icon" className="rounded-full">
+                    <span className="icon-[solar--menu-dots-vertical-broken] w-5 h-5 text-muted-foreground" />
                   </Button>
                 </div>
               </div>
 
-              <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-white/5">
+              {/* Chat Content - Telegram Style BG */}
+              <div className="flex-1 overflow-y-auto p-4 space-y-2 bg-[#e7ebf0] dark:bg-[#0f1215] relative">
+                {/* Background Pattern Overlay (Optional effect) */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://telegram.org/img/bg_pattern.png')] bg-repeat" />
+
                 {messages.map(m => (
-                  <div key={m.id} className={`flex ${m.sender === "me" ? "justify-end" : "justify-start"}`}>
-                    <div className={`max-w-[75%] p-4 rounded-2xl text-sm ${
+                  <div key={m.id} className={`flex ${m.sender === "me" ? "justify-end" : "justify-start"} relative z-1`}>
+                    <div className={`max-w-[85%] sm:max-w-[70%] px-3 py-2 rounded-2xl text-[14px] leading-relaxed shadow-sm relative group ${
                       m.sender === "me"
-                        ? "bg-primary text-white rounded-tr-none shadow-lg shadow-primary/10"
-                        : "glass border-none rounded-tl-none"
+                        ? "bg-[#effdde] dark:bg-[#2b5278] text-foreground rounded-tr-sm"
+                        : "bg-white dark:bg-[#212d3b] text-foreground rounded-tl-sm"
                     }`}>
-                      {m.text}
-                      <p className={`text-[9px] mt-1 opacity-60 ${m.sender === "me" ? "text-left" : "text-right"}`}>{m.time}</p>
+                      <div className="pr-12">
+                         {m.text}
+                      </div>
+                      <div className={`absolute bottom-1 left-2 flex items-center gap-1 opacity-60 text-[10px] ${m.sender === "me" ? "text-primary" : "text-muted-foreground"}`}>
+                         <span>{m.time}</span>
+                         {m.sender === "me" && <span className="icon-[solar--check-read-broken] w-3 h-3" />}
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
 
-              <div className="p-4 border-t border-border/50">
-                <div className="flex gap-2 items-center">
-                  <Button variant="ghost" size="icon" className="rounded-full shrink-0">
-                    <span className="icon-[solar--add-circle-bold-duotone] w-6 h-6 text-primary" />
+              {/* Chat Input */}
+              <div className="p-3 bg-card border-t border-border/30">
+                <div className="max-w-4xl mx-auto flex gap-2 items-end">
+                  <Button variant="ghost" size="icon" className="rounded-full shrink-0 mb-1">
+                    <span className="icon-[solar--paperclip-broken] w-6 h-6 text-muted-foreground" />
                   </Button>
                   <div className="relative flex-1">
-                    <Input
-                      placeholder="پیام خود را بنویسید..."
-                      className="!rounded-2xl bg-white/5 pl-12 h-12 text-right"
+                    <textarea
+                      placeholder="پیام..."
+                      rows={1}
+                      className="w-full bg-muted/30 border-none rounded-2xl py-3 px-4 pr-12 text-sm focus:ring-0 outline-none resize-none no-scrollbar text-right"
                       dir="rtl"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                     />
-                    <div className="absolute left-3 top-1/2 -translate-y-1/2 flex gap-2">
-                       <span className="icon-[solar--gallery-bold-duotone] w-5 h-5 text-muted-foreground cursor-pointer hover:text-primary transition-colors" />
-                       <span className="icon-[solar--microphone-bold-duotone] w-5 h-5 text-muted-foreground cursor-pointer hover:text-primary transition-colors" />
+                    <div className="absolute right-3 bottom-3">
+                       <span className="icon-[solar--smile-square-broken] w-6 h-6 text-muted-foreground cursor-pointer hover:text-primary transition-colors" />
                     </div>
                   </div>
                   <Button
-                    className="!rounded-2xl h-12 w-12 bg-ios-gradient shadow-lg p-0"
+                    className="rounded-full h-12 w-12 bg-primary hover:bg-primary/90 shadow-lg p-0 shrink-0"
                     onClick={() => {
                        if (message.trim()) {
                          setMessage("");
                        }
                     }}
                   >
-                    <span className="icon-[solar--plain-bold] w-6 h-6 rotate-180" />
+                    <span className="icon-[solar--plain-bold] w-6 h-6 rotate-180 text-primary-foreground" />
                   </Button>
                 </div>
               </div>

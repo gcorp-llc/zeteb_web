@@ -37,7 +37,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="نام پزشک، تخصص یا مقاله..."
-            className="h-14 !rounded-2xl ps-12 text-sm font-bold bg-white/5 border-white/10"
+            className="h-14 !rounded-2xl ps-12 text-sm font-bold bg-muted/30 border-none shadow-none focus:bg-muted/50 transition-all"
           />
           <span className="icon-[solar--magnifer-bold-duotone] w-6 h-6 text-primary absolute start-4 top-1/2 -translate-y-1/2" />
           <Button type="submit" className="hidden">جستجو</Button>

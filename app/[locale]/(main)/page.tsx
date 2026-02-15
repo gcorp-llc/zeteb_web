@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/button";
 import { PostList } from "@/features/feed/components/post-list";
 import { CreatePost } from "@/features/posts/components/create-post";
+import * as motion from "motion/react-client";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -43,8 +44,13 @@ export default function HomePage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <aside className="lg:col-span-3 space-y-4 hidden lg:block">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <motion.aside
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="lg:col-span-3 space-y-4 hidden lg:block sticky top-24"
+        >
           <div className="rounded-2xl border border-border/50 bg-card overflow-hidden">
             <div className="h-16 bg-muted" />
             <div className="px-5 pb-5 text-center">
@@ -66,14 +72,19 @@ export default function HomePage() {
             </div>
             <Button variant="ghost" className="w-full mt-3 text-xs">مشاهده همه</Button>
           </div>
-        </aside>
+        </motion.aside>
 
         <main className="lg:col-span-6 space-y-5">
           <CreatePost />
           <PostList initialArticles={articles} />
         </main>
 
-        <aside className="lg:col-span-3 space-y-4 hidden lg:block">
+        <motion.aside
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="lg:col-span-3 space-y-4 hidden lg:block sticky top-24"
+        >
           <div className="rounded-2xl border border-border/50 bg-card p-4">
             <h4 className="text-sm font-bold mb-3">افراد پیشنهادی</h4>
             {[
@@ -90,7 +101,7 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-        </aside>
+        </motion.aside>
       </div>
     </div>
   );
