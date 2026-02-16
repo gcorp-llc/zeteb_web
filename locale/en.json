@@ -48,7 +48,37 @@
     "medicalGroups": "Medical Groups",
     "followedHashtags": "Followed Hashtags",
     "topSpecialties": "Top Specialties",
-    "topDoctorsOfWeek": "Top Doctors of Week"
+    "topDoctorsOfWeek": "Top Doctors of Week",
+    "adTitle": "Profile Boost Package",
+    "adDesc": "With the premium package, your profile will appear at the top of search results and your views will increase up to 3x.",
+    "adAction": "View Details & Buy",
+    "myActivities": "My Activities",
+    "managePosts": "Manage Posts",
+    "ads": "Advertisements",
+    "viewStats": "View Stats",
+    "onlineBooking": "Online Booking",
+    "phoneConsultation": "Phone Consultation",
+    "chatConsultation": "Chat Consultation",
+    "newArticles": "New Articles",
+    "suggestedPeople": "Suggested People",
+    "internalMedicine": "Internal Medicine",
+    "dermatology": "Dermatology",
+    "gynecology": "Gynecology",
+    "pediatrics": "Pediatrics",
+    "cardiology": "Cardiology",
+    "ophthalmology": "Ophthalmology",
+    "dermatologyHair": "Dermatologist",
+    "cardiologyVascular": "Cardiologist",
+    "tehranJordan": "Tehran, Jordan",
+    "tehranSaadatAbad": "Tehran, Saadat Abad",
+    "tehranValiasr": "Tehran, Valiasr",
+    "tehranPounak": "Tehran, Pounak",
+    "tehranTajrish": "Tehran, Tajrish",
+    "tomorrow1030": "Tomorrow 10:30",
+    "monday1600": "Monday 16:00",
+    "today1815": "Today 18:15",
+    "wednesday0900": "Wednesday 09:00",
+    "tomorrow1545": "Tomorrow 15:45"
   },
   "PostEditor": {
     "title": "Write Article",
@@ -99,7 +129,11 @@
     "addCover": "Add a cover image or video to your article.",
     "uploadFromComputer": "Upload from computer",
     "titlePlaceholder": "Title",
-    "writeHere": "Write here. You can also include @mentions."
+    "writeHere": "Write here. You can also include @mentions.",
+    "uploadingFiles": "Uploading files...",
+    "postSuccess": "Post published successfully",
+    "articleSuccess": "Article published successfully",
+    "guestUser": "Guest User"
   },
   "ProfilePage": {
     "editProfile": "Edit Profile",
@@ -114,7 +148,8 @@
     "activity": "Activity",
     "education": "Education",
     "contact": "Contact Info",
-    "skills": "Skills"
+    "skills": "Skills",
+    "contactInfoAndAddress": "Contact Info & Address"
   },
   "Languages": {
     "fa": "Persian",
@@ -138,6 +173,8 @@
     "premium": "Premium",
     "perMonth": "$/month",
     "featuresAndAccess": "Features & Access",
+    "edit": "Edit",
+    "save": "Save",
     "selectPlan": "Select Plan & Start",
     "features": {
       "batch": "Batch Processing Capabilities",
@@ -158,7 +195,16 @@
     "settingsAndPrivacy": "Settings & Privacy",
     "help": "Help",
     "language": "Language",
-    "postsAndActivity": "Posts & Activity"
+    "postsAndActivity": "Posts & Activity",
+    "viewAndEditProfile": "View & Edit Profile",
+    "manageClinics": "Manage Clinics & Offices",
+    "displayMode": "Display Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "analytics": "Analytics",
+    "wallet": "Financials & Wallet",
+    "guestUser": "Zeteb User"
   },
   "Settings": {
     "title": "Account Settings",
@@ -201,6 +247,8 @@
     "changePhone": "Change Phone Number",
     "orContinueWith": "or continue with",
     "copyright": "© {year} Zeteb. All rights reserved.",
+    "otpSent": "Verification code sent",
+    "loginSuccess": "Welcome! Login successful",
     "phoneMinLength": "Phone number must be at least 11 digits",
     "phoneMaxLength": "Phone number must be at most 11 digits",
     "phoneInvalid": "Invalid phone number",
@@ -248,7 +296,13 @@
     "reactionSupport": "Support",
     "reactionLove": "Love",
     "reactionInsightful": "Insightful",
-    "reactionFunny": "Funny"
+    "reactionFunny": "Funny",
+    "second": "2nd",
+    "hoursAgo": "{count}h ago",
+    "posts": "Posts",
+    "comments": "Comments",
+    "reposts": "Reposts",
+    "likes": "Likes"
   },
   "Appointments": {
     "title": "My Appointments",
@@ -269,5 +323,55 @@
     "pending": "Pending",
     "done": "Done",
     "canceled": "Canceled"
+  },
+  "Clinics": {
+    "title": "Clinic & Office Management",
+    "name": "Center Name (Office/Clinic/Hospital)",
+    "namePlaceholder": "e.g. Jordan Office",
+    "type": "Center Type",
+    "selectType": "Select...",
+    "clinic": "Clinic",
+    "office": "Private Office",
+    "hospital": "Hospital",
+    "logo": "Center Logo",
+    "uploading": "Uploading...",
+    "selectLogo": "Select Logo",
+    "locationOnMap": "Location on Map",
+    "contactInfo": "Contact Info",
+    "phoneNumber": "Phone Number",
+    "phonePlaceholder": "021...",
+    "active": "Active",
+    "addNewPhone": "+ Add New Phone Number",
+    "exactAddress": "Exact Address",
+    "addressPlaceholder": "Street, Building...",
+    "saveFinal": "Save & Finalize",
+    "uploadSuccess": "Logo uploaded successfully",
+    "saveSuccess": "Info saved successfully",
+    "saveError": "Error saving info",
+    "workingHours": "Working Hours",
+    "shifts": "Shifts",
+    "addShift": "Add Shift",
+    "from": "From",
+    "to": "To",
+    "closed": "Closed"
+  },
+  "Search": {
+    "foundResults": "Found Results",
+    "all": "All",
+    "doctors": "Doctors",
+    "articles": "Articles",
+    "educationalArticle": "Educational Article",
+    "authorPrefix": "Author:",
+    "views": "{count} views"
+  },
+  "Days": {
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "noShifts": "No shifts recorded"
   }
 }

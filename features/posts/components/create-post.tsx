@@ -45,14 +45,14 @@ export function CreatePost() {
   const handlePost = async () => {
     let uploadedUrls: string[] = [];
     if (attachments.length > 0) {
-      toast.info("در حال آپلود فایل‌ها...");
+      toast.info(tp("uploadingFiles"));
       const uploadPromises = attachments.map((file) => uploadFile(file));
       const results = await Promise.all(uploadPromises);
       uploadedUrls = results.filter((r): r is string => r !== null);
     }
 
     await postsApi.createPost({ content, image_url: uploadedUrls[0] });
-    toast.success("پست با موفقیت منتشر شد");
+    toast.success(tp("postSuccess"));
     setContent("");
     setAttachments([]);
     setPollData(null);
@@ -90,7 +90,7 @@ export function CreatePost() {
             </Avatar>
             <div>
               <div className="flex items-center gap-2">
-                <p className="text-lg font-bold">{session?.user?.name || "کاربر"}</p>
+                <p className="text-lg font-bold">{session?.user?.name || t("guestUser")}</p>
                 <span className="icon-[solar--alt-arrow-down-bold] w-4 h-4 cursor-pointer" />
               </div>
               <p className="text-muted-foreground text-xs">{tp("postToAnyone")}</p>

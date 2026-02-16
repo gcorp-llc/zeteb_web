@@ -10,6 +10,7 @@ import { WorkingHours } from "./working-hours";
 import dynamic from "next/dynamic";
 import { useUpload } from "@/hooks/use-upload";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 import { clinicsApi } from "../api";
 import { Clinic, WorkingHour } from "../types";
 import { Switch } from "@/components/ui/switch";
@@ -27,6 +28,7 @@ const INITIAL_WORKING_HOURS: WorkingHour[] = [
 ];
 
 export function ClinicForm({ onSuccess }: { onSuccess?: () => void }) {
+  const t = useTranslations("Clinics");
   const [name, setName] = useState("");
   const [type, setType] = useState<Clinic['type']>("clinic");
   const [address, setAddress] = useState("");
@@ -43,7 +45,7 @@ export function ClinicForm({ onSuccess }: { onSuccess?: () => void }) {
       const url = await uploadFile(file);
       if (url) {
         setLogoUrl(url);
-        toast.success("لوگو با موفقیت آپلود شد");
+        toast.success(t("uploadSuccess"));
       }
     }
   };
@@ -68,10 +70,10 @@ export function ClinicForm({ onSuccess }: { onSuccess?: () => void }) {
         workingHours,
         logoUrl
       });
-      toast.success("اطلاعات با موفقیت ثبت شد");
+      toast.success(t("saveSuccess"));
       onSuccess?.();
     } catch (error) {
-      toast.error("خطا در ثبت اطلاعات");
+      toast.error(t("saveError"));
     }
   };
 
@@ -80,54 +82,54 @@ export function ClinicForm({ onSuccess }: { onSuccess?: () => void }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <div>
-            <Label>نام مرکز (مطب/کلینیک/بیمارستان)</Label>
-            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="مثلاً مطب جردن" className="mt-1" />
+            <Label>{t("name")}</Label>
+            <Input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("namePlaceholder")} className="mt-1" />
           </div>
           <div>
-            <Label>نوع مرکز</Label>
+            <Label>{t("type")}</Label>
             <Select value={type} onValueChange={(v) => setType(v as any)}>
               <SelectTrigger className="mt-1">
-                <SelectValue placeholder="انتخاب کنید" />
+                <SelectValue placeholder={t("selectType")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="clinic">کلینیک</SelectItem>
-                <SelectItem value="office">مطب شخصی</SelectItem>
-                <SelectItem value="hospital">بیمارستان</SelectItem>
+                <SelectItem value="clinic">{t("clinic")}</SelectItem>
+                <SelectItem value="office">{t("office")}</SelectItem>
+                <SelectItem value="hospital">{t("hospital")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div>
-            <Label>لوگو مرکز</Label>
+            <Label>{t("logo")}</Label>
             <div className="mt-2 flex items-center gap-4">
                <div className="w-16 h-16 rounded-xl border-2 border-dashed border-border flex items-center justify-center overflow-hidden bg-white/5">
                   {logoUrl ? <img src={logoUrl} className="w-full h-full object-cover" /> : <span className="icon-[solar--camera-bold-duotone] w-8 h-8 text-muted-foreground" />}
                </div>
                <Input type="file" onChange={handleLogoUpload} className="hidden" id="logo-upload" />
                <Label htmlFor="logo-upload" className="cursor-pointer bg-primary/10 text-primary px-4 py-2 rounded-xl text-xs font-bold hover:bg-primary/20 transition-all">
-                  {isUploading ? "در حال آپلود..." : "انتخاب لوگو"}
+                  {isUploading ? t("uploading") : t("selectLogo")}
                </Label>
             </div>
           </div>
         </div>
 
         <div className="space-y-4">
-          <Label>موقعیت روی نقشه</Label>
+          <Label>{t("locationOnMap")}</Label>
           <MapPicker value={location} onChange={setLocation} />
         </div>
       </div>
 
       <div className="space-y-4">
-        <Label className="text-lg font-bold">اطلاعات تماس</Label>
+        <Label className="text-lg font-bold">{t("contactInfo")}</Label>
         <div className="grid gap-4">
           {phones.map((phone, idx) => (
             <div key={idx} className="flex items-end gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
               <div className="flex-1">
-                <Label className="text-[10px] mb-1 block text-muted-foreground">شماره تماس</Label>
-                <Input value={phone.number} onChange={(e) => updatePhone(idx, "number", e.target.value)} placeholder="۰۲۱..." />
+                <Label className="text-[10px] mb-1 block text-muted-foreground">{t("phoneNumber")}</Label>
+                <Input value={phone.number} onChange={(e) => updatePhone(idx, "number", e.target.value)} placeholder={t("phonePlaceholder")} />
               </div>
               <div className="flex items-center gap-2 pb-2">
                 <Switch checked={phone.isActive} onCheckedChange={(v) => updatePhone(idx, "isActive", v)} />
-                <span className="text-xs">فعال</span>
+                <span className="text-xs">{t("active")}</span>
               </div>
               <Button type="button" variant="ghost" size="icon" onClick={() => removePhone(idx)} className="text-destructive">
                 <span className="icon-[solar--trash-bin-trash-bold-duotone] w-5 h-5" />
@@ -135,20 +137,20 @@ export function ClinicForm({ onSuccess }: { onSuccess?: () => void }) {
             </div>
           ))}
           <Button type="button" variant="outline" onClick={addPhone} className="w-full border-dashed !rounded-2xl">
-            + افزودن شماره تماس جدید
+            {t("addNewPhone")}
           </Button>
         </div>
       </div>
 
       <div className="space-y-4">
-        <Label>آدرس دقیق</Label>
-        <Textarea value={address} onChange={(e) => setAddress(e.target.value)} placeholder="تهران، خیابان..." className="min-h-[100px]" />
+        <Label>{t("exactAddress")}</Label>
+        <Textarea value={address} onChange={(e) => setAddress(e.target.value)} placeholder={t("addressPlaceholder")} className="min-h-[100px]" />
       </div>
 
       <WorkingHours value={workingHours} onChange={setWorkingHours} />
 
       <Button type="submit" className="w-full h-12 bg-ios-gradient text-white !rounded-2xl font-black text-lg shadow-xl shadow-primary/20">
-        ثبت و ذخیره نهایی
+        {t("saveFinal")}
       </Button>
     </form>
   );

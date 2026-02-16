@@ -104,7 +104,7 @@ export default function MessagesPage() {
                     <span className="icon-[solar--phone-broken] w-5 h-5 text-muted-foreground" />
                   </Button>
                   <Button variant="ghost" size="icon" className="rounded-full">
-                    <span className="icon-[solar--menu-dots-vertical-broken] w-5 h-5 text-muted-foreground" />
+                    <span className="icon-[solar--menu-dots-broken] w-5 h-5 text-muted-foreground" />
                   </Button>
                 </div>
               </div>

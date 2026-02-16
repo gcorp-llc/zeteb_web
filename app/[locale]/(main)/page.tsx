@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default function HomePage() {
   const t = useTranslations("HomePage");
+  const tPost = useTranslations("PostItem");
 
   const articles = [
     {
@@ -61,7 +62,7 @@ export default function HomePage() {
           </div>
 
           <div className="rounded-2xl border border-border/50 bg-card p-4">
-            <h4 className="font-bold text-sm mb-3">مقالات جدید</h4>
+            <h4 className="font-bold text-sm mb-3">{t("newArticles")}</h4>
             <div className="space-y-3">
               {latestArticles.map((article) => (
                 <div key={article.title} className="rounded-xl border border-border/40 p-3 hover:bg-muted/20 transition-colors cursor-pointer">
@@ -70,7 +71,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            <Button variant="ghost" className="w-full mt-3 text-xs">مشاهده همه</Button>
+            <Button variant="ghost" className="w-full mt-3 text-xs">{t("viewAll")}</Button>
           </div>
         </motion.aside>
 
@@ -86,7 +87,7 @@ export default function HomePage() {
           className="lg:col-span-3 space-y-4 hidden lg:block sticky top-24"
         >
           <div className="rounded-2xl border border-border/50 bg-card p-4">
-            <h4 className="text-sm font-bold mb-3">افراد پیشنهادی</h4>
+            <h4 className="text-sm font-bold mb-3">{t("suggestedPeople")}</h4>
             {[
               "دکتر مریم علوی",
               "دکتر رضا محمدی",
@@ -97,7 +98,7 @@ export default function HomePage() {
                   <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center text-xs font-bold">{name[0]}</div>
                   <span className="text-xs font-medium">{name}</span>
                 </div>
-                <Button size="sm" variant="outline" className="h-7 text-[10px]">دنبال‌کردن</Button>
+                <Button size="sm" variant="outline" className="h-7 text-[10px]">{tPost("follow")}</Button>
               </div>
             ))}
           </div>

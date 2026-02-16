@@ -19,6 +19,7 @@ interface PostItemProps {
 
 export function PostItem({ post }: PostItemProps) {
   const t = useTranslations("PostItem");
+  const tHome = useTranslations("HomePage");
   const [isCommentsOpen, setIsCommentsOpen] = useState(false);
   const [showAllComments, setShowAllComments] = useState(false);
 
@@ -72,12 +73,12 @@ export function PostItem({ post }: PostItemProps) {
             </Avatar>
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
-                <h4 className="font-bold text-sm hover:text-blue-600 hover:underline cursor-pointer transition-colors">{post.author?.name || "کاربر"}</h4>
-                <span className="text-muted-foreground text-[10px]">• ۲nd</span>
+                <h4 className="font-bold text-sm hover:text-blue-600 hover:underline cursor-pointer transition-colors">{post.author?.name || tHome("guestUser")}</h4>
+                <span className="text-muted-foreground text-[10px]">• {t("second")}</span>
               </div>
-              <p className="text-[11px] text-muted-foreground line-clamp-1">{post.author?.role || "پزشک"}</p>
+              <p className="text-[11px] text-muted-foreground line-clamp-1">{post.author?.role || tHome("doctors")}</p>
               <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
-                <span>{post.time || "۱ ساعت پیش"}</span>
+                <span>{post.time || t("hoursAgo", { count: 1 })}</span>
                 <span>•</span>
                 <span className="icon-[solar--global-broken] w-3 h-3" />
               </div>
@@ -86,7 +87,7 @@ export function PostItem({ post }: PostItemProps) {
 
           <div className="flex items-center">
             <Button variant="ghost" size="sm" className="text-blue-600 hover:bg-blue-50 font-bold text-sm h-8 gap-1 rounded-md">
-              <span className="icon-[solar--add-broken] w-4 h-4" />
+              <span className="icon-[solar--add-circle-broken] w-4 h-4" />
               {t("follow")}
             </Button>
             <DropdownMenu dir="rtl">

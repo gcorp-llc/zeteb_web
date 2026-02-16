@@ -4,15 +4,16 @@ import { Button } from "@/components/ui/button";
 import { WorkingHour } from "../types";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { useTranslations } from "next-intl";
 
 const DAYS = [
-  { id: "saturday", label: "شنبه" },
-  { id: "sunday", label: "یک‌شنبه" },
-  { id: "monday", label: "دوشنبه" },
-  { id: "tuesday", label: "سه‌شنبه" },
-  { id: "wednesday", label: "چهارشنبه" },
-  { id: "thursday", label: "پنج‌شنبه" },
-  { id: "friday", label: "جمعه" },
+  "saturday",
+  "sunday",
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
 ];
 
 interface WorkingHoursProps {
@@ -21,6 +22,9 @@ interface WorkingHoursProps {
 }
 
 export function WorkingHours({ value, onChange }: WorkingHoursProps) {
+  const t = useTranslations("Days");
+  const tClinics = useTranslations("Clinics");
+
   const toggleDay = (dayId: string) => {
     const newValue = value.map((d) =>
       d.day === dayId ? { ...d, isOpen: !d.isOpen } : d
@@ -62,18 +66,18 @@ export function WorkingHours({ value, onChange }: WorkingHoursProps) {
 
   return (
     <div className="space-y-4">
-      <Label className="text-lg font-bold">ساعات کاری</Label>
+      <Label className="text-lg font-bold">{tClinics("workingHours")}</Label>
       <div className="grid gap-3">
-        {DAYS.map((day) => {
-          const dayData = value.find((d) => d.day === day.id) || {
-            day: day.id,
+        {DAYS.map((dayId) => {
+          const dayData = value.find((d) => d.day === dayId) || {
+            day: dayId,
             isOpen: false,
             shifts: [],
           };
 
           return (
             <div
-              key={day.id}
+              key={dayId}
               className={`p-4 rounded-2xl border transition-all ${
                 dayData.isOpen
                   ? "bg-primary/5 border-primary/20"
@@ -84,19 +88,19 @@ export function WorkingHours({ value, onChange }: WorkingHoursProps) {
                 <div className="flex items-center gap-3">
                   <Switch
                     checked={dayData.isOpen}
-                    onCheckedChange={() => toggleDay(day.id)}
+                    onCheckedChange={() => toggleDay(dayId)}
                   />
-                  <span className="font-bold">{day.label}</span>
+                  <span className="font-bold">{t(dayId)}</span>
                 </div>
                 {dayData.isOpen && (
                   <Button
                     type="button"
                     variant="ghost"
                     size="sm"
-                    onClick={() => addShift(day.id)}
+                    onClick={() => addShift(dayId)}
                     className="text-primary text-xs font-bold h-7"
                   >
-                    + افزودن شیفت
+                    {tClinics("addShift")}
                   </Button>
                 )}
               </div>
@@ -104,26 +108,26 @@ export function WorkingHours({ value, onChange }: WorkingHoursProps) {
               {dayData.isOpen && (
                 <div className="space-y-2">
                   {dayData.shifts.length === 0 && (
-                    <p className="text-[10px] text-muted-foreground">شیفتی ثبت نشده است</p>
+                    <p className="text-[10px] text-muted-foreground">{t("noShifts")}</p>
                   )}
                   {dayData.shifts.map((shift, idx) => (
                     <div key={idx} className="flex items-center gap-2">
                       <input
                         type="time"
                         value={shift.start}
-                        onChange={(e) => updateShift(day.id, idx, "start", e.target.value)}
+                        onChange={(e) => updateShift(dayId, idx, "start", e.target.value)}
                         className="bg-white/10 border border-white/10 rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
                       />
-                      <span className="text-muted-foreground text-xs">تا</span>
+                      <span className="text-muted-foreground text-xs">{tClinics("to")}</span>
                       <input
                         type="time"
                         value={shift.end}
-                        onChange={(e) => updateShift(day.id, idx, "end", e.target.value)}
+                        onChange={(e) => updateShift(dayId, idx, "end", e.target.value)}
                         className="bg-white/10 border border-white/10 rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-primary"
                       />
                       <button
                         type="button"
-                        onClick={() => removeShift(day.id, idx)}
+                        onClick={() => removeShift(dayId, idx)}
                         className="p-1 hover:text-destructive transition-colors"
                       >
                         <span className="icon-[solar--trash-bin-trash-bold-duotone] w-4 h-4" />
