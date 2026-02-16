@@ -80,7 +80,7 @@ export function ArticleEditor() {
             <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full"><span className="icon-[solar--list-bold] w-4 h-4" /></Button>
             <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full"><span className="icon-[solar--list-cross-bold] w-4 h-4" /></Button>
             <div className="w-px h-4 bg-border/50 mx-1" />
-            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full"><span className="icon-[solar--quote-bold] w-4 h-4" /></Button>
+            <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full"><span className="icon-[solar--pen-broken] w-4 h-4" /></Button>
             <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full"><span className="icon-[solar--code-bold] w-4 h-4" /></Button>
             <Button variant="ghost" size="icon" className="w-8 h-8 rounded-full"><span className="icon-[solar--minus-square-bold] w-4 h-4" /></Button>
             <div className="w-px h-4 bg-border/50 mx-1" />

@@ -37,13 +37,13 @@ export const ProfileMenu = ({ onNavigate }: ProfileMenuProps) => {
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col">
-            <span className="font-black text-foreground">{session?.user?.name || "کاربر زتب"}</span>
-            <span className="text-[10px] text-muted-foreground truncate w-40">مشاهده و ویرایش پروفایل</span>
+            <span className="font-black text-foreground">{session?.user?.name || t("guestUser")}</span>
+            <span className="text-[10px] text-muted-foreground truncate w-40">{t("viewAndEditProfile")}</span>
           </div>
         </div>
         <Link href="/profile" onClick={closeMenu}>
           <Button variant="outline" className="w-full mt-3 h-8 !rounded-xl text-xs font-bold border-primary/30 text-primary hover:bg-primary/10">
-            مشاهده پروفایل
+            {t("viewProfile")}
           </Button>
         </Link>
       </div>
@@ -60,7 +60,7 @@ export const ProfileMenu = ({ onNavigate }: ProfileMenuProps) => {
         </Link>
         <Link href="/clinics/manage" onClick={closeMenu} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-primary/10 transition-colors group border border-primary/20 mt-1">
           <span className="icon-[solar--hospital-bold-duotone] w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-          <span className="text-sm font-black text-primary">مدیریت کلینیک و مطب</span>
+          <span className="text-sm font-black text-primary">{t("manageClinics")}</span>
         </Link>
         <div className="px-3 py-2 space-y-4">
           <div>
@@ -88,12 +88,12 @@ export const ProfileMenu = ({ onNavigate }: ProfileMenuProps) => {
           <div>
             <div className="flex items-center gap-3 mb-2">
               <span className="icon-[solar--moon-bold-duotone] w-5 h-5 text-primary/70" />
-              <span className="text-sm font-bold text-foreground/80">حالت نمایش</span>
+              <span className="text-sm font-bold text-foreground/80">{t("displayMode")}</span>
             </div>
             <div className="flex gap-2 p-1 bg-white/5 rounded-xl border border-white/10">
-              <button onClick={() => setTheme("light")} className={`flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg transition-all text-[10px] font-bold ${theme === "light" ? "bg-white text-black shadow-sm" : "text-muted-foreground hover:bg-white/5"}`}><span className="icon-[solar--sun-bold-duotone] w-4 h-4" />روز</button>
-              <button onClick={() => setTheme("dark")} className={`flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg transition-all text-[10px] font-bold ${theme === "dark" ? "bg-slate-800 text-white shadow-sm" : "text-muted-foreground hover:bg-white/5"}`}><span className="icon-[solar--moon-bold-duotone] w-4 h-4" />شب</button>
-              <button onClick={() => setTheme("system")} className={`flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg transition-all text-[10px] font-bold ${theme === "system" ? "bg-white/10 text-foreground" : "text-muted-foreground hover:bg-white/5"}`}><span className="icon-[solar--monitor-bold-duotone] w-4 h-4" />سیستم</button>
+              <button onClick={() => setTheme("light")} className={`flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg transition-all text-[10px] font-bold ${theme === "light" ? "bg-white text-black shadow-sm" : "text-muted-foreground hover:bg-white/5"}`}><span className="icon-[solar--sun-bold-duotone] w-4 h-4" />{t("light")}</button>
+              <button onClick={() => setTheme("dark")} className={`flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg transition-all text-[10px] font-bold ${theme === "dark" ? "bg-slate-800 text-white shadow-sm" : "text-muted-foreground hover:bg-white/5"}`}><span className="icon-[solar--moon-bold-duotone] w-4 h-4" />{t("dark")}</button>
+              <button onClick={() => setTheme("system")} className={`flex-1 flex items-center justify-center gap-2 py-1.5 rounded-lg transition-all text-[10px] font-bold ${theme === "system" ? "bg-white/10 text-foreground" : "text-muted-foreground hover:bg-white/5"}`}><span className="icon-[solar--monitor-bold-duotone] w-4 h-4" />{t("system")}</button>
             </div>
           </div>
         </div>
@@ -110,11 +110,11 @@ export const ProfileMenu = ({ onNavigate }: ProfileMenuProps) => {
         </Link>
         <Link href="/analytics" onClick={closeMenu} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors group">
           <span className="icon-[solar--chart-bold-duotone] w-5 h-5 text-primary/70 group-hover:text-primary" />
-          <span className="text-sm font-bold text-foreground/80">آمار و تحلیل‌ها</span>
+          <span className="text-sm font-bold text-foreground/80">{t("analytics")}</span>
         </Link>
         <Link href="/wallet" onClick={closeMenu} className="flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors group">
           <span className="icon-[solar--wallet-money-bold-duotone] w-5 h-5 text-primary/70 group-hover:text-primary" />
-          <span className="text-sm font-bold text-foreground/80">امور مالی و کیف پول</span>
+          <span className="text-sm font-bold text-foreground/80">{t("wallet")}</span>
         </Link>
       </div>
 

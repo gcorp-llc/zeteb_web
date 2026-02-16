@@ -48,7 +48,37 @@
     "medicalGroups": "گروه‌های پزشکی",
     "followedHashtags": "هشتگ‌های دنبال شده",
     "topSpecialties": "برترین تخصص‌ها",
-    "topDoctorsOfWeek": "پزشکان برتر هفته"
+    "topDoctorsOfWeek": "پزشکان برتر هفته",
+    "adTitle": "پکیج ویژه ارتقای پروفایل",
+    "adDesc": "با خرید پکیج ویژه، پروفایل شما در صدر نتایج جستجو نمایش داده می‌شود و بازدید شما تا ۳ برابر افزایش می‌یابد.",
+    "adAction": "مشاهده جزئیات و خرید",
+    "myActivities": "فعالیت‌های من",
+    "managePosts": "مدیریت پست‌ها",
+    "ads": "تبلیغات",
+    "viewStats": "مشاهده آمار بازدید",
+    "onlineBooking": "نوبت‌دهی آنلاین",
+    "phoneConsultation": "مشاوره تلفنی",
+    "chatConsultation": "مشاوره متنی",
+    "newArticles": "مقالات جدید",
+    "suggestedPeople": "افراد پیشنهادی",
+    "internalMedicine": "متخصص داخلی",
+    "dermatology": "متخصص پوست",
+    "gynecology": "متخصص زنان",
+    "pediatrics": "متخصص کودکان",
+    "cardiology": "متخصص قلب",
+    "ophthalmology": "متخصص چشم",
+    "dermatologyHair": "متخصص پوست و مو",
+    "cardiologyVascular": "متخصص قلب و عروق",
+    "tehranJordan": "تهران، جردن",
+    "tehranSaadatAbad": "تهران، سعادت آباد",
+    "tehranValiasr": "تهران، ولیعصر",
+    "tehranPounak": "تهران، پونک",
+    "tehranTajrish": "تهران، تجریش",
+    "tomorrow1030": "فردا ۱۰:۳۰",
+    "monday1600": "دوشنبه ۱۶:۰۰",
+    "today1815": "امروز ۱۸:۱۵",
+    "wednesday0900": "چهارشنبه ۰۹:۰۰",
+    "tomorrow1545": "فردا ۱۵:۴۵"
   },
   "PostEditor": {
     "title": "نوشتن مقاله",
@@ -99,7 +129,11 @@
     "addCover": "یک تصویر یا ویدیو برای کاور مقاله خود اضافه کنید.",
     "uploadFromComputer": "آپلود از کامپیوتر",
     "titlePlaceholder": "عنوان",
-    "writeHere": "اینجا بنویسید. می‌توانید از @mention هم استفاده کنید."
+    "writeHere": "اینجا بنویسید. می‌توانید از @mention هم استفاده کنید.",
+    "uploadingFiles": "در حال آپلود فایل‌ها...",
+    "postSuccess": "پست با موفقیت منتشر شد",
+    "articleSuccess": "مقاله با موفقیت منتشر شد",
+    "guestUser": "کاربر مهمان"
   },
   "ProfilePage": {
     "editProfile": "ویرایش پروفایل",
@@ -114,7 +148,8 @@
     "activity": "فعالیت‌ها",
     "education": "تحصیلات",
     "contact": "اطلاعات تماس",
-    "skills": "مهارت‌ها"
+    "skills": "مهارت‌ها",
+    "contactInfoAndAddress": "اطلاعات تماس و آدرس"
   },
   "Languages": {
     "fa": "فارسی",
@@ -160,7 +195,16 @@
     "settingsAndPrivacy": "تنظیمات و حریم خصوصی",
     "help": "راهنما",
     "language": "تغییر زبان",
-    "postsAndActivity": "پست‌ها و فعالیت‌ها"
+    "postsAndActivity": "پست‌ها و فعالیت‌ها",
+    "viewAndEditProfile": "مشاهده و ویرایش پروفایل",
+    "manageClinics": "مدیریت کلینیک و مطب",
+    "displayMode": "حالت نمایش",
+    "light": "روز",
+    "dark": "شب",
+    "system": "سیستم",
+    "analytics": "آمار و تحلیل‌ها",
+    "wallet": "امور مالی و کیف پول",
+    "guestUser": "کاربر زتب"
   },
   "Settings": {
     "title": "تنظیمات حساب کاربری",
@@ -252,7 +296,13 @@
     "reactionSupport": "حمایت",
     "reactionLove": "عشق",
     "reactionInsightful": "آموزنده",
-    "reactionFunny": "خنده‌دار"
+    "reactionFunny": "خنده‌دار",
+    "second": "درجه ۲",
+    "hoursAgo": "{count} ساعت پیش",
+    "posts": "پست‌ها",
+    "comments": "کامنت‌ها",
+    "reposts": "ری‌پست‌ها",
+    "likes": "لایک‌ها"
   },
   "Appointments": {
     "title": "نوبت‌های من",
@@ -273,5 +323,55 @@
     "pending": "در انتظار",
     "done": "انجام شده",
     "canceled": "لغو شده"
+  },
+  "Clinics": {
+    "title": "مدیریت کلینیک و مطب",
+    "name": "نام مرکز (مطب/کلینیک/بیمارستان)",
+    "namePlaceholder": "مثلاً مطب جردن",
+    "type": "نوع مرکز",
+    "selectType": "انتخاب کنید",
+    "clinic": "کلینیک",
+    "office": "مطب شخصی",
+    "hospital": "بیمارستان",
+    "logo": "لوگو مرکز",
+    "uploading": "در حال آپلود...",
+    "selectLogo": "انتخاب لوگو",
+    "locationOnMap": "موقعیت روی نقشه",
+    "contactInfo": "اطلاعات تماس",
+    "phoneNumber": "شماره تماس",
+    "phonePlaceholder": "۰۲۱...",
+    "active": "فعال",
+    "addNewPhone": "+ افزودن شماره تماس جدید",
+    "exactAddress": "آدرس دقیق",
+    "addressPlaceholder": "تهران، خیابان...",
+    "saveFinal": "ثبت و ذخیره نهایی",
+    "uploadSuccess": "لوگو با موفقیت آپلود شد",
+    "saveSuccess": "اطلاعات با موفقیت ثبت شد",
+    "saveError": "خطا در ثبت اطلاعات",
+    "workingHours": "ساعت کاری",
+    "shifts": "شیفت‌ها",
+    "addShift": "افزودن شیفت",
+    "from": "از",
+    "to": "تا",
+    "closed": "تعطیل"
+  },
+  "Search": {
+    "foundResults": "نتایج یافت شده",
+    "all": "همه",
+    "doctors": "پزشکان",
+    "articles": "مقالات",
+    "educationalArticle": "مقاله آموزشی",
+    "authorPrefix": "نویسنده:",
+    "views": "{count} بازدید"
+  },
+  "Days": {
+    "saturday": "شنبه",
+    "sunday": "یک‌شنبه",
+    "monday": "دوشنبه",
+    "tuesday": "سه‌شنبه",
+    "wednesday": "چهارشنبه",
+    "thursday": "پنج‌شنبه",
+    "friday": "جمعه",
+    "noShifts": "شیفتی ثبت نشده است"
   }
 }

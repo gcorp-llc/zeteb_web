@@ -6,14 +6,17 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 export default function SearchResultsPage() {
+  const t = useTranslations("Search");
+  const tHome = useTranslations("HomePage");
   const searchParams = useSearchParams();
   const query = searchParams.get("q") || "";
 
   const results = [
-    { id: 1, type: "doctor", name: "دکتر حسین افتخارراد", specialty: "متخصص داخلی و جراح", location: "تهران، جردن", image: "/favicon.png", rating: 4.8 },
-    { id: 2, type: "doctor", name: "دکتر سارا علوی", specialty: "متخصص قلب و عروق", location: "تهران، سعادت آباد", image: "https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=100", rating: 4.9 },
+    { id: 1, type: "doctor", name: "دکتر حسین افتخارراد", specialty: tHome("internalMedicine"), location: tHome("tehranJordan"), image: "/favicon.png", rating: 4.8 },
+    { id: 2, type: "doctor", name: "دکتر سارا علوی", specialty: tHome("cardiologyVascular"), location: tHome("tehranSaadatAbad"), image: "https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=100", rating: 4.9 },
     { id: 3, type: "article", title: "روش‌های نوین در جراحی‌های غیر تهاجمی", author: "دکتر مهران صادقی", date: "۲ روز پیش", views: 1240 },
   ];
 
@@ -21,11 +24,11 @@ export default function SearchResultsPage() {
     <PageContainer >
       <div className="max-w-4xl mx-auto space-y-6 pb-20">
         <div className="flex items-center justify-between">
-           <h2 className="text-xl font-black">نتایج یافت شده</h2>
+           <h2 className="text-xl font-black">{t("foundResults")}</h2>
            <div className="flex gap-2">
-              <Badge variant="secondary" className="bg-primary/10 text-primary !rounded-full px-4 h-7 font-black">همه</Badge>
-              <Badge variant="outline" className="!rounded-full px-4 h-7 font-bold border-white/10">پزشکان</Badge>
-              <Badge variant="outline" className="!rounded-full px-4 h-7 font-bold border-white/10">مقالات</Badge>
+              <Badge variant="secondary" className="bg-primary/10 text-primary !rounded-full px-4 h-7 font-black">{t("all")}</Badge>
+              <Badge variant="outline" className="!rounded-full px-4 h-7 font-bold border-white/10">{t("doctors")}</Badge>
+              <Badge variant="outline" className="!rounded-full px-4 h-7 font-bold border-white/10">{t("articles")}</Badge>
            </div>
         </div>
 
@@ -56,28 +59,28 @@ export default function SearchResultsPage() {
                           </div>
                           <div className="flex items-center gap-1">
                              <span className="icon-[solar--calendar-bold-duotone] w-4 h-4 text-primary" />
-                             اولین نوبت خالی: فردا ۱۰:۳۰
+                             {tHome("nextEmpty")} {tHome("tomorrow1030")}
                           </div>
                        </div>
                        <div className="pt-2 flex gap-3">
                           <Link href={`/appointments/book/${item.id}`}>
-                             <Button className="h-9 !rounded-xl text-xs font-black px-6">دریافت نوبت</Button>
+                             <Button className="h-9 !rounded-xl text-xs font-black px-6">{tHome("bookNow")}</Button>
                           </Link>
-                          <Button variant="outline" className="h-9 !rounded-xl text-xs font-bold border-primary/20 text-primary">مشاهده پروفایل</Button>
+                          <Button variant="outline" className="h-9 !rounded-xl text-xs font-bold border-primary/20 text-primary">{tHome("viewAll")}</Button>
                        </div>
                     </div>
                   </>
                 ) : (
                   <div className="flex-1 space-y-3">
                      <div className="flex items-center gap-2">
-                        <Badge className="bg-blue-500/10 text-blue-500 hover:bg-blue-500/20 border-none rounded-lg text-[10px] font-black">مقاله آموزشی</Badge>
+                        <Badge className="bg-blue-500/10 text-blue-500 hover:bg-blue-500/20 border-none rounded-lg text-[10px] font-black">{t("educationalArticle")}</Badge>
                         <span className="text-[10px] text-muted-foreground font-bold">{item.date}</span>
                      </div>
                      <h3 className="text-lg font-black group-hover:text-primary transition-colors">{item.title}</h3>
                      <div className="flex items-center gap-3">
-                        <p className="text-xs font-bold text-muted-foreground">نویسنده: <span className="text-foreground">{item.author}</span></p>
+                        <p className="text-xs font-bold text-muted-foreground">{t("authorPrefix")} <span className="text-foreground">{item.author}</span></p>
                         <span className="text-muted-foreground">•</span>
-                        <p className="text-xs font-bold text-muted-foreground">{item.views} بازدید</p>
+                        <p className="text-xs font-bold text-muted-foreground">{t("views", { count: item.views || 0 })}</p>
                      </div>
                   </div>
                 )}

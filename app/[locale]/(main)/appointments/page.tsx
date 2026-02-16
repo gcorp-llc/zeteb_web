@@ -10,25 +10,35 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { ResponsiveModal } from "@/components/ui/responsive-modal";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function AppointmentsPage() {
   const t = useTranslations("Appointments");
-  const [view, setView] = useState<"patient" | "doctor">("patient");
+  const [view, setView] = useState<"booked" | "requests">("booked");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const fetchAppointments = async ({ pageParam = 1 }) => {
-    // شبیه‌سازی فراخوانی API
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    const baseData = [
+    // Mock data
+    const bookedData = [
       { id: 1, name: "دکتر مریم علوی", date: "۱۴۰۳/۰۲/۱۵", time: "۱۰:۳۰", status: "confirmed", specialty: "متخصص پوست" },
       { id: 2, name: "دکتر رضا محمدی", date: "۱۴۰۳/۰۲/۲۰", time: "۱۶:۰۰", status: "pending", specialty: "متخصص قلب" },
-      { id: 3, name: "دکتر سارا احمدی", date: "۱۴۰۳/۰۱/۱۰", time: "۱۸:۱۵", status: "done", specialty: "متخصص کودکان" },
-      { id: 4, name: "دکتر علی حسینی", date: "۱۴۰۳/۰۱/۰۵", time: "۰۹:۰۰", status: "canceled", specialty: "متخصص داخلی" },
     ];
 
+    const requestData = [
+      { id: 101, name: "سعید کریمی", date: "۱۴۰۳/۰۲/۲۵", time: "۰۹:۰۰", status: "pending", specialty: "بیمار" },
+      { id: 102, name: "نازنین زهرا", date: "۱۴۰۳/۰۲/۲۶", time: "۱۱:۳۰", status: "pending", specialty: "بیمار" },
+    ];
+
+    const baseData = view === "booked" ? bookedData : requestData;
+
     return {
-      // ترکیب شماره صفحه با ID برای جلوگیری از کلید تکراری در اسکرول نامحدود
       appointments: baseData.map(apt => ({
         ...apt,
         id: `${pageParam}-${apt.id}` 
@@ -53,10 +63,10 @@ export default function AppointmentsPage() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case "confirmed": return <Badge className="bg-green-500/10 text-green-600 border-none">{t("confirmed")}</Badge>;
-      case "pending": return <Badge className="bg-yellow-500/10 text-yellow-600 border-none">{t("pending")}</Badge>;
-      case "done": return <Badge className="bg-blue-500/10 text-blue-600 border-none">{t("done")}</Badge>;
-      case "canceled": return <Badge className="bg-red-500/10 text-red-600 border-none">{t("canceled")}</Badge>;
+      case "confirmed": return <Badge className="bg-green-500/10 text-green-600 border-none font-black text-[10px]">{t("confirmed")}</Badge>;
+      case "pending": return <Badge className="bg-yellow-500/10 text-yellow-600 border-none font-black text-[10px]">{t("pending")}</Badge>;
+      case "done": return <Badge className="bg-blue-500/10 text-blue-600 border-none font-black text-[10px]">{t("done")}</Badge>;
+      case "canceled": return <Badge className="bg-red-500/10 text-red-600 border-none font-black text-[10px]">{t("canceled")}</Badge>;
       default: return null;
     }
   };
@@ -67,22 +77,18 @@ export default function AppointmentsPage() {
         <h3 className="font-black text-sm">{t("manage")}</h3>
         <div className="space-y-2">
           <Button
-            variant={view === "doctor" ? "secondary" : "ghost"}
-            onClick={() => setView("doctor")}
-            className={cn("w-full justify-start text-xs font-bold gap-2 hover:bg-white/5", view === "doctor" && "text-primary bg-primary/10")}
-          >
-            <span className="icon-[solar--calendar-management-bold-duotone] w-4 h-4" />
-            {t("manage")}
-          </Button>
-          <Button
-            variant={view === "patient" ? "secondary" : "ghost"}
-            onClick={() => setView("patient")}
-            className={cn("w-full justify-start text-xs font-bold gap-2 hover:bg-white/5", view === "patient" && "text-primary bg-primary/10")}
+            variant={view === "booked" ? "secondary" : "ghost"}
+            onClick={() => { setView("booked"); setIsSidebarOpen(false); }}
+            className={cn("w-full justify-start text-xs font-bold gap-2 hover:bg-white/5", view === "booked" && "text-primary bg-primary/10")}
           >
             <span className="icon-[solar--calendar-add-bold-duotone] w-4 h-4" />
             {t("booked")}
           </Button>
-          <Button variant="ghost" className="w-full justify-start text-xs font-bold gap-2 hover:bg-white/5">
+          <Button
+            variant={view === "requests" ? "secondary" : "ghost"}
+            onClick={() => { setView("requests"); setIsSidebarOpen(false); }}
+            className={cn("w-full justify-start text-xs font-bold gap-2 hover:bg-white/5", view === "requests" && "text-primary bg-primary/10")}
+          >
             <span className="icon-[solar--user-plus-bold-duotone] w-4 h-4" />
             {t("requests")}
           </Button>
@@ -103,12 +109,10 @@ export default function AppointmentsPage() {
     <PageContainer >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6 pb-20">
 
-        {/* Left Sidebar - Desktop */}
         <div className="hidden lg:block">
            <SidebarContent />
         </div>
 
-        {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           <div className="flex gap-2 items-center">
             <Button
@@ -132,7 +136,7 @@ export default function AppointmentsPage() {
           </div>
 
           <div className="flex items-center justify-between">
-             <h2 className="text-xl font-black">{view === "patient" ? t("title") : t("manage")}</h2>
+             <h2 className="text-xl font-black">{view === "booked" ? t("booked") : t("requests")}</h2>
           </div>
 
           <InfiniteScroll
@@ -153,7 +157,28 @@ export default function AppointmentsPage() {
                          <p className="text-xs text-muted-foreground">{apt.specialty}</p>
                       </div>
                     </div>
-                    {getStatusBadge(apt.status)}
+
+                    <DropdownMenu dir="rtl">
+                      <DropdownMenuTrigger asChild>
+                        <button className="outline-none">
+                          {getStatusBadge(apt.status)}
+                        </button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end" className="glass-card !p-1 min-w-[120px]">
+                        <DropdownMenuItem className="text-[10px] font-bold rounded-lg cursor-pointer gap-2" onClick={() => {}}>
+                           <div className="w-2 h-2 rounded-full bg-green-500" />
+                           {t("confirmed")}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-[10px] font-bold rounded-lg cursor-pointer gap-2" onClick={() => {}}>
+                           <div className="w-2 h-2 rounded-full bg-blue-500" />
+                           {t("done")}
+                        </DropdownMenuItem>
+                        <DropdownMenuItem className="text-[10px] font-bold rounded-lg cursor-pointer gap-2 text-destructive" onClick={() => {}}>
+                           <div className="w-2 h-2 rounded-full bg-destructive" />
+                           {t("canceled")}
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-x-6 gap-y-2 py-3 border-y border-border/30">
@@ -169,11 +194,14 @@ export default function AppointmentsPage() {
 
                   <div className="flex gap-3">
                     <Button variant="secondary" className="flex-1 !rounded-xl font-bold h-11 bg-muted/40">{t("details")}</Button>
-                    {apt.status === "pending" && (
+                    {view === "booked" && (
                       <Button variant="ghost" className="flex-1 !rounded-xl text-destructive hover:bg-destructive/5 font-bold h-11">{t("cancel")}</Button>
                     )}
-                    {view === "doctor" && apt.status === "pending" && (
-                      <Button className="flex-1 !rounded-xl bg-primary hover:bg-primary/90 font-bold h-11 shadow-lg shadow-primary/20">{t("confirm")}</Button>
+                    {view === "requests" && (
+                      <>
+                        <Button variant="ghost" className="flex-1 !rounded-xl text-destructive hover:bg-destructive/5 font-bold h-11">{t("cancel")}</Button>
+                        <Button className="flex-1 !rounded-xl bg-primary hover:bg-primary/90 font-bold h-11 shadow-lg shadow-primary/20">{t("confirm")}</Button>
+                      </>
                     )}
                   </div>
                 </div>
@@ -182,7 +210,6 @@ export default function AppointmentsPage() {
           </InfiniteScroll>
         </div>
 
-        {/* Right Sidebar - Desktop Ads */}
         <div className="hidden lg:block space-y-4">
            <div className="glass-card !p-4">
               <p className="text-[10px] text-muted-foreground text-center">{t("specialOffer")}</p>
@@ -196,7 +223,6 @@ export default function AppointmentsPage() {
 
       </div>
 
-      {/* Mobile Sidebar Drawer */}
       <ResponsiveModal open={isSidebarOpen} onOpenChange={setIsSidebarOpen} title={t("menu")}>
           <div className="pb-10">
             <SidebarContent />

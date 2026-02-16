@@ -18,20 +18,20 @@ export default function DoctorsPage() {
   const t = useTranslations("HomePage");
 
   const specialties = [
-    { name: "متخصص داخلی", icon: "icon-[solar--medical-kit-bold-duotone]", color: "text-blue-500" },
-    { name: "متخصص پوست", icon: "icon-[solar--magic-stick-3-bold-duotone]", color: "text-purple-500" },
-    { name: "متخصص زنان", icon: "icon-[solar--user-speak-bold-duotone]", color: "text-pink-500" },
-    { name: "متخصص کودکان", icon: "icon-[solar--reorder-bold-duotone]", color: "text-orange-500" },
-    { name: "متخصص قلب", icon: "icon-[solar--heart-bold-duotone]", color: "text-red-500" },
-    { name: "متخصص چشم", icon: "icon-[solar--eye-bold-duotone]", color: "text-indigo-500" },
+    { name: t("internalMedicine"), icon: "icon-[solar--medical-kit-bold-duotone]", color: "text-blue-500" },
+    { name: t("dermatology"), icon: "icon-[solar--magic-stick-3-bold-duotone]", color: "text-purple-500" },
+    { name: t("gynecology"), icon: "icon-[solar--user-speak-bold-duotone]", color: "text-pink-500" },
+    { name: t("pediatrics"), icon: "icon-[solar--reorder-bold-duotone]", color: "text-orange-500" },
+    { name: t("cardiology"), icon: "icon-[solar--heart-bold-duotone]", color: "text-red-500" },
+    { name: t("ophthalmology"), icon: "icon-[solar--eye-bold-duotone]", color: "text-indigo-500" },
   ];
 
   const doctors = [
-    { id: 1, name: "دکتر مریم علوی", specialty: "متخصص پوست و مو", rating: 4.8, reviews: 120, image: "MA", location: "تهران، جردن", nextAvailable: "فردا ۱۰:۳۰" },
-    { id: 2, name: "دکتر رضا محمدی", specialty: "متخصص قلب و عروق", rating: 4.9, reviews: 85, image: "RM", location: "تهران، سعادت آباد", nextAvailable: "دوشنبه ۱۶:۰۰" },
-    { id: 3, name: "دکتر سارا احمدی", specialty: "متخصص کودکان", rating: 4.7, reviews: 150, image: "SA", location: "تهران، ولیعصر", nextAvailable: "امروز ۱۸:۱۵" },
-    { id: 4, name: "دکتر علی حسینی", specialty: "متخصص داخلی", rating: 4.6, reviews: 210, image: "AH", location: "تهران، پونک", nextAvailable: "چهارشنبه ۰۹:۰۰" },
-    { id: 5, name: "دکتر مونا رضایی", specialty: "متخصص چشم", rating: 4.9, reviews: 95, image: "MR", location: "تهران، تجریش", nextAvailable: "فردا ۱۵:۴۵" },
+    { id: 1, name: "دکتر مریم علوی", specialty: t("dermatologyHair"), rating: 4.8, reviews: 120, image: "MA", location: t("tehranJordan"), nextAvailable: t("tomorrow1030") },
+    { id: 2, name: "دکتر رضا محمدی", specialty: t("cardiologyVascular"), rating: 4.9, reviews: 85, image: "RM", location: t("tehranSaadatAbad"), nextAvailable: t("monday1600") },
+    { id: 3, name: "دکتر سارا احمدی", specialty: t("pediatrics"), rating: 4.7, reviews: 150, image: "SA", location: t("tehranValiasr"), nextAvailable: t("today1815") },
+    { id: 4, name: "دکتر علی حسینی", specialty: t("internalMedicine"), rating: 4.6, reviews: 210, image: "AH", location: t("tehranPounak"), nextAvailable: t("wednesday0900") },
+    { id: 5, name: "دکتر مونا رضایی", specialty: t("ophthalmology"), rating: 4.9, reviews: 95, image: "MR", location: t("tehranTajrish"), nextAvailable: t("tomorrow1545") },
   ];
 
   return (
@@ -136,10 +136,14 @@ export default function DoctorsPage() {
 
                 <div className="space-y-3 pt-2">
                   <label className="text-sm font-medium opacity-70">{t("services")}</label>
-                  {["نوبت‌دهی آنلاین", "مشاوره تلفنی", "مشاوره متنی"].map((service) => (
-                    <label key={service} className="flex items-center gap-3 cursor-pointer group">
+                  {[
+                    { id: "onlineBooking", label: t("onlineBooking") },
+                    { id: "phoneConsultation", label: t("phoneConsultation") },
+                    { id: "chatConsultation", label: t("chatConsultation") }
+                  ].map((service) => (
+                    <label key={service.id} className="flex items-center gap-3 cursor-pointer group">
                       <div className="w-5 h-5 rounded-md border-2 border-primary/30 group-hover:border-primary/50 transition-colors" />
-                      <span className="text-sm">{service}</span>
+                      <span className="text-sm">{service.label}</span>
                     </label>
                   ))}
                 </div>

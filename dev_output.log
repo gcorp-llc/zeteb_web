@@ -1,0 +1,21 @@
+
+> zeteb@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+✓ Ready in 1770ms
+○ Compiling /[locale]/posts ...
+ GET /fa/posts 200 in 10.6s (compile: 9.3s, proxy.ts: 228ms, render: 1080ms)
+○ Compiling /api/auth/[...auth] ...
+[2m2026-02-16T15:17:15.963Z[0m [33mWARN[0m [1m[Better Auth]:[0m Adapter does not correctly implement transaction function, patching it automatically. Please update your adapter implementation.
+[2m2026-02-16T15:17:15.981Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider google is missing clientId or clientSecret
+[2m2026-02-16T15:17:15.982Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider github is missing clientId or clientSecret
+ GET /api/auth/get-session 200 in 6.3s
+ GET /fa/appointments 200 in 3.1s (compile: 2.9s, proxy.ts: 9ms, render: 145ms)
+[2m2026-02-16T15:17:17.479Z[0m [33mWARN[0m [1m[Better Auth]:[0m Adapter does not correctly implement transaction function, patching it automatically. Please update your adapter implementation.
+[2m2026-02-16T15:17:17.496Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider google is missing clientId or clientSecret
+[2m2026-02-16T15:17:17.496Z[0m [33mWARN[0m [1m[Better Auth]:[0m Social provider github is missing clientId or clientSecret
