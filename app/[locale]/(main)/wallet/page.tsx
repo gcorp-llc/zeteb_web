@@ -17,7 +17,7 @@ const revenueData = [
 
 export default function WalletPage() {
   return (
-    <PageContainer title="امور مالی و کیف پول">
+    <PageContainer>
       <div className="max-w-5xl mx-auto space-y-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2 glass-card !p-8 flex flex-col justify-between bg-ios-gradient text-white border-none">

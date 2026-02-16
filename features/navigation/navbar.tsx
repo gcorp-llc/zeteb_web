@@ -36,7 +36,7 @@ export const Navbar = () => {
                   href={item.href}
                   isActive={pathname === item.href}
                   badge={item.badge}
-                  avatar={item.avatar}
+                  // avatar={item.avatar}
                 />
               ))}
             </div>

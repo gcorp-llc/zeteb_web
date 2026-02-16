@@ -47,7 +47,7 @@ export default function NotificationsPage() {
   const notifications = data?.pages.flatMap(p => p.notifications) || [];
 
   return (
-    <PageContainer title={t("notifications")}>
+    <PageContainer >
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6 pb-20">
 
         {/* Sidebar */}

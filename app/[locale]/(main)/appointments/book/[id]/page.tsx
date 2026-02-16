@@ -18,7 +18,7 @@ export default function AppointmentBookingPage({ params }: { params: { id: strin
   ];
 
   return (
-    <PageContainer title="دریافت نوبت آنلاین">
+    <PageContainer>
       <div className="max-w-4xl mx-auto space-y-8 pb-20">
 
         {/* Doctor Summary */}

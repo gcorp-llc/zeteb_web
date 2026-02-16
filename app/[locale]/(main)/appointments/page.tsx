@@ -100,7 +100,7 @@ export default function AppointmentsPage() {
   );
 
   return (
-    <PageContainer title={t("title")}>
+    <PageContainer >
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-4 gap-6 pb-20">
 
         {/* Left Sidebar - Desktop */}
