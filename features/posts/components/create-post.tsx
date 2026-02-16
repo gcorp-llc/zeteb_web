@@ -17,6 +17,7 @@ import { postsApi } from "../api";
 
 export function CreatePost() {
   const t = useTranslations("HomePage");
+  const tp = useTranslations("PostEditor");
   const { uploadFile, isUploading } = useUpload();
   const { data: session } = authClient.useSession();
   const [isOpen, setIsOpen] = useState(false);
@@ -66,7 +67,7 @@ export function CreatePost() {
           <AvatarImage src={session?.user?.image || "/favicon.png"} />
           <AvatarFallback>{session?.user?.name?.[0] || "U"}</AvatarFallback>
         </Avatar>
-        <button onClick={() => setIsOpen(true)} className="flex-1 text-right px-5 h-12 rounded-full border border-border/60 bg-background hover:bg-muted/30 transition-colors text-muted-foreground text-sm font-medium">
+        <button onClick={() => setIsOpen(true)} className="flex-1 text-start px-5 h-12 rounded-full border border-border/60 bg-background hover:bg-muted/30 transition-colors text-muted-foreground text-sm font-medium">
           {t("startPost")}
         </button>
       </div>
@@ -80,7 +81,7 @@ export function CreatePost() {
         ))}
       </div>
 
-      <ResponsiveModal title={t("createPost")} open={isOpen} onOpenChange={setIsOpen}>
+      <ResponsiveModal hideHeader open={isOpen} onOpenChange={setIsOpen}>
         <div className="flex flex-col h-[500px]">
           <div className="flex items-center gap-3 p-4">
             <Avatar className="w-14 h-14 rounded-full">
@@ -88,29 +89,34 @@ export function CreatePost() {
               <AvatarFallback>{session?.user?.name?.[0] || "U"}</AvatarFallback>
             </Avatar>
             <div>
-              <p className="text-lg font-semibold">{session?.user?.name || "کاربر"}</p>
-              <button className="flex items-center gap-1 text-muted-foreground text-xs border border-muted-foreground/30 rounded-full px-2 py-0.5 mt-0.5">
-                <span className="icon-[solar--global-broken] w-3 h-3" />
-                <span>همه</span>
-                <span className="icon-[solar--alt-arrow-down-broken] w-3 h-3" />
-              </button>
+              <div className="flex items-center gap-2">
+                <p className="text-lg font-bold">{session?.user?.name || "کاربر"}</p>
+                <span className="icon-[solar--alt-arrow-down-bold] w-4 h-4 cursor-pointer" />
+              </div>
+              <p className="text-muted-foreground text-xs">{tp("postToAnyone")}</p>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto px-4">
+          <div className="flex-1 overflow-y-auto px-6 relative">
             <Textarea
-              placeholder="در مورد چه چیزی می‌خواهید صحبت کنید؟"
-              className="min-h-[200px] border-none bg-transparent text-xl focus-visible:ring-0 p-0 resize-none placeholder:text-muted-foreground/60"
+              placeholder={t("postPlaceholder")}
+              className="min-h-[250px] border-none bg-transparent text-lg focus-visible:ring-0 p-0 resize-none placeholder:text-muted-foreground/60"
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
+
+            <div className="absolute bottom-4 start-6">
+              <button className="p-1 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--smile-square-broken] w-6 h-6 text-muted-foreground" />
+              </button>
+            </div>
 
             {attachments.length > 0 && (
               <div className="grid grid-cols-1 gap-4 pb-4">
                 {attachments.map((file, i) => (
                   <div key={i} className="relative rounded-lg overflow-hidden border border-border/30 bg-black/5">
                     {file.type.startsWith("image") ? <img src={URL.createObjectURL(file)} alt="Attachment" className="w-full h-auto" /> : <video src={URL.createObjectURL(file)} controls className="w-full h-auto" />}
-                    <Button variant="secondary" size="icon" className="absolute top-2 right-2 w-8 h-8 rounded-full bg-background/80 backdrop-blur" onClick={() => setAttachments(attachments.filter((_, idx) => idx !== i))}>
+                    <Button variant="secondary" size="icon" className="absolute top-2 end-2 w-8 h-8 rounded-full bg-background/80 backdrop-blur" onClick={() => setAttachments(attachments.filter((_, idx) => idx !== i))}>
                       <span className="icon-[solar--close-circle-broken] w-5 h-5" />
                     </Button>
                   </div>
@@ -122,28 +128,37 @@ export function CreatePost() {
             {eventData && <div className="p-4 rounded-xl bg-muted/20 border border-border/50 text-sm font-semibold mb-4">📅 {eventData.title}</div>}
           </div>
 
-          <div className="p-4 space-y-4">
-            <div className="flex items-center gap-2">
-              <button onClick={() => openMedia("image")} className="p-2 hover:bg-muted rounded-full transition-colors">
-                <span className="icon-[solar--gallery-broken] w-6 h-6 text-muted-foreground" />
+          <div className="p-4 bg-card">
+            <div className="flex items-center gap-4 px-2 mb-4">
+              <button onClick={() => openMedia("image")} title={tp("addPhoto")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--gallery-bold] w-6 h-6 text-muted-foreground" />
               </button>
-              <button onClick={() => openMedia("video")} className="p-2 hover:bg-muted rounded-full transition-colors">
-                <span className="icon-[solar--videocamera-record-broken] w-6 h-6 text-muted-foreground" />
+              <button onClick={() => setEventOpen(true)} title={tp("createEvent")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--calendar-bold] w-6 h-6 text-muted-foreground" />
               </button>
-              <button onClick={() => setEventOpen(true)} className="p-2 hover:bg-muted rounded-full transition-colors">
-                <span className="icon-[solar--calendar-broken] w-6 h-6 text-muted-foreground" />
+              <button title={tp("celebrate")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--star-bold] w-6 h-6 text-muted-foreground" />
               </button>
-              <button onClick={() => setPollOpen(true)} className="p-2 hover:bg-muted rounded-full transition-colors">
-                <span className="icon-[solar--chart-broken] w-6 h-6 text-muted-foreground" />
+              <button title={tp("hire")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--case-bold] w-6 h-6 text-muted-foreground" />
               </button>
-              <button className="p-2 hover:bg-muted rounded-full transition-colors">
-                <span className="icon-[solar--menu-dots-broken] w-6 h-6 text-muted-foreground" />
+              <button onClick={() => setPollOpen(true)} title={tp("createPoll")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--chart-bold] w-6 h-6 text-muted-foreground" />
+              </button>
+              <button title={tp("writeArticle")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--document-bold] w-6 h-6 text-muted-foreground" />
+              </button>
+              <button onClick={() => openMedia("video")} title={tp("addVideo")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--videocamera-record-bold] w-6 h-6 text-muted-foreground" />
               </button>
             </div>
 
-            <div className="flex justify-end pt-2 border-t border-border/40">
-              <Button onClick={handlePost} disabled={isUploading || (!content.trim() && !attachments.length && !pollData && !eventData)} className="rounded-full px-6 font-bold bg-[#0a66c2] hover:bg-[#004182] text-white transition-colors">
-                {isUploading ? "..." : "انتشار"}
+            <div className="flex justify-end items-center gap-3 pt-4 border-t border-border/40">
+              <button title={tp("schedule")} className="p-2 hover:bg-muted rounded-full transition-colors">
+                <span className="icon-[solar--clock-circle-broken] w-6 h-6 text-muted-foreground" />
+              </button>
+              <Button onClick={handlePost} disabled={isUploading || (!content.trim() && !attachments.length && !pollData && !eventData)} className="rounded-full px-8 h-10 font-bold bg-[#3b3b3b] hover:bg-[#2b2b2b] text-[#8c8c8c] disabled:opacity-50 transition-colors">
+                {isUploading ? "..." : tp("post")}
               </Button>
             </div>
           </div>
