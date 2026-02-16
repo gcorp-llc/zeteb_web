@@ -28,13 +28,14 @@ export default function MessagesPage() {
   ];
 
   return (
-    <PageContainer title={t("messages")}>
+    <PageContainer>
       <div className="max-w-7xl mx-auto h-[calc(100vh-140px)] flex gap-4">
         {/* Chat List */}
         <div className={`w-full md:w-[380px] bg-card border border-border/50 rounded-3xl flex flex-col overflow-hidden ${selectedChat ? "hidden md:flex" : "flex"}`}>
           <div className="p-4 border-b border-border/30">
             <div className="flex items-center justify-between mb-4 px-2">
-                <Button variant="ghost" size="icon" className="rounded-full">
+                <Button   onClick={() => setIsNewMessageModalOpen(true)} 
+                variant="ghost" size="icon" className="rounded-full">
                     <span className="icon-[solar--hamburger-menu-broken] w-6 h-6" />
                 </Button>
                 <div className="relative flex-1 mx-2">
@@ -71,12 +72,7 @@ export default function MessagesPage() {
             ))}
 
             {/* New Message FAB - Mobile Only */}
-            <Button
-                onClick={() => setIsNewMessageModalOpen(true)}
-                className="md:hidden fixed bottom-24 right-6 w-14 h-14 rounded-full bg-primary shadow-2xl flex items-center justify-center z-50 animate-bounce"
-            >
-                <span className="icon-[solar--pen-new-square-bold] w-6 h-6 text-white" />
-            </Button>
+          
           </div>
         </div>
 
