@@ -46,74 +46,74 @@
    Root & Dark Mode – OKLCH colors
    ──────────────────────────────────────────────── */
 :root {
-  /* Nord Theme Palette for Light Mode */
-  --background: oklch(0.95 0.01 250); /* Nord 6 */
-  --foreground: oklch(0.28 0.02 260); /* Nord 0 */
+  /* Nova Light Theme Palette */
+  --background: oklch(0.96 0.01 250); /* #f2f4f5 */
+  --foreground: oklch(0.3 0.02 250);
 
-  --card: oklch(0.97 0.01 250 / 0.9); /* Nord 5 inspired */
-  --card-foreground: oklch(0.28 0.02 260);
+  --card: oklch(1 0 0); /* #ffffff */
+  --card-foreground: oklch(0.3 0.02 250);
 
-  --popover: oklch(0.97 0.01 250 / 0.95);
-  --popover-foreground: oklch(0.28 0.02 260);
+  --popover: oklch(1 0 0 / 0.95);
+  --popover-foreground: oklch(0.3 0.02 250);
 
-  --primary: oklch(0.77 0.08 230); /* Nord 8 (Frost) */
-  --primary-foreground: oklch(0.28 0.02 260);
+  --primary: oklch(0.65 0.15 250); /* #0088cc inspired */
+  --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.88 0.01 250); /* Nord 4 */
-  --secondary-foreground: oklch(0.32 0.02 260);
+  --secondary: oklch(0.92 0.01 250);
+  --secondary-foreground: oklch(0.3 0.02 250);
 
-  --muted: oklch(0.88 0.01 250); /* Nord 4 */
-  --muted-foreground: oklch(0.45 0.02 260); /* Nord 3 inspired */
+  --muted: oklch(0.92 0.01 250);
+  --muted-foreground: oklch(0.5 0.02 250);
 
-  --accent: oklch(0.77 0.08 230 / 0.15); /* Nord 8 with opacity */
-  --accent-foreground: oklch(0.7 0.08 230);
+  --accent: oklch(0.65 0.15 250 / 0.1);
+  --accent-foreground: oklch(0.65 0.15 250);
 
-  --destructive: oklch(0.55 0.15 25); /* Aurora Red */
-  --destructive-foreground: oklch(0.98 0.01 250);
+  --destructive: oklch(0.6 0.18 25);
+  --destructive-foreground: oklch(1 0 0);
 
-  --border: oklch(0.28 0.02 260 / 0.1);
-  --input: oklch(0.28 0.02 260 / 0.05);
-  --ring: oklch(0.77 0.08 230);
+  --border: oklch(0.9 0.01 250);
+  --input: oklch(0.9 0.01 250 / 0.5);
+  --ring: oklch(0.65 0.15 250);
 
-  /* iOS 18 Glass Variables - Nord variant */
-  --glass-bg: oklch(0.95 0.01 250 / 0.8);
-  --glass-border: oklch(0.28 0.02 260 / 0.1);
-  --glass-shadow: 0 4px 24px -1px oklch(0 0 0 / 0.06);
+  /* Flat Glass Variables */
+  --glass-bg: oklch(1 0 0 / 0.8);
+  --glass-border: oklch(0.9 0.01 250);
+  --glass-shadow: none;
 }
 
 .dark {
-  /* Atomic Dark theme */
-  --background: oklch(0.31 0.03 255);
-  --foreground: oklch(0.9 0.015 250);
+  /* One Dark Pro Darker theme */
+  --background: oklch(0.24 0.02 260); /* #1e2227 */
+  --foreground: oklch(0.85 0.02 260); /* #abb2bf */
 
-  --card: oklch(0.34 0.03 255 / 0.9);
-  --card-foreground: oklch(0.95 0.01 255);
+  --card: oklch(0.27 0.02 260); /* #21252b */
+  --card-foreground: oklch(0.85 0.02 260);
 
-  --popover: oklch(0.33 0.03 255 / 0.95);
-  --popover-foreground: oklch(0.95 0.01 255);
+  --popover: oklch(0.27 0.02 260 / 0.95);
+  --popover-foreground: oklch(0.85 0.02 260);
 
-  --primary: oklch(0.76 0.08 235);
-  --primary-foreground: oklch(0.31 0.03 255);
+  --primary: oklch(0.75 0.12 245); /* #61afef */
+  --primary-foreground: oklch(0.24 0.02 260);
 
-  --secondary: oklch(0.4 0.025 255);
-  --secondary-foreground: oklch(0.88 0.015 250);
+  --secondary: oklch(0.32 0.02 260); /* #282c34 */
+  --secondary-foreground: oklch(0.85 0.02 260);
 
-  --muted: oklch(0.4 0.02 255 / 0.7);
-  --muted-foreground: oklch(0.76 0.02 250);
+  --muted: oklch(0.32 0.02 260 / 0.7);
+  --muted-foreground: oklch(0.65 0.02 260);
 
-  --accent: oklch(0.76 0.08 235 / 0.25);
-  --accent-foreground: oklch(0.84 0.06 235);
+  --accent: oklch(0.75 0.12 245 / 0.25);
+  --accent-foreground: oklch(0.8 0.1 245);
 
-  --destructive: oklch(0.62 0.2 25);
-  --destructive-foreground: oklch(0.9 0.015 250);
+  --destructive: oklch(0.6 0.18 25);
+  --destructive-foreground: oklch(0.9 0.01 250);
 
-  --border: oklch(0.9 0.01 255 / 0.18);
-  --input: oklch(0.9 0.01 255 / 0.12);
-  --ring: oklch(0.76 0.08 235);
+  --border: oklch(0.35 0.02 260 / 0.3);
+  --input: oklch(0.35 0.02 260 / 0.2);
+  --ring: oklch(0.75 0.12 245);
 
-  --glass-bg: oklch(0.34 0.03 255 / 0.9);
-  --glass-border: oklch(0.9 0.01 255 / 0.16);
-  --glass-shadow: 0 10px 30px oklch(0 0 0 / 0.6);
+  --glass-bg: oklch(0.27 0.02 260 / 0.9);
+  --glass-border: oklch(0.35 0.02 260 / 0.3);
+  --glass-shadow: none;
 }
 
 /* ────────────────────────────────────────────────
@@ -125,7 +125,7 @@
     backdrop-filter: blur(64px) saturate(200%);
     -webkit-backdrop-filter: blur(64px) saturate(200%);
     border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    box-shadow: none;
   }
 
   .glass-nav {
@@ -133,7 +133,7 @@
     backdrop-filter: blur(64px) saturate(200%);
     -webkit-backdrop-filter: blur(64px) saturate(200%);
     border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    box-shadow: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -142,13 +142,12 @@
     backdrop-filter: blur(64px) saturate(200%);
     -webkit-backdrop-filter: blur(64px) saturate(200%);
     border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
+    box-shadow: none;
     @apply rounded-3xl p-6 transition-all duration-300;
   }
 
   .glass-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 40px oklch(0 0 0 / 0.1);
   }
 
   .glass-item {
@@ -220,6 +219,10 @@
 
   body {
     @apply bg-background text-foreground antialiased;
+  }
+
+  input, textarea {
+    @apply bg-muted/40 border-border/40 focus:bg-muted/60 transition-all duration-300;
   }
 
   :root {

@@ -38,8 +38,6 @@ export function CreatePost() {
   const composerActions = [
     { label: t("media"), icon: "icon-[solar--gallery-broken]", className: "text-green-500", onClick: () => openMedia("image") },
     { label: t("video"), icon: "icon-[solar--videocamera-record-broken]", className: "text-primary", onClick: () => openMedia("video") },
-    { label: "رویداد", icon: "icon-[solar--calendar-broken]", className: "text-violet-500", onClick: () => setEventOpen(true) },
-    { label: "نظرسنجی", icon: "icon-[solar--chart-broken]", className: "text-amber-500", onClick: () => setPollOpen(true) },
     { label: t("writeArticle"), icon: "icon-[solar--document-text-broken]", className: "text-orange-500", onClick: () => router.push("/posts/new/article") },
   ];
 
@@ -73,9 +71,9 @@ export function CreatePost() {
         </button>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-3 border-t border-border/50">
+      <div className="flex justify-around items-center pt-3 border-t border-border/50">
         {composerActions.map((item) => (
-          <button key={item.label} onClick={item.onClick} className="flex items-center justify-center gap-2 text-xs font-medium text-muted-foreground hover:bg-muted/30 p-2.5 rounded-lg transition-colors">
+          <button key={item.label} onClick={item.onClick} className="flex-1 flex items-center justify-center gap-2 text-xs font-bold text-muted-foreground hover:bg-muted/30 p-3 rounded-xl transition-colors">
             <span className={`${item.icon} ${item.className} w-5 h-5`} />
             <span>{item.label}</span>
           </button>

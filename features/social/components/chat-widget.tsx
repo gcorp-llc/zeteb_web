@@ -94,12 +94,6 @@ export function ChatWidget() {
         </AnimatePresence>
       </div>
 
-      {/* Floating New Chat Button as requested */}
-      <div className="fixed bottom-4 right-4 sm:right-8 flex flex-col gap-2 pointer-events-none">
-        <button className="w-12 h-12 bg-[#0a66c2] text-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#004182] transition-colors pointer-events-auto">
-           <span className="icon-[hugeicons--notification-square] w-6 h-6" />
-        </button>
-      </div>
     </div>
   );
 }

@@ -12,7 +12,7 @@ export const NavSearch = () => {
       <Input
         type="text"
         placeholder={t("searchPlaceholder")}
-        className="w-full h-11 ps-10 rounded-full glass !bg-white/5 placeholder:text-foreground/40 focus-visible:ring-2 focus-visible:ring-primary/20 transition-all"
+        className="w-full h-11 ps-10 rounded-full border-none bg-muted/30 focus:bg-muted/50 placeholder:text-foreground/40 focus:ring-2 focus:ring-primary/20 transition-all shadow-none"
       />
     </div>
   );

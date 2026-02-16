@@ -77,34 +77,45 @@ export default function NotificationsPage() {
             hasNextPage={!!hasNextPage}
             isFetchingNextPage={isFetchingNextPage}
           >
-            <div className="space-y-0.5">
+            <div className="space-y-3">
               {notifications.map((n) => (
-                <div key={n.id} className={`glass-card !p-4 !rounded-none first:!rounded-t-3xl last:!rounded-b-3xl flex gap-4 items-start transition-all border-b border-white/5 last:border-0 ${!n.isRead ? "bg-primary/5" : "hover:bg-white/5"}`}>
-                  <Avatar className="w-14 h-14 rounded-full border border-border/30 shrink-0">
-                    <AvatarImage src={n.image} />
-                    <AvatarFallback className="bg-ios-gradient text-white font-bold">{n.sender[0]}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1 space-y-2">
-                    <div className="flex justify-between items-start">
-                       <p className="text-xs leading-relaxed text-foreground/90">
-                          <span className="font-black text-foreground hover:text-primary hover:underline cursor-pointer">{n.sender}</span> {n.content}
-                       </p>
-                       <div className="flex flex-col items-end gap-2 shrink-0 ms-2">
-                          <p className="text-[10px] text-muted-foreground font-medium">{n.time}</p>
-                          <Button variant="ghost" size="icon" className="rounded-full w-8 h-8">
-                            <span className="icon-[solar--menu-dots-bold] w-4 h-4" />
-                          </Button>
+                <div key={n.id} className={`bg-card border border-border/50 p-5 rounded-2xl flex gap-4 items-start transition-all group ${!n.isRead ? "border-l-4 border-l-primary" : "hover:border-border"}`}>
+                  <div className="relative">
+                    <Avatar className="w-16 h-16 rounded-full border-2 border-background shrink-0">
+                        <AvatarImage src={n.image} />
+                        <AvatarFallback className="bg-ios-gradient text-white font-bold">{n.sender[0]}</AvatarFallback>
+                    </Avatar>
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-background border border-border/50 flex items-center justify-center">
+                        {n.type === "like" && <span className="icon-[solar--heart-bold] w-3.5 h-3.5 text-red-500" />}
+                        {n.type === "comment" && <span className="icon-[solar--chat-line-bold] w-3.5 h-3.5 text-primary" />}
+                        {n.type === "follow_request" && <span className="icon-[solar--user-plus-bold] w-3.5 h-3.5 text-orange-500" />}
+                        {n.type === "system" && <span className="icon-[solar--verified-check-bold] w-3.5 h-3.5 text-blue-500" />}
+                    </div>
+                  </div>
+
+                  <div className="flex-1 space-y-3">
+                    <div className="flex justify-between items-start gap-4">
+                       <div className="space-y-1">
+                          <p className="text-sm leading-relaxed">
+                            <span className="font-black text-foreground hover:text-primary transition-colors cursor-pointer">{n.sender}</span>
+                            <span className="text-muted-foreground mx-1">•</span>
+                            <span className="text-foreground/80">{n.content}</span>
+                          </p>
+                          <p className="text-[11px] text-muted-foreground">{n.time}</p>
                        </div>
+                       <Button variant="ghost" size="icon" className="rounded-full w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity">
+                         <span className="icon-[solar--menu-dots-bold] w-4 h-4" />
+                       </Button>
                     </div>
 
                     {n.type === "follow_request" && (
-                       <div className="flex gap-2">
-                          <Button variant="outline" size="sm" className="h-8 !rounded-full border-primary text-primary hover:bg-primary/10 text-[10px] font-black px-4">پذیرفتن</Button>
-                          <Button variant="ghost" size="sm" className="h-8 !rounded-full text-muted-foreground hover:bg-white/5 text-[10px] font-bold px-4">رد کردن</Button>
+                       <div className="flex gap-2 pt-1">
+                          <Button size="sm" className="h-9 rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground text-xs font-bold px-6">پذیرفتن نوبت</Button>
+                          <Button variant="outline" size="sm" className="h-9 rounded-xl text-muted-foreground hover:bg-muted text-xs font-bold px-6">رد کردن</Button>
                        </div>
                     )}
                   </div>
-                  {!n.isRead && <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0" />}
+                  {!n.isRead && <div className="w-2.5 h-2.5 bg-primary rounded-full mt-2 shrink-0 animate-pulse" />}
                 </div>
               ))}
             </div>
